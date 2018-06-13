@@ -1,10 +1,17 @@
 {% extends "base.html" %}
-{% block Title %}
-    Index
+{% block head %}
+    {{ super() }}
 {% endblock %}
-{% block Script %}
-
+{% block Title %}
+    主页
+{% endblock %}
+{% block linkcss %}
+    {{ super() }}
 {% endblock %}
 {% block Content %}
+    {{ super() }}
     <h1>{{ data }}</h1>
+{% endblock %}
+{% block script %}
+    {{ super() }}
 {% endblock %}
