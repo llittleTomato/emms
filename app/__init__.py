@@ -1,5 +1,8 @@
+__author__ = 'sky'
+
 from flask import Flask
 from app.view import view
+from app.view.login import login_manager
 
 
 def create_app():
@@ -11,6 +14,9 @@ def create_app():
 
     # 注册蓝图
     app.register_blueprint(view)
+
+    # 登录模块初始化
+    login_manager.init_app(app)
 
     return app
 
