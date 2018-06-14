@@ -43,7 +43,7 @@ body {
     padding: 20px;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    background-color: #d6d4d4;
+    background-color: #f7f7f7;
     border-right: 1px solid #eee;
   }
 }
@@ -101,4 +101,7 @@ body {
 }
 .navtop{
   background-color: #5bc0de;
+}
+ul>li:active {
+
 }

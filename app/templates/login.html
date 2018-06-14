@@ -7,11 +7,12 @@
     <title>登录</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login/signin.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='image/icon/elevator.png') }}">
 </head>
 <body>
     <div class="container">
         <form class="form-signin">
-            <div class="form-signin-heading"><h3>请登录</h3></div>
+            <div class="text-center"><h3>请登录</h3></div>
             <label for="inputEmail" class="sr-only">Email address</label>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
             <label for="inputPassword" class="sr-only">Password</label>
@@ -19,7 +20,9 @@
             <div class="checkbox">
                 <label><input type="checkbox" value="remember-me"> 记住我</label>
             </div>
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+            <div>
+                <button class="btn btn-primary center-block" type="submit">Sign in</button>
+            </div>
         </form>
     </div>
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
