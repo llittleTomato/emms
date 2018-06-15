@@ -1,5 +1,6 @@
 from flask import Flask
 from app.view import view
+from app.forms.login.login import login_manager
 
 
 def create_app():
@@ -11,6 +12,9 @@ def create_app():
 
     # 注册蓝图
     app.register_blueprint(view)
+
+    # flask_login 初始化
+    login_manager.init_app(app)
 
     return app
 
