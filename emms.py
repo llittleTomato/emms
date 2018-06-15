@@ -1,5 +1,7 @@
+__author__ = 'sky'
 
 from app import create_app
+
 
 app = create_app()
 

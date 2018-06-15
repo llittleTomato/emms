@@ -1,6 +1,9 @@
+__author__ = 'sky'
+
 from flask import Blueprint
+
 
 view = Blueprint('view', __name__)
 
 from . import index
-from . import login
+from app.view.login import login
