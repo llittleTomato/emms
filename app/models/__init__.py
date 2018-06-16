@@ -1,9 +1,10 @@
-__author__ = 'sky'
-
 from flask_sqlalchemy import SQLAlchemy
+
+__author__ = 'sky'
 
 
 db = SQLAlchemy()
 
-# 引入创建的数据库类
-from .user import User
+from app.models.base import Base
+from app.models.user import User
+from app.models.elevator import Elevator
