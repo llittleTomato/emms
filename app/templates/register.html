@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login/signin.css') }}">
+</head>
+<body>
+    <div class="container">
+        <p>
+            {% for message in ValidationError %}
+                {{ message }}
+            {% endfor %}
+        </p>
+      <form class="form-signin" method="POST" action="">
+          <div class="input-group-lg">
+              <h2 class="form-signin-heading">注 册</h2>
+              <label for="inputEmail" class="sr-only">Email</label>
+              <input type="text" id="inputEmail" class="form-control" placeholder="Email" required autofocus name="email">
+              <label for="inputPassword" class="sr-only">密码</label>
+              <input type="password" id="inputPassword" class="form-control" placeholder="密码" required name="password">
+              <label for="inputCompany" class="sr-only">公司</label>
+              <input type="text" id="inputCompany" class="form-control" placeholder="公司名称" required name="company">
+              <label for="inputComAddress" class="sr-only">公司地址</label>
+              <input type="text" id="inputComAddress" class="form-control" placeholder="公司地址" required name="company_address">
+              <label for="inputLinkman" class="sr-only">联系人</label>
+              <input type="text" id="inputLinkman" class="form-control" placeholder="联系人" required name="linkman">
+              <label for="inputPhoneNumber" class="sr-only">手机号码</label>
+              <input type="text" id="inputPhoneNumber" class="form-control" placeholder="手机号码 11位" required name="phone_number" maxlength="11">
+              <button class="btn btn-lg btn-primary btn-block" type="submit">提交</button>
+          </div>
+      </form>
+    </div> <!-- /container -->
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</body>
+</html>
