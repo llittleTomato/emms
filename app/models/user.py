@@ -2,10 +2,11 @@ __author__ = 'sky'
 
 from sqlalchemy import Column, String, Integer
 from app.models.base import Base
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
 
-class User(Base):
+class User(UserMixin, Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String(64), unique=True, nullable=True)
@@ -22,3 +23,7 @@ class User(Base):
     @password.setter
     def password(self, raw):
         self._password = generate_password_hash(raw)
+
+    def check_password(self, raw):
+        return check_password_hash(self._password, raw)
+
