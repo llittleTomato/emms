@@ -13,10 +13,12 @@ def login():
     if request.method == 'POST' and form.validate():
         user = User.query.filter_by(email=form.email.data).first()
         if user and user.check_password(form.password.data):
-            login_user(user)
-            return redirect(url_for('view.index'))
+            login_user(user, remember=form.remember_me.data)
+            next = request.args.get('next')
+            if not next or not next.startswith('/'):
+                next = url_for('view.index')
+            return redirect(next)
         else:
-            # return render_template('login.html', messages={'message': ['登录用户错误或密码错误！']})
-            pass
+            return render_template('login.html', messages={'message': ['登录用户错误或密码错误！']})
     else:
         return render_template('login.html', messages=form.errors)

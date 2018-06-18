@@ -12,6 +12,11 @@
     {{ super() }}
     <h1>{{ data }}</h1>
 {% endblock %}
+<!-- 显示登录用户
+{% if current_user.is_authenticated() %}
+    Hi {{ current_user.name }}!
+{% endif %}
+-->
 {% block script %}
     {{ super() }}
 {% endblock %}

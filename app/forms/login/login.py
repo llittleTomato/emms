@@ -9,6 +9,7 @@ from wtforms.validators import DataRequired, Length, Email
 login_manager = LoginManager()
 login_manager.session_protection = "strong"
 login_manager.login_view = "view.login"
+login_manager.login_message = '请先登录！'
 
 
 class LoginForm(Form):

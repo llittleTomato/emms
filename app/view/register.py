@@ -4,9 +4,11 @@ from app.models import User, db
 from . import view
 from flask import render_template, url_for, request, redirect, flash
 from app.forms.login.register import RegisterForm
+from flask_login import login_required
 
 
 @view.route('/register/', methods=['GET', 'POST'])
+@login_required
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
