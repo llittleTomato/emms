@@ -16,6 +16,7 @@ class User(UserMixin, Base):
     company_address = Column(String(100), nullable=True)
     linkman = Column(String(64), nullable=True)
     phone_number = Column(String(11), nullable=True)
+    authority = Column(String(15), default='公司用户', nullable=True)
 
     @property
     def password(self):

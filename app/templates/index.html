@@ -8,15 +8,18 @@
 {% block linkcss %}
     {{ super() }}
 {% endblock %}
-{% block Content %}
-    {{ super() }}
-    <h1>{{ data }}</h1>
+{% block nav %}
+    <li class="text-center"><a href="#">注册</a></li>
 {% endblock %}
-<!-- 显示登录用户
+{% block content %}
+    {{ super() }}
+    <h1 class="page-header">各模块内容</h1>
+{% endblock %}
+{#<!-- 显示登录用户
 {% if current_user.is_authenticated() %}
     Hi {{ current_user.name }}!
 {% endif %}
--->
+-->#}
 {% block script %}
     {{ super() }}
 {% endblock %}
