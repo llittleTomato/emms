@@ -1,7 +1,9 @@
 flask
 flask-wtf
+werkzeug
 flask-login
 flask-sqlalchemy
+sqlalchemy
 mysql-connector-python
 flask-migrate
 flask-script

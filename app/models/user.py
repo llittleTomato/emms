@@ -33,3 +33,4 @@ class User(UserMixin, Base):
 @login_manager.user_loader
 def get_user(uid):
     return User.query.get(int(uid))
+

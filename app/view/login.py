@@ -4,7 +4,7 @@ from app.models import User
 from . import view
 from flask import render_template, url_for, request, redirect
 from app.forms.login.login import LoginForm
-from flask_login import login_user
+from flask_login import login_user, login_required, logout_user
 
 
 @view.route('/', methods=['GET', 'POST'])
@@ -22,3 +22,10 @@ def login():
             return render_template('login.html', messages={'message': ['登录用户错误或密码错误！']})
     else:
         return render_template('login.html', messages=form.errors)
+
+
+@view.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return render_template('login.html')

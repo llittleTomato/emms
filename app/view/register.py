@@ -8,7 +8,7 @@ from flask_login import login_required
 
 
 @view.route('/register/', methods=['GET', 'POST'])
-# @login_required
+@login_required
 def register():
     form = RegisterForm(request.form)
     if request.method == 'POST' and form.validate():
