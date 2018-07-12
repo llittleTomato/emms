@@ -2,7 +2,7 @@ from flask import flash
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, Form
 from wtforms.validators import DataRequired, Length, Email, ValidationError
-from app.models import User
+from app.models.user import User
 
 __author__ = 'sky'
 

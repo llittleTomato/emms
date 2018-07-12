@@ -1,6 +1,7 @@
 __author__ = 'sky'
 
-from app.models import User, db
+from app.models import db
+from app.models.user import User
 from . import view
 from flask import render_template, url_for, request, redirect, flash
 from app.forms.login.register import RegisterForm

@@ -5,4 +5,4 @@ __author__ = 'sky'
 
 db = SQLAlchemy()
 
-from app.models.base import *
+from . import *
