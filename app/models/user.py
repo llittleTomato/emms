@@ -12,7 +12,7 @@ class User(UserMixin, Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     email = Column(String(64), unique=True, nullable=False)
     _password = Column('password', String(128), nullable=False)
-    company = Column(String(64), unique=True, nullable=False)
+    company = Column(String(64), nullable=False)
     company_address = Column(String(100), nullable=False)
     linkman = Column(String(64), nullable=False)
     phone_number = Column(String(11), nullable=False)
@@ -28,6 +28,12 @@ class User(UserMixin, Base):
 
     def check_password(self, raw):
         return check_password_hash(self._password, raw)
+
+    def check_company(self, company):
+        if self.query.filter_by(company=company).first():
+            return True
+        else:
+            return False
 
 
 @login_manager.user_loader

@@ -1,10 +1,9 @@
-from flask import flash
-from flask_wtf import FlaskForm
+
+__author__ = 'sky'
+
 from wtforms import StringField, PasswordField, Form
 from wtforms.validators import DataRequired, Length, Email, ValidationError
 from app.models.user import User
-
-__author__ = 'sky'
 
 
 class RegisterForm(Form):
@@ -21,8 +20,10 @@ class RegisterForm(Form):
             raise ValidationError('Email 已被注册')
 
     def validate_company(self, field):
-        if User.query.filter_by(company=field.data).first():
-            raise ValidationError('公司已存在')
+        if User.query.filter_by(company=field.data).first() and self.authority.data == 'com_admin':
+            raise ValidationError('公司已存在公司管理员账户，不能再次注册')
+        elif not User.query.filter_by(company=field.data).first() and self.authority.data == 'com_person':
+            raise ValidationError('公司不存在，请先注册公司管理员账户')
 
 
 

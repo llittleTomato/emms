@@ -5,4 +5,4 @@ __author__ = 'sky'
 
 db = SQLAlchemy()
 
-from . import *
+from . import base, elevator, user, company, employee

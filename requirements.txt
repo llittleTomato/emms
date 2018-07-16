@@ -1,5 +1,6 @@
 flask
 flask-wtf
+wtforms
 werkzeug
 flask-login
 flask-sqlalchemy
