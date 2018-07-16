@@ -15,14 +15,16 @@
         {{ current_user.company }}
     {% endif %}
 {% endblock %}
-{% block nav %}
-    <li class="text-center"><a href="#">注册</a></li>
+{% block nav_top %}
+	{{ super() }}
+{% endblock %}
+{% block nav_sidebar %}
+	{{ super() }}
 {% endblock %}
 {% block content %}
     {{ super() }}
     <div>
-    <div>
-        <form class="form-signin" method="POST" action="">
+        <form class="form-signin" method="POST" action="{{ url_for('view.register') }}">
             <div class="input-group-lg">
                 <h2 class="form-signin-heading">注 册</h2>
                 <label for="inputEmail" class="sr-only">Email</label>
@@ -42,10 +44,10 @@
                 <input type="text" id="inputPhoneNumber" class="form-control" placeholder="手机号码 11位" required
                        name="phone_number" maxlength="11">
                 <label for="inputAuthority" class="sr-only">权限</label>
-                <select class="form-control" id="inputAuthority">
-                    <option>公司用户</option>
-                    <option>管理员</option>
-                    <option>试用人员</option>
+                <select class="form-control" id="inputAuthority" name="authority">
+                    <option value="super_admin">超级管理员</option>
+                    <option value="com_admin">公司管理员</option>
+                    <option value="com_person">公司普通人员</option>
                 </select>
                 <button class="btn btn-lg btn-primary btn-block submit_bn" type="submit">提交</button>
             </div>
@@ -60,7 +62,6 @@
             {% endif %}
         </form>
     </div> <!-- /container -->
-    </div>
 {% endblock %}
 {% block script %}
     {{ super() }}

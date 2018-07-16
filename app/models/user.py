@@ -10,13 +10,13 @@ from app.forms.login.login import login_manager
 class User(UserMixin, Base):
     __tablename__ = 'user'
     id = Column(Integer, primary_key=True, autoincrement=True)
-    email = Column(String(64), unique=True, nullable=True)
-    _password = Column('password', String(128), nullable=True)
-    company = Column(String(64), unique=True, nullable=True)
-    company_address = Column(String(100), nullable=True)
-    linkman = Column(String(64), nullable=True)
-    phone_number = Column(String(11), nullable=True)
-    authority = Column(String(15), default='公司用户', nullable=True)
+    email = Column(String(64), unique=True, nullable=False)
+    _password = Column('password', String(128), nullable=False)
+    company = Column(String(64), unique=True, nullable=False)
+    company_address = Column(String(100), nullable=False)
+    linkman = Column(String(64), nullable=False)
+    phone_number = Column(String(11), nullable=False)
+    authority = Column(String(15), nullable=False)
 
     @property
     def password(self):

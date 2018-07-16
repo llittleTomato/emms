@@ -2,7 +2,7 @@ __author__ = 'sky'
 
 from app.models.user import User
 from . import view
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect, session
 from app.forms.login.login import LoginForm
 from flask_login import login_user, login_required, logout_user
 
@@ -16,7 +16,8 @@ def login():
             login_user(user, remember=form.remember_me.data)
             next = request.args.get('next')
             if not next or not next.startswith('/'):
-                next = url_for('view.index')
+                session['authority'] = user.authority    # session中保存登录用户权限
+                return render_template('index.html')
             return redirect(next)
         else:
             return render_template('login.html', messages={'message': ['登录用户错误或密码错误！']})

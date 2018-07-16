@@ -24,8 +24,8 @@ def add_admin_user():
     admin_user.company_address = 'JNL1588A'
     admin_user.linkman = 'sky'
     admin_user.phone_number = '12345678901'
-    admin_user.authority = '管理员'
-    admin_user.status = 1
+    admin_user.authority = '超级管理员'
+    admin_user.status = 1   # =0，该用户失效
     try:
         db.session.add(admin_user)
         db.session.commit()

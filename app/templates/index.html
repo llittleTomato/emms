@@ -14,8 +14,11 @@
         {{ current_user.company }}
     {% endif %}
 {% endblock %}
-{% block nav %}
-    <li class="text-center"><a href="{{ url_for('view.register') }}">注册</a></li>
+{% block nav_top %}
+	{{ super() }}
+{% endblock %}
+{% block nav_sidebar %}
+	{{ super() }}
 {% endblock %}
 {% block content %}
     {{ super() }}

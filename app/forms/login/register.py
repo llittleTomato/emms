@@ -13,7 +13,8 @@ class RegisterForm(Form):
     company = StringField('company', validators=[DataRequired('请输入公司名称')])
     company_address = StringField('company_address', validators=[DataRequired('请输入公司地址')])
     linkman = StringField('linkman', validators=[DataRequired('请输入公司名称')])
-    phone_number = StringField('手机号码', validators=[DataRequired('请输入手机号码')])
+    phone_number = StringField('phone_number', validators=[DataRequired('请输入手机号码')])
+    authority = StringField('authority', validators=[DataRequired('请选择权限')])
 
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
