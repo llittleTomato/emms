@@ -2,6 +2,7 @@ __author__ = 'sky'
 
 from app.models import db
 from app.models.user import User
+from app.models.company import Company
 from . import view
 from flask import render_template, url_for, request, redirect, flash
 from app.forms.login.register import RegisterForm
@@ -19,9 +20,17 @@ def register():
         # 如果存在，则只能创建公司普通人员账户，不创建数据表
         if user.authority == 'com_admin':
             # 公司不存在，且注册时选择了公司管理员，则允许创建用户，并创建相关数据表
+            company = Company()
+            company.set_attrs(form.data)
+            db.session.add(company)
             db.session.add(user)
             db.session.commit()
-            db.session.execute('create table elevator1 like elevator')
+            sqls = (
+                        'create table elevator' + str(company.id) + ' like elevator',
+                        'create table employee' + str(company.id) + ' like employee',
+                    )
+            for sql in sqls:
+                db.session.execute(sql)
         else:
             db.session.add(user)
             db.session.commit()

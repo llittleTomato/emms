@@ -15,10 +15,12 @@ class RegisterForm(Form):
     phone_number = StringField('phone_number', validators=[DataRequired('请输入手机号码')])
     authority = StringField('authority', validators=[DataRequired('请选择权限')])
 
+    # 对Email验证是否存在
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first():
             raise ValidationError('Email 已被注册')
 
+    # 验证公司账户注册相关逻辑关系，公司账户必须先注册公司管理员账户，才可以注册公司普通人员账户
     def validate_company(self, field):
         if User.query.filter_by(company=field.data).first() and self.authority.data == 'com_admin':
             raise ValidationError('公司已存在公司管理员账户，不能再次注册')
