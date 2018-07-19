@@ -4,7 +4,7 @@ __author__ = 'sky'
 
 from flask import Flask
 from app.view import view
-from app.forms.login.login import login_manager
+from app.forms.login import login_manager
 
 
 def create_app():

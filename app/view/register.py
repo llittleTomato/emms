@@ -4,8 +4,8 @@ from app.models import db
 from app.models.user import User
 from app.models.company import Company
 from . import view
-from flask import render_template, url_for, request, redirect, flash
-from app.forms.login.register import RegisterForm
+from flask import render_template, request
+from app.forms.register import RegisterForm
 from flask_login import login_required
 
 

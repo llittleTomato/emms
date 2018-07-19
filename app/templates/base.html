@@ -29,10 +29,10 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href="#">首页</a></li>
-                <li><a href="#">电梯</a></li>
-                <li><a href="#">人员</a></li>
-                <li><a href="#">报告</a></li>
+                <li><a href="{{ url_for('view.index') }}">首页</a></li>
+                <li><a href="{{ url_for('view.elevator') }}">电梯</a></li>
+                <li><a href="{{ url_for('view.employee') }}">人员</a></li>
+                <li><a href="{{ url_for('view.reporter') }}">报告</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
@@ -62,10 +62,10 @@
             <ul class="nav nav-sidebar">
 	            {% block nav_sidebar %}
 		            {% if session['authority'] == 'super_admin' or session['authority'] == 'com_admin' %}
-						<li><a href="#"><span class="glyphicon glyphicon-cog "> 电梯</span></a></li>
-				        <li><a href="#"><span class="glyphicon glyphicon-user "> 人员</span></a></li>
-				        <li><a href="#"><span class="glyphicon glyphicon-list-alt "> 报告</span></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-tasks "> 账户</span></a></li>
+						<li><a href="{{ url_for('view.elevator') }}"><span class="glyphicon glyphicon-cog "> 电梯</span></a></li>
+				        <li><a href="{{ url_for('view.employee') }}"><span class="glyphicon glyphicon-user "> 人员</span></a></li>
+				        <li><a href="{{ url_for('view.reporter') }}"><span class="glyphicon glyphicon-list-alt "> 报告</span></a></li>
+                        <li><a href="{{ url_for('view.usermanage') }}"><span class="glyphicon glyphicon-tasks "> 账户</span></a></li>
 					{% elif session['authority'] == 'com_person' %}
 						<li><a href="#"><span class="glyphicon glyphicon-list-alt "> 报告</span></a></li>
 					{% endif %}

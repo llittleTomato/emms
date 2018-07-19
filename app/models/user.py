@@ -1,10 +1,10 @@
 __author__ = 'sky'
 
-from sqlalchemy import Column, String, Integer, ForeignKey
+from sqlalchemy import Column, String, Integer
 from app.models.base import Base
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
-from app.forms.login.login import login_manager
+from app.forms.login import login_manager
 
 
 class User(UserMixin, Base):

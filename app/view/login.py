@@ -3,8 +3,8 @@ __author__ = 'sky'
 from app.models.user import User
 from app.models.company import Company
 from . import view
-from flask import render_template, url_for, request, redirect, session
-from app.forms.login.login import LoginForm
+from flask import render_template, request, redirect, session
+from app.forms.login import LoginForm
 from flask_login import login_user, login_required, logout_user
 
 
