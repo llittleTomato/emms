@@ -14503,6 +14503,7 @@ be a descendant of the grid when it is being dragged.
 .card .card-title {
   margin-top: 0;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .card .card-title-w-btn {

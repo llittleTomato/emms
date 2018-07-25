@@ -5,7 +5,7 @@ from flask import render_template
 from flask_login import login_required
 
 
-@view.route('/reporter/')
+@view.route('/report/')
 @login_required
-def reporter():
-	return render_template('reporter.html')
+def report():
+	return render_template('report.html')

@@ -28,7 +28,7 @@
                             <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-lg"></i></a>
                             <ul class="dropdown-menu settings-menu">
                                 <li><a href="#"><i class="fa fa-cog fa-lg"></i>修改密码</a></li>
-                                <li><a href="#"><i class="fa fa-sign-out fa-lg"></i>注销</a></li>
+                                <li><a href="{{ url_for('view.logout') }}"><i class="fa fa-sign-out fa-lg"></i>注销</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -46,10 +46,10 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
 	                {% block nav_sidebar %}
-		                <li><a href="#"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
-	                    <li><a href="#"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span></a></li>
-	                    <li><a href="#"><i class="fa fa-address-book-o fa-fw fa-lg"></i><span>人员</span></a></li>
-	                    <li><a href="#"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a></li>
+		                <li><a href="{{ url_for('view.index') }}"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
+	                    <li><a href="{{ url_for('view.elevator') }}"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span></a></li>
+	                    <li><a href="{{ url_for('view.employee') }}"><i class="fa fa-address-book-o fa-fw fa-lg"></i><span>人员</span></a></li>
+	                    <li><a href="{{ url_for('view.report') }}"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a></li>
 	                    <li class="treeview"><a href="#"><i class="fa fa-user-o fa-fw fa-lg"></i><span>用户</span></a>
 	                        <ul class="treeview-menu">
 	                            <li><a href="#"><i class="fa fa-user-plus"></i> 添加用户</a></li>
@@ -69,11 +69,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    {% block content %}{% endblock %}
-                </div>
-            </div>
+            <!-- 主体内容-->
+            {% block content %}{% endblock %}
         </div>
     </div>
     {% block script %}
