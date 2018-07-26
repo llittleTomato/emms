@@ -2,17 +2,56 @@
 {% block main %}
 	{{ super() }}
     <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-title">
-                    <h1>电梯资料管理</h1>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="control-label col-md-1 col-md-offset-1" for="ein">识别码</label>
+                                    <div class="col-md-2">
+                                        <input id="ein" class="form-control" type="text" name="ein" placeholder="识别码">
+                                    </div>
+                                    <label class="control-label col-md-1" for="ein">注册代码</label>
+                                    <div class="col-md-2">
+                                        <input id="registration_code" class="form-control" type="text" name="registration_code" placeholder="注册代码">
+                                    </div>
+                                    <label class="control-label col-md-1" for="ein">出厂编号</label>
+                                    <div class="col-md-2">
+                                        <input id="manufacturing_code" class="form-control" type="text" name="manufacturing_code" placeholder="出厂编号">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-md-1 col-md-offset-1" for="use_unit">使用单位</label>
+                                    <div class="col-md-2">
+                                        <input id="use_unit" class="form-control" type="text" name="use_unit" placeholder="使用单位">
+                                    </div>
+                                    <label class="control-label col-md-1" for="manufacturing_unit">制造单位</label>
+                                    <div class="col-md-2">
+                                        <input id="manufacturing_unit" class="form-control" type="text" name="manufacturing_unit" placeholder="制造单位">
+                                    </div>
+                                    <label class="control-label col-md-1" for="construction_unit">施工单位</label>
+                                    <div class="col-md-2">
+                                        <input id="construction_unit" class="form-control" type="text" name="construction_unit" placeholder="施工单位">
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-2 col-md-offset-4" >
+                                            <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>查询</button>
+                                        </div>
+                                        <div class="col-md-2">
+                                            <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <h2>表格</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-12">
-            <div class="card">
-                <h2>表格</h2>
-            </div>
-        </div>
-    </div>
 {% endblock %}
