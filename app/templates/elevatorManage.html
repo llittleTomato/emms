@@ -1,57 +1,262 @@
 {% extends "index.html" %}
-{% block main %}
+{% block content %}
 	{{ super() }}
+    <!--查询条件-->
     <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <form class="form-horizontal">
-                                <div class="form-group">
-                                    <label class="control-label col-md-1 col-md-offset-1" for="ein">识别码</label>
-                                    <div class="col-md-2">
-                                        <input id="ein" class="form-control" type="text" name="ein" placeholder="识别码">
-                                    </div>
-                                    <label class="control-label col-md-1" for="ein">注册代码</label>
-                                    <div class="col-md-2">
-                                        <input id="registration_code" class="form-control" type="text" name="registration_code" placeholder="注册代码">
-                                    </div>
-                                    <label class="control-label col-md-1" for="ein">出厂编号</label>
-                                    <div class="col-md-2">
-                                        <input id="manufacturing_code" class="form-control" type="text" name="manufacturing_code" placeholder="出厂编号">
-                                    </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-1 col-md-offset-1" for="ein">识别码</label>
+                            <div class="col-md-2">
+                                <input id="ein" class="form-control" type="text" name="ein" placeholder="识别码">
+                            </div>
+                            <label class="control-label col-md-1" for="ein">注册代码</label>
+                            <div class="col-md-2">
+                                <input id="registration_code" class="form-control" type="text" name="registration_code" placeholder="注册代码">
+                            </div>
+                            <label class="control-label col-md-1" for="ein">出厂编号</label>
+                            <div class="col-md-2">
+                                <input id="manufacturing_code" class="form-control" type="text" name="manufacturing_code" placeholder="出厂编号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1 col-md-offset-1" for="use_unit">使用单位</label>
+                            <div class="col-md-2">
+                                <input id="use_unit" class="form-control" type="text" name="use_unit" placeholder="使用单位">
+                            </div>
+                            <label class="control-label col-md-1" for="manufacturing_unit">制造单位</label>
+                            <div class="col-md-2">
+                                <input id="manufacturing_unit" class="form-control" type="text" name="manufacturing_unit" placeholder="制造单位">
+                            </div>
+                            <label class="control-label col-md-1" for="construction_unit">施工单位</label>
+                            <div class="col-md-2">
+                                <input id="construction_unit" class="form-control" type="text" name="construction_unit" placeholder="施工单位">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-4" >
+                                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>查询</button>
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-md-1 col-md-offset-1" for="use_unit">使用单位</label>
-                                    <div class="col-md-2">
-                                        <input id="use_unit" class="form-control" type="text" name="use_unit" placeholder="使用单位">
-                                    </div>
-                                    <label class="control-label col-md-1" for="manufacturing_unit">制造单位</label>
-                                    <div class="col-md-2">
-                                        <input id="manufacturing_unit" class="form-control" type="text" name="manufacturing_unit" placeholder="制造单位">
-                                    </div>
-                                    <label class="control-label col-md-1" for="construction_unit">施工单位</label>
-                                    <div class="col-md-2">
-                                        <input id="construction_unit" class="form-control" type="text" name="construction_unit" placeholder="施工单位">
-                                    </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
                                 </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-2 col-md-offset-4" >
-                                            <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>查询</button>
-                                        </div>
-                                        <div class="col-md-2">
-                                            <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </form>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查询结果显示表格-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div id="sampleTable_wrapper" class="dataTables_wrapper form-inline dt-bootstrap no-footer">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-hover table-bordered dataTable no-footer" id="sampleTable" role="grid" aria-describedby="sampleTable_info">
+                                    <thead>
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="id: activate to sort column descending">id</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending">Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Position</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Office</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Age</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Start date: activate to sort column ascending">Start date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="sampleTable" rowspan="1" colspan="1" aria-label="Salary: activate to sort column ascending">Salary</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr role="row" class="odd">
+                                        <td>1</td>
+                                        <td class="sorting_1">Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td>2008/11/28</td>
+                                        <td>$162,700</td>
+                                    </tr>
+                                    <tr role="row" class="even">
+                                        <td>2</td>
+                                        <td class="sorting_1">Angelica Ramos</td>
+                                        <td>Chief Executive Officer (CEO)</td>
+                                        <td>London</td>
+                                        <td>47</td>
+                                        <td>2009/10/09</td>
+                                        <td>$1,200,000</td>
+                                    </tr>
+                                    <tr role="row" class="odd">
+                                        <td>3</td>
+                                        <td class="sorting_1">Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009/01/12</td>
+                                        <td>$86,000</td>
+                                    </tr>
+                                    <tr role="row" class="even">
+                                        <td>4</td>
+                                        <td class="sorting_1">Bradley Greer</td>
+                                        <td>Software Engineer</td>
+                                        <td>London</td>
+                                        <td>41</td>
+                                        <td>2012/10/13</td>
+                                        <td>$132,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>Edinburgh</td>
+                                        <td>61</td>
+                                        <td>2011/04/25</td>
+                                        <td>$320,800</td>
+                                    </tr>
+                                    <tr>
+                                        <td>6</td>
+                                        <td>Garrett Winters</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>63</td>
+                                        <td>2011/07/25</td>
+                                        <td>$170,750</td>
+                                    </tr>
+                                    <tr>
+                                        <td>7</td>
+                                        <td>Ashton Cox</td>
+                                        <td>Junior Technical Author</td>
+                                        <td>San Francisco</td>
+                                        <td>66</td>
+                                        <td>2009/01/12</td>
+                                        <td>$86,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>8</td>
+                                        <td>Cedric Kelly</td>
+                                        <td>Senior Javascript Developer</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td>2012/03/29</td>
+                                        <td>$433,060</td>
+                                    </tr>
+                                    <tr>
+                                        <td>9</td>
+                                        <td>Airi Satou</td>
+                                        <td>Accountant</td>
+                                        <td>Tokyo</td>
+                                        <td>33</td>
+                                        <td>2008/11/28</td>
+                                        <td>$162,700</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10</td>
+                                        <td>Brielle Williamson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>New York</td>
+                                        <td>61</td>
+                                        <td>2012/12/02</td>
+                                        <td>$372,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>11</td>
+                                        <td>Herrod Chandler</td>
+                                        <td>Sales Assistant</td>
+                                        <td>San Francisco</td>
+                                        <td>59</td>
+                                        <td>2012/08/06</td>
+                                        <td>$137,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>Rhona Davidson</td>
+                                        <td>Integration Specialist</td>
+                                        <td>Tokyo</td>
+                                        <td>55</td>
+                                        <td>2010/10/14</td>
+                                        <td>$327,900</td>
+                                    </tr>
+                                    <tr>
+                                        <td>13</td>
+                                        <td>Colleen Hurst</td>
+                                        <td>Javascript Developer</td>
+                                        <td>San Francisco</td>
+                                        <td>39</td>
+                                        <td>2009/09/15</td>
+                                        <td>$205,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>14</td>
+                                        <td>Sonya Frost</td>
+                                        <td>Software Engineer</td>
+                                        <td>Edinburgh</td>
+                                        <td>23</td>
+                                        <td>2008/12/13</td>
+                                        <td>$103,600</td>
+                                    </tr>
+                                    <tr>
+                                        <td>15</td>
+                                        <td>Jena Gaines</td>
+                                        <td>Office Manager</td>
+                                        <td>London</td>
+                                        <td>30</td>
+                                        <td>2008/12/19</td>
+                                        <td>$90,560</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16</td>
+                                        <td>Quinn Flynn</td>
+                                        <td>Support Lead</td>
+                                        <td>Edinburgh</td>
+                                        <td>22</td>
+                                        <td>2013/03/03</td>
+                                        <td>$342,000</td>
+                                    </tr>
+                                    <tr>
+                                        <td>17</td>
+                                        <td>Charde Marshall</td>
+                                        <td>Regional Director</td>
+                                        <td>San Francisco</td>
+                                        <td>36</td>
+                                        <td>2008/10/16</td>
+                                        <td>$470,600</td>
+                                    </tr>
+                                    <tr>
+                                        <td>18</td>
+                                        <td>Haley Kennedy</td>
+                                        <td>Senior Marketing Designer</td>
+                                        <td>London</td>
+                                        <td>43</td>
+                                        <td>2012/12/18</td>
+                                        <td>$313,500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>Tatyana Fitzpatrick</td>
+                                        <td>Regional Director</td>
+                                        <td>London</td>
+                                        <td>19</td>
+                                        <td>2010/03/17</td>
+                                        <td>$385,750</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12">
-                    <div class="card">
-                        <h2>表格</h2>
-                    </div>
-                </div>
             </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+	{{ super() }}
+	<script src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $('#sampleTable').DataTable();
+    </script>
 {% endblock %}
