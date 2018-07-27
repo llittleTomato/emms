@@ -46,16 +46,20 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
 	                {% block nav_sidebar %}
-		                <li><a href="{{ url_for('view.index') }}"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
-	                    <li><a href="{{ url_for('view.elevator') }}"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span></a></li>
-	                    <li><a href="{{ url_for('view.employee') }}"><i class="fa fa-address-book-o fa-fw fa-lg"></i><span>人员</span></a></li>
-	                    <li><a href="{{ url_for('view.report') }}"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a></li>
-	                    <li class="treeview"><a href="#"><i class="fa fa-user-o fa-fw fa-lg"></i><span>用户</span></a>
-	                        <ul class="treeview-menu">
-	                            <li><a href="#"><i class="fa fa-user-plus"></i> 添加用户</a></li>
-	                            <li><a href="#"><i class="fa fa-users"></i> 用户管理</a></li>
-	                        </ul>
-	                    </li>
+                        {% if session['authority'] == 'super_admin' or session['authority'] == 'com_admin' %}
+                            <li><a href="{{ url_for('view.index') }}"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
+                            <li><a href="{{ url_for('view.elevator') }}"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span></a></li>
+                            <li><a href="{{ url_for('view.employee') }}"><i class="fa fa-address-book-o fa-fw fa-lg"></i><span>人员</span></a></li>
+                            <li><a href="{{ url_for('view.report') }}"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a></li>
+                            <li class="treeview"><a href="#"><i class="fa fa-user-o fa-fw fa-lg"></i><span>用户</span></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.register') }}"><i class="fa fa-user-plus"></i> 添加用户</a></li>
+                                    <li><a href="#"><i class="fa fa-users"></i> 用户管理</a></li>
+                                </ul>
+                            </li>
+                        {% elif session['authority'] == 'com_person' %}
+                            <li><a href="{{ url_for('view.report') }}"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a></li>
+                        {% endif %}
 	                {% endblock %}
                 </ul>
             </section>
@@ -75,7 +79,10 @@
     </div>
     {% block script %}
 	    <!-- Javascripts-->
-	    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename='js/pace.min.js') }}"></script>
+	    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 	{% endblock %}
 </body>
 </html>
