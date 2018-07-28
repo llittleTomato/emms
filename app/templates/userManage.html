@@ -1,0 +1,85 @@
+{% extends "index.html" %}
+{% block title %}
+    用户管理
+{% endblock %}
+{#页面内容#}
+{% block content %}
+	{{ super() }}
+    <!--查询条件-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-md-1 col-md-offset-1" for="email">Email</label>
+                            <div class="col-md-2">
+                                <input id="email" class="form-control" type="text" name="email" placeholder="Email">
+                            </div>
+                            <label class="control-label col-md-1" for="ein">公司</label>
+                            <div class="col-md-2">
+                                <input id="company" class="form-control" type="text" name="company" placeholder="公司">
+                            </div>
+                            <label class="control-label col-md-1" for="ein">出厂编号</label>
+                            <div class="col-md-2">
+                                <input id="manufacturing_code" class="form-control" type="text" name="manufacturing_code" placeholder="出厂编号">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-4" >
+                                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>查询</button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查询结果显示表格-->
+    <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <table class="table table-hover table-bordered" id="sampleTable">
+                                <thead>
+                                <tr>
+                                    <th>选择</th>
+                                    <th>ID</th>
+                                    <th>注册代码</th>
+                                    <th>型号</th>
+                                    <th>制造单位</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    {% for elevator in elevators %}
+                                        <tr>
+                                            <td><input type="checkbox"></td>
+                                            <td>{{ elevator.id }}</td>
+                                            <td>{{ elevator.registerno }}</td>
+                                            <td>{{ elevator.version }}</td>
+                                            <td>{{ elevator.company }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}
+<!-- Javascripts-->
+{% block script %}
+	{{ super() }}
+    {#    表格加载用js，以下4个js必须同时使用    #}
+    {#    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>    已经在base.html文件中加载，无需再次加载#}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript">
+        $('#sampleTable').DataTable();
+    </script>
+{% endblock %}

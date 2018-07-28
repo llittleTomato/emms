@@ -4,7 +4,7 @@
 {% endblock %}
 {% block linkcss %}
     {{ super() }}
-    {#    <link rel="stylesheet" href="{{ url_for('static', filename='css/signin.css') }}">#}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 {% block title %}
     电梯管理
@@ -14,12 +14,14 @@
     {{ super() }}
     <!--查询条件-->
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-4 col-md-offset-4">
             <div class="card">
-                <div class="card-body">
-                    <form class="form-signin" method="POST" action="{{ url_for('view.register') }}">
-                        <div class="input-group-sm">
-                            <h2 class="form-signin-heading">注 册</h2>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="card-title">
+                            <h3>添加用户</h3>
+                        </div>
+                        <form class="form-group" method="POST" action="{{ url_for('view.register') }}">
                             <label for="inputEmail" class="sr-only">Email</label>
                             <input type="text" id="inputEmail" class="form-control" placeholder="Email" required
                                    autofocus
@@ -46,18 +48,20 @@
                                 <option value="com_admin">公司管理员</option>
                                 <option value="com_person">公司普通人员</option>
                             </select>
-                            <button class="btn btn-lg btn-primary btn-block submit_bn" type="submit">提交</button>
-                        </div>
-                        {% if messages %}
-                            <div class="alert alert-warning">
-                                {% for message in messages %}
-                                    {% for key in messages[message] %}
-                                        <p><strong class="text-center">{{ key }}</strong></p>
-                                    {% endfor %}
-                                {% endfor %}
+                            <div class="card-footer">
+                                <button class="btn btn-lg btn-primary btn-block submit_bn" type="submit">提交</button>
                             </div>
-                        {% endif %}
-                    </form>
+                            {% if messages %}
+                                <div class="alert alert-warning">
+                                    {% for message in messages %}
+                                        {% for key in messages[message] %}
+                                            <p><strong class="text-center">{{ key }}</strong></p>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
