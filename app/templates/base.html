@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-	{% block head %}
-	    <meta charset="UTF-8">
-	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	    <meta name="viewport" content="width=device-width, initial-scale=1">
-		{% block linkcss %}
-		    <!-- CSS-->
-		    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
-		    <!-- Font-icon css-->
-		    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
-		{% endblock %}
-		{% block title %}{% endblock %}
-	{% endblock %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block linkcss %}
+        <!-- CSS-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+        <!-- Font-icon css-->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/font-awesome.min.css') }}">
+    {% endblock %}
+    <title>{% block title %}{% endblock %}</title>
 </head>
 <body class="sidebar-mini fixed">
     <div class="wrapper">
@@ -121,7 +119,7 @@
 	    <!-- Javascripts-->
         <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
         <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-        <script type="text/javascript" src="{{ url_for('static', filename='js/pace.min.js') }}"></script>
+{#        <script type="text/javascript" src="{{ url_for('static', filename='js/pace.min.js') }}"></script>#}
 	    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
 	{% endblock %}
 </body>

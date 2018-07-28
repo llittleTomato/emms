@@ -13697,7 +13697,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .fixed .content-wrapper {
-  margin-top: 50px;
+  margin-top: 0px;
 }
 
 @media (max-width: 767px) {
@@ -14355,7 +14355,7 @@ be a descendant of the grid when it is being dragged.
       -ms-flex-direction: row;
           flex-direction: row;
   background-color: #FFF;
-  margin-top: -50px;
+  margin-top: 20px;
   margin-left: -30px;
   margin-right: -30px;
   margin-bottom: 18px;
