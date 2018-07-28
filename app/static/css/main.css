@@ -13654,7 +13654,7 @@ be a descendant of the grid when it is being dragged.
 
 .sidebar-menu .treeview-menu {
   margin: 0 1px;
-  background: #2a383e;
+  background: #516470;
 }
 
 .sidebar-menu .treeview-menu > li > a {
@@ -14253,7 +14253,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .sidebar-menu .treeview-menu > li {
-  margin: 0;
+  margin: 10px 0 10px 0;
 }
 
 .sidebar-menu .treeview-menu > li > a {

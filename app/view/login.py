@@ -20,7 +20,7 @@ def login():
                 session['authority'] = user.authority    # session中保存登录用户权限
                 if user.authority != 'super_admin':
                     company = Company.query.filter_by(company=user.company).first()
-                    session['companyid'] = company.id    # 当公司的用户登录时，session中保存公司编号，用来查询elevator+id数据表
+                    session['company_id'] = company.id    # 当公司的用户登录时，session中保存公司编号，用来查询elevator+id数据表
                 return render_template('index.html')
             return redirect(next)
         else:

@@ -2,9 +2,12 @@
 {% block title %}
     电梯管理
 {% endblock %}
+{% block page_nav %}
+    <li>电梯</li>
+    <li>电梯管理</li>
+{% endblock %}
 {#页面内容#}
 {% block content %}
-	{{ super() }}
     <!--查询条件-->
     <div class="row">
         <div class="col-md-12">
@@ -16,7 +19,7 @@
                             <div class="col-md-2">
                                 <input id="ein" class="form-control" type="text" name="ein" placeholder="识别码">
                             </div>
-                            <label class="control-label col-md-1" for="ein">注册代码</label>
+                            <label class="control-label col-md-1" for="registration_code">注册代码</label>
                             <div class="col-md-2">
                                 <input id="registration_code" class="form-control" type="text" name="registration_code" placeholder="注册代码">
                             </div>
@@ -41,10 +44,10 @@
                         </div>
                         <div class="card-footer">
                             <div class="row">
-                                <div class="col-md-2 col-md-offset-4" >
+                                <div class="col-md-1 col-md-offset-4" >
                                     <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>查询</button>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-1">
                                     <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
                                 </div>
                             </div>
@@ -64,6 +67,7 @@
                                 <tr>
                                     <th>选择</th>
                                     <th>ID</th>
+                                    <th>识别码</th>
                                     <th>注册代码</th>
                                     <th>型号</th>
                                     <th>制造单位</th>
@@ -72,7 +76,7 @@
                                 <tbody>
                                     {% for elevator in elevators %}
                                         <tr>
-                                            <td><input type="checkbox"></td>
+                                            <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>
                                             <td>{{ elevator.id }}</td>
                                             <td>{{ elevator.registerno }}</td>
                                             <td>{{ elevator.version }}</td>

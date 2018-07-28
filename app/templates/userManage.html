@@ -2,9 +2,12 @@
 {% block title %}
     用户管理
 {% endblock %}
+{% block page_nav %}
+	<li>用户</li>
+	<li>用户管理</li>
+{% endblock %}
 {#页面内容#}
 {% block content %}
-	{{ super() }}
     <!--查询条件-->
     <div class="row">
         <div class="col-md-12">
@@ -16,13 +19,19 @@
                             <div class="col-md-2">
                                 <input id="email" class="form-control" type="text" name="email" placeholder="Email">
                             </div>
-                            <label class="control-label col-md-1" for="ein">公司</label>
+                            <label class="control-label col-md-1" for="company">公司</label>
                             <div class="col-md-2">
                                 <input id="company" class="form-control" type="text" name="company" placeholder="公司">
                             </div>
-                            <label class="control-label col-md-1" for="ein">出厂编号</label>
+                            <label class="control-label col-md-1" for="inputAuthority">权限</label>
                             <div class="col-md-2">
-                                <input id="manufacturing_code" class="form-control" type="text" name="manufacturing_code" placeholder="出厂编号">
+                                <label for="inputAuthority" class="sr-only">权限</label>
+                                <select class="form-control" id="inputAuthority" name="authority">
+                                    <option value="blank"></option>
+                                    <option value="super_admin">超级管理员</option>
+                                    <option value="com_admin">公司管理员</option>
+                                    <option value="com_person">公司普通人员</option>
+                                </select>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -42,41 +51,42 @@
     </div>
     <!--查询结果显示表格-->
     <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-hover table-bordered" id="sampleTable">
-                                <thead>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                            <tr>
+                                <th>选择</th>
+                                <th>ID</th>
+                                <th>Email</th>
+                                <th>公司</th>
+                                <th>权限</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for user in users %}
                                 <tr>
-                                    <th>选择</th>
-                                    <th>ID</th>
-                                    <th>注册代码</th>
-                                    <th>型号</th>
-                                    <th>制造单位</th>
+                                    <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>
+                                    <td>{{ user.id }}</td>
+                                    <td>{{ user.email }}</td>
+                                    <td>{{ user.company }}</td>
+                                    <td>{{ user.authority }}</td>
+                                    <td>{{ user.status }}</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    {% for elevator in elevators %}
-                                        <tr>
-                                            <td><input type="checkbox"></td>
-                                            <td>{{ elevator.id }}</td>
-                                            <td>{{ elevator.registerno }}</td>
-                                            <td>{{ elevator.version }}</td>
-                                            <td>{{ elevator.company }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
 {% endblock %}
 <!-- Javascripts-->
 {% block script %}
 	{{ super() }}
     {#    表格加载用js，以下4个js必须同时使用    #}
-    {#    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>    已经在base.html文件中加载，无需再次加载#}
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript">

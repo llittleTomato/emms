@@ -46,19 +46,59 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
 	                {% block nav_sidebar %}
-                        {% if session['authority'] == 'super_admin' or session['authority'] == 'com_admin' %}
+                        {% if session['authority'] == 'super_admin' %}
                             <li><a href="{{ url_for('view.index') }}"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
-                            <li><a href="{{ url_for('view.elevator') }}"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span></a></li>
-                            <li><a href="{{ url_for('view.employee') }}"><i class="fa fa-address-book-o fa-fw fa-lg"></i><span>人员</span></a></li>
-                            <li><a href="{{ url_for('view.report') }}"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a></li>
-                            <li class="treeview"><a href="#"><i class="fa fa-user-o fa-fw fa-lg"></i><span>用户</span></a>
+                            <li class="treeview"><a href="#"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span><i class="fa fa-sort-desc pull-right"></i></a>
                                 <ul class="treeview-menu">
-                                    <li><a href="{{ url_for('view.register') }}"><i class="fa fa-user-plus"></i> 添加用户</a></li>
-                                    <li><a href="#"><i class="fa fa-users"></i> 用户管理</a></li>
+                                    <li><a href="{{ url_for('view.elevator_data_input') }}"><i class="fa fa-plus-square-o fa-fw"></i> 添加电梯</a></li>
+                                    <li><a href="{{ url_for('view.elevator_manage') }}"><i class="fa fa-gears fa-fw"></i> 电梯管理</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview"><a href="#"><i class="fa fa-address-book-o fa-fw fa-lg"></i><span>员工</span><i class="fa fa-sort-desc pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.employee_data_input') }}"><i class="fa fa-id-badge fa-fw"></i> 添加员工</a></li>
+                                    <li><a href="{{ url_for('view.employee_manage') }}"><i class="fa fa-id-card-o fa-fw"></i> 员工管理</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview"><a href="#"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span><i class="fa fa-sort-desc pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.report_generation') }}"><i class="fa fa-edit fa-fw"></i> 报告生成</a></li>
+                                    <li><a href="{{ url_for('view.report_manage') }}"><i class="fa fa-files-o fa-fw"></i> 报告管理</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview"><a href="#"><i class="fa fa-user-o fa-fw fa-lg"></i><span>用户</span><i class="fa fa-sort-desc pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.user_register') }}"><i class="fa fa-user-plus fa-fw"></i> 添加用户</a></li>
+                                    <li><a href="{{ url_for('view.user_manage') }}"><i class="fa fa-users fa-fw"></i> 用户管理</a></li>
+                                </ul>
+                            </li>
+                        {% elif session['authority'] == 'com_admin' %}
+                            <li><a href="{{ url_for('view.index') }}"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
+                            <li class="treeview"><a href="#"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span><i class="fa fa-sort-desc pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.elevator_data_input') }}"><i class="fa fa-plus-square-o fa-fw"></i> 添加电梯</a></li>
+                                    <li><a href="{{ url_for('view.elevator_manage') }}"><i class="fa fa-gears fa-fw"></i> 电梯管理</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview"><a href="#"><i class="fa fa-address-book-o fa-fw fa-lg"></i><span>员工</span><i class="fa fa-sort-desc pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.employee_data_input') }}"><i class="fa fa-id-badge fa-fw"></i> 添加员工</a></li>
+                                    <li><a href="{{ url_for('view.employee_manage') }}"><i class="fa fa-id-card-o fa-fw"></i> 员工管理</a></li>
+                                </ul>
+                            </li>
+                            <li class="treeview"><a href="#"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span><i class="fa fa-sort-desc pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.report_generation') }}"><i class="fa fa-edit fa-fw"></i> 报告生成</a></li>
+                                    <li><a href="{{ url_for('view.report_manage') }}"><i class="fa fa-files-o fa-fw"></i> 报告管理</a></li>
                                 </ul>
                             </li>
                         {% elif session['authority'] == 'com_person' %}
-                            <li><a href="{{ url_for('view.report') }}"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a></li>
+                            <li class="treeview"><a href="#"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span><i class="fa fa-sort-desc pull-right"></i></a>
+                                <ul class="treeview-menu">
+                                    <li><a href="{{ url_for('view.report_generation') }}"><i class="fa fa-edit fa-fw"></i> 报告生成</a></li>
+                                    <li><a href="{{ url_for('view.report_manage') }}"><i class="fa fa-files-o fa-fw"></i> 报告管理</a></li>
+                                </ul>
+                            </li>
                         {% endif %}
 	                {% endblock %}
                 </ul>
@@ -69,7 +109,7 @@
                 <div class="div">
                     <ul class="breadcrumb">
                         <li><i class="fa fa-home fa-lg"></i></li>
-                        <li>{% block page_nav %}{% endblock %}</li>
+                        {% block page_nav %}{% endblock %}
                     </ul>
                 </div>
             </div>

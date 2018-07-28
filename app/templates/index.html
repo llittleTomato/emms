@@ -1,12 +1,9 @@
 {% extends "base.html" %}
-{% block head %}
-    {{ super() }}
-{% endblock %}
 {% block title %}
     主页
 {% endblock %}
-{% block linkcss %}
-    {{ super() }}
+{% block page_nav %}
+	<li>首页</li>
 {% endblock %}
 {# 显示登录用户#}
 {% block current_username %}
@@ -14,18 +11,6 @@
         {{ current_user.company }}
     {% endif %}
 {% endblock %}
-{% block nav_top %}
-	{{ super() }}
-{% endblock %}
-{% block nav_sidebar %}
-	{{ super() }}
-{% endblock %}
 {% block content %}
-    {{ super() }}
-{% endblock %}
-{% block page_nav %}
-	首页
-{% endblock %}
-{% block script %}
-    {{ super() }}
+    <h2>这是首页</h2>
 {% endblock %}

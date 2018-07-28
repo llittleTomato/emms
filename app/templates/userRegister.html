@@ -1,17 +1,17 @@
 {% extends "index.html" %}
-{% block Title %}
-    注册
+{% block title %}
+    添加用户
 {% endblock %}
 {% block linkcss %}
     {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
-{% block title %}
-    电梯管理
+{% block page_nav %}
+	<li>用户</li>
+	<li>添加用户</li>
 {% endblock %}
 {#页面内容#}
 {% block content %}
-    {{ super() }}
     <!--查询条件-->
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -21,7 +21,7 @@
                         <div class="card-title">
                             <h3>添加用户</h3>
                         </div>
-                        <form class="form-group" method="POST" action="{{ url_for('view.register') }}">
+                        <form class="form-group" method="POST" action="{{ url_for('view.user_register') }}">
                             <label for="inputEmail" class="sr-only">Email</label>
                             <input type="text" id="inputEmail" class="form-control" placeholder="Email" required
                                    autofocus
