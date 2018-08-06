@@ -73,7 +73,7 @@
                             </div>
                             <label class="control-label col-md-1" for="zzrq">制造日期</label>
                             <div class="col-md-2">
-                                <input class="form-control" id="zzrq" type="text" name="zzrq" placeholder="制造日期">
+                                <input class="form-control datepicker" id="zzrq" type="text" name="zzrq" placeholder="制造日期">
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
@@ -83,7 +83,7 @@
                             </div>
                             <label class="control-label col-md-1" for="azrq">安装日期</label>
                             <div class="col-md-2">
-                                <input class="form-control" id="azrq" type="text" name="azrq" placeholder="安装日期">
+                                <input class="form-control datepicker" id="azrq" type="text" name="azrq" placeholder="安装日期">
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
@@ -93,7 +93,7 @@
                             </div>
                             <label class="control-label col-md-1" for="gzrq">改造日期</label>
                             <div class="col-md-2">
-                                <input class="form-control" id="gzrq" type="text" name="gzrq" placeholder="改造日期">
+                                <input class="form-control datepicker" id="gzrq" type="text" name="gzrq" placeholder="改造日期">
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
@@ -103,7 +103,7 @@
                             </div>
                             <label class="control-label col-md-1" for="zdxlrq">重大修理日期</label>
                             <div class="col-md-2">
-                                <input class="form-control" id="zdxlrq" type="text" name="zdxlrq" placeholder="重大修理日期">
+                                <input class="form-control datepicker" id="zdxlrq" type="text" name="zdxlrq" placeholder="重大修理日期">
                             </div>
                         </div>
                         <!--分隔符-->
@@ -157,11 +157,11 @@
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="wbksrq">维保开始日期</label>
                             <div class="col-md-3">
-                                <input id="wbksrq" class="form-control" type="text" name="wbksrq" placeholder="维保开始日期">
+                                <input id="wbksrq" class="form-control datepicker" type="text" name="wbksrq" placeholder="维保开始日期">
                             </div>
                             <label class="control-label col-md-2" for="wbjsrq">维保结束日期</label>
                             <div class="col-md-2">
-                                <input id="wbjsrq" class="form-control" type="text" name="wbjsrq" placeholder="维保结束日期">
+                                <input id="wbjsrq" class="form-control datepicker" type="text" name="wbjsrq" placeholder="维保结束日期">
                             </div>
                             <label class="control-label col-md-1" for="wbry_b">维保人员B</label>
                             <div class="col-md-2">
@@ -193,5 +193,4 @@
 {% block script %}
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/datepick.js') }}"></script>
 {% endblock %}
