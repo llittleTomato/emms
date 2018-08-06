@@ -16,5 +16,5 @@ def elevator_manage():
 @view.route('/elevator_data_input/')
 @login_required
 def elevator_data_input():
-    elevators = Elevator.query.all()
-    return render_template('elevatorInput.html', elevators=elevators)
+    # elevators = Elevator.query.all()
+    return render_template('elevatorInput.html')
