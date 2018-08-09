@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_basic_data_input') }}">
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="sydw">使用单位</label>
                             <div class="col-md-3">
@@ -174,17 +174,17 @@
                                 <textarea class="form-control" id="wbbz" rows="3"></textarea>
                             </div>
                         </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-4" >
+                                    <button class="btn btn-primary icon-btn" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>下一步</button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
+                                </div>
+                            </div>
+                        </div>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-2 col-md-offset-4" >
-                            <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>提交</button>
-                        </div>
-                        <div class="col-md-2">
-                            <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

@@ -6,8 +6,9 @@ from app.models.base import Base
 
 class Employee(Base):
     __tablename__ = 'employee'
-    id = Column(Integer, primary_key=True, autoincrement=True)
-    name = Column(String(10), unique=True, nullable=False)
-    email = Column(String(64), unique=True, nullable=True)
-    phone_number = Column(String(11), nullable=False)
-    certificate = Column(String(20), nullable=True)
+    id = Column(Integer, primary_key=True, autoincrement=True)                             # 人员编号
+    name = Column(String(10), unique=True, nullable=False)                                 # 姓名
+    email = Column(String(64), unique=True, nullable=True)                                 # 邮箱
+    phone_number = Column(String(11), nullable=False)                                      # 电话号码
+    certificate = Column(String(20), nullable=True)                                        # 证件
+    job_type = Column(String(20), nullable=True)                                            # 工作职责（维保，急修，检验，审核）
