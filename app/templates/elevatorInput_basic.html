@@ -22,88 +22,89 @@
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="sydw">使用单位</label>
                             <div class="col-md-3">
-                                <input id="sydw" class="form-control" type="text" name="sydw" placeholder="使用单位">
+                                <input id="sydw" class="form-control" type="text" name="sydw" placeholder="使用单位" required>
                             </div>
                             <label class="control-label col-md-2" for="sydwdm">使用单位代码</label>
                             <div class="col-md-2">
                                 <input id="sydwdm" class="form-control" type="text" name="sydwdm" placeholder="使用单位代码">
                             </div>
-                            <label class="control-label col-md-1" for="sbm">识别码</label>
+                            <label class="control-label col-md-2" for="sbm">识别码</label>
                             <div class="col-md-2">
-                                <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码">
+                                <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码" required pattern="[0-9]{6}" title="6位数字" maxlength="6">
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="sydd">使用地点</label>
                             <div class="col-md-3">
-                                <input id="sydd" class="form-control" type="text" name="sydd" placeholder="使用地点">
+                                <input id="sydd" class="form-control" type="text" name="sydd" placeholder="使用地点" required>
                             </div>
                             <label class="control-label col-md-2" for="sybh">使用编号</label>
                             <div class="col-md-2">
-                                <input id="sybh" class="form-control" type="text" name="sybh" placeholder="使用编号">
+                                <input id="sybh" class="form-control" type="text" name="sybh" placeholder="使用编号" required>
                             </div>
-                            <label class="control-label col-md-1" for="sbmc">设备名称</label>
+                            <label class="control-label col-md-2" for="sbmc">设备名称</label>
                             <div class="col-md-2">
                                 <select id="sbmc" name="sbmc" class="form-control">
-                                    <option value="ele_room">曳引驱动乘客电梯</option>
+                                    <option value="ele_room" selected="selected">曳引驱动乘客电梯</option>
                                     <option value="ele_no_room">曳引驱动乘客电梯(无机房)</option>
                                     <option value="escalator">自动扶梯</option>
                                     <option value="passenger_conveyor">自动人行道</option>
+                                    <option value="dumb_waiter">杂物电梯</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="xh">型号</label>
+                            <label class="control-label col-md-1" for="zcdm">注册代码</label>
                             <div class="col-md-3">
-                                <input id="xh" class="form-control" type="text" name="xh" placeholder="型号">
+                                <input id="zcdm" class="form-control" type="text" name="zcdm" placeholder="注册代码" required pattern="[0-9]{20}" title="20位数字" maxlength="20">
+                            </div>
+                            <label class="control-label col-md-2" for="xh">型号</label>
+                            <div class="col-md-2">
+                                <input id="xh" class="form-control" type="text" name="xh" placeholder="型号" required>
                             </div>
                             <label class="control-label col-md-2" for="ccbh">出厂编号</label>
                             <div class="col-md-2">
-                                <input id="ccbh" class="form-control" type="text" name="ccbh" placeholder="出厂编号">
-                            </div>
-                            <label class="control-label col-md-1" for="zcdm">注册代码</label>
-                            <div class="col-md-2">
-                                <input id="zcdm" class="form-control" type="text" name="zcdm" placeholder="注册代码">
+                                <input id="ccbh" class="form-control" type="text" name="ccbh" placeholder="出厂编号" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="zzdw">制造单位</label>
                             <div class="col-md-7">
-                                <input id="zzdw" class="form-control" type="text" name="zzdw" placeholder="制造单位">
+                                <input id="zzdw" class="form-control" type="text" name="zzdw" placeholder="制造单位" required>
                             </div>
-                            <label class="control-label col-md-1" for="zzrq">制造日期</label>
+                            <label class="control-label col-md-2" for="zzrq">制造日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="zzrq" type="text" name="zzrq" placeholder="制造日期">
+                                <input class="form-control datepicker" id="zzrq" type="text" name="zzrq" placeholder="制造日期" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="azdw">安装单位</label>
                             <div class="col-md-7">
-                                <input id="azdw" class="form-control" type="text" name="azdw" placeholder="安装单位">
+                                <input id="azdw" class="form-control" type="text" name="azdw" placeholder="安装单位" required>
                             </div>
-                            <label class="control-label col-md-1" for="azrq">安装日期</label>
+                            <label class="control-label col-md-2" for="azrq">安装日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="azrq" type="text" name="azrq" placeholder="安装日期">
+                                <input class="form-control datepicker" id="azrq" type="text" name="azrq" placeholder="安装日期" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="gzdw">改造单位</label>
                             <div class="col-md-7">
-                                <input id="gzdw" class="form-control" type="text" name="gzdw" placeholder="改造单位">
+                                <input id="gzdw" class="form-control" type="text" name="gzdw" placeholder="改造单位" required>
                             </div>
-                            <label class="control-label col-md-1" for="gzrq">改造日期</label>
+                            <label class="control-label col-md-2" for="gzrq">改造日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="gzrq" type="text" name="gzrq" placeholder="改造日期">
+                                <input class="form-control datepicker" id="gzrq" type="text" name="gzrq" placeholder="改造日期" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="zdxldw">重大修理单位</label>
                             <div class="col-md-7">
-                                <input id="zdxldw" class="form-control" type="text" name="zdxldw" placeholder="重大修理单位">
+                                <input id="zdxldw" class="form-control" type="text" name="zdxldw" placeholder="重大修理单位" required>
                             </div>
-                            <label class="control-label col-md-1" for="zdxlrq">重大修理日期</label>
+                            <label class="control-label col-md-2" for="zdxlrq">重大修理日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="zdxlrq" type="text" name="zdxlrq" placeholder="重大修理日期">
+                                <input class="form-control datepicker" id="zdxlrq" type="text" name="zdxlrq" placeholder="重大修理日期" required>
                             </div>
                         </div>
                         <!--分隔符-->
@@ -112,29 +113,29 @@
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="lxr">联系人</label>
                             <div class="col-md-3">
-                                <input id="lxr" class="form-control" type="text" name="lxr" placeholder="联系人">
+                                <input id="lxr" class="form-control" type="text" name="lxr" placeholder="联系人" required>
                             </div>
                             <label class="control-label col-md-2" for="lxhm">联系号码</label>
                             <div class="col-md-2">
-                                <input id="lxhm" class="form-control" type="text" name="lxhm" placeholder="联系号码">
+                                <input id="lxhm" class="form-control" type="text" name="lxhm" placeholder="联系号码" required pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
                             </div>
-                            <label class="control-label col-md-1" for="dtsj">电梯司机</label>
+                            <label class="control-label col-md-2" for="dtsj">电梯司机</label>
                             <div class="col-md-2">
-                                <input id="dtsj" class="form-control" type="text" name="dtsj" placeholder="电梯司机">
+                                <input id="dtsj" class="form-control" type="text" name="dtsj" placeholder="电梯司机" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="aqglry">安全管理人员</label>
                             <div class="col-md-3">
-                                <input id="aqglry" class="form-control" type="text" name="aqglry" placeholder="安全管理人员">
+                                <input id="aqglry" class="form-control" type="text" name="aqglry" placeholder="安全管理人员" required>
                             </div>
                             <label class="control-label col-md-2" for="aqglryzh">安全管理人员证号</label>
                             <div class="col-md-2">
-                                <input id="aqglryzh" class="form-control" type="text" name="aqglryzh" placeholder="安全管理人员证号">
+                                <input id="aqglryzh" class="form-control" type="text" name="aqglryzh" placeholder="安全管理人员证号" required>
                             </div>
-                            <label class="control-label col-md-1" for="dtsjzh">电梯司机证号</label>
+                            <label class="control-label col-md-2" for="dtsjzh">电梯司机证号</label>
                             <div class="col-md-2">
-                                <input id="dtsjzh" class="form-control" type="text" name="dtsjzh" placeholder="电梯司机证号">
+                                <input id="dtsjzh" class="form-control" type="text" name="dtsjzh" placeholder="电梯司机证号" required>
                             </div>
                         </div>
                         <!--分隔符-->
@@ -143,35 +144,39 @@
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="wbhtbh">维保合同编号</label>
                             <div class="col-md-3">
-                                <input id="wbhtbh" class="form-control" type="text" name="wbhtbh" placeholder="维保合同编号">
+                                <input id="wbhtbh" class="form-control" type="text" name="wbhtbh" placeholder="维保合同编号" required>
                             </div>
                             <label class="control-label col-md-2" for="wbdj">维保等级</label>
                             <div class="col-md-2">
-                                <input id="wbdj" class="form-control" type="text" name="wbdj" placeholder="维保等级">
+                                <select id="wbdj" name="wbdj" class="form-control">
+                                    <option value="A" selected="selected">维保等级A</option>
+                                    <option value="B">维保等级B</option>
+                                    <option value="C">维保等级C</option>
+                                </select>
                             </div>
-                            <label class="control-label col-md-1" for="wbry_a">维保人员A</label>
+                            <label class="control-label col-md-2" for="wbry_a">维保人员A</label>
                             <div class="col-md-2">
-                                <input id="wbry_a" class="form-control" type="text" name="wbry_a" placeholder="维保人员A">
+                                <input id="wbry_a" class="form-control" type="text" name="wbry_a" placeholder="维保人员A" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="wbksrq">维保开始日期</label>
                             <div class="col-md-3">
-                                <input id="wbksrq" class="form-control datepicker" type="text" name="wbksrq" placeholder="维保开始日期">
+                                <input id="wbksrq" class="form-control datepicker" type="text" name="wbksrq" placeholder="维保开始日期" required>
                             </div>
                             <label class="control-label col-md-2" for="wbjsrq">维保结束日期</label>
                             <div class="col-md-2">
-                                <input id="wbjsrq" class="form-control datepicker" type="text" name="wbjsrq" placeholder="维保结束日期">
+                                <input id="wbjsrq" class="form-control datepicker" type="text" name="wbjsrq" placeholder="维保结束日期" required>
                             </div>
-                            <label class="control-label col-md-1" for="wbry_b">维保人员B</label>
+                            <label class="control-label col-md-2" for="wbry_b">维保人员B</label>
                             <div class="col-md-2">
-                                <input id="wbry_b" class="form-control" type="text" name="wbry_b" placeholder="维保人员B">
+                                <input id="wbry_b" class="form-control" type="text" name="wbry_b" placeholder="维保人员B" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="wbbz">维保备注</label>
-                            <div class="col-md-10">
-                                <textarea class="form-control" id="wbbz" rows="3"></textarea>
+                            <div class="col-md-11">
+                                <textarea class="form-control" id="wbbz" rows="3" required></textarea>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -180,7 +185,7 @@
                                     <button class="btn btn-primary icon-btn" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>下一步</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
+                                    <button class="btn btn-primary icon-btn" type="reset"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
                                 </div>
                             </div>
                         </div>
