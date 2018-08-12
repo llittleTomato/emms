@@ -32,6 +32,8 @@ class ElevatorRoom(Base):
     czm_m = Column(String(10), nullable=False, default='5')                             # 门数
     aqgly = Column(String(20), nullable=True, default='wu')                             # 安全管理员
     aqglyzh = Column(String(20), nullable=True, default='wu')                           # 安全管理员证号
+    dtsj = Column(String(20), nullable=True, default='wu')                              # 电梯司机
+    dtsjzh = Column(String(20), nullable=True, default='wu')                            # 司机证号
     lxr = Column(String(10), nullable=True, default='wu')                               # 联系人
     lxdh = Column(String(15), nullable=True, default='wu')                              # 联系电话
 
