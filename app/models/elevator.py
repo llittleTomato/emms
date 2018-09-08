@@ -19,7 +19,7 @@ class ElevatorRoom(Base):
     sydwdm = Column(String(20), nullable=True, default='wu')                            # 使用单位代码
     sydd = Column(String(30), nullable=False, default='wu')                             # 使用地点
     sybh = Column(String(15), nullable=False, default='wu')                             # 使用编号
-    sbpz = Column(String(20), nullable=False, default='wu')                             # 设备品种
+    sbmc = Column(String(20), nullable=False, default='wu')                             # 设备名称
     kzfs = Column(String(10), nullable=False, default='jx')                             # 控制方式
     zzrq = Column(String(10), nullable=True, default='wu')                              # 制造日期
     azrq = Column(String(10), nullable=True, default='wu')                              # 安装日期
@@ -131,18 +131,18 @@ class DumbWaiter(Base):
 
 
 def lift_class_choose(sbmc):
-    if sbmc == 'ele_room':
+    if sbmc == '曳引驱动乘客电梯':
         elevator = ElevatorRoom()
         return elevator
-    if sbmc == 'ele_no_room':
+    if sbmc == '曳引驱动乘客电梯(无机房)':
         elevator = ElevatorNoRoom()
         return elevator
-    if sbmc == 'escalator':
+    if sbmc == '自动扶梯':
         elevator = Escalator()
         return elevator
-    if sbmc == 'passenger_conveyor':
+    if sbmc == '自动人行道':
         elevator = PassengerConveyor()
         return elevator
-    if sbmc == 'dump_waiter':
+    if sbmc == '杂物电梯':
         elevator = DumbWaiter()
         return elevator

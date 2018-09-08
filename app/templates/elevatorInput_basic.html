@@ -20,17 +20,34 @@
                 <div class="card-body">
                     <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_basic_data_input') }}">
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="sydw">使用单位</label>
+                            <label class="control-label col-md-1" for="sbm">识别码</label>
                             <div class="col-md-3">
-                                <input id="sydw" class="form-control" type="text" name="sydw" placeholder="使用单位" required>
+                                <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码" readonly>
+                            </div>
+                            <label class="control-label col-md-2" for="xh">型号</label>
+                            <div class="col-md-2">
+                                <input id="xh" class="form-control" type="text" name="xh" placeholder="型号" readonly>
+                            </div>
+                            <label class="control-label col-md-2" for="sbmc">设备名称</label>
+                            <div class="col-md-2">
+                                <input id="sbmc" class="form-control" type="text" name="sbmc" placeholder="设备名称" readonly>
+                            </div>
+                        </div>
+                        <!--分隔符-->
+                        <div class="card-diver">
+                        </div>
+                        <div class="form-group" style="margin-left: 15px">
+                            <label class="control-label col-md-1" for="sydwmc">使用单位</label>
+                            <div class="col-md-3">
+                                <input id="sydwmc" class="form-control" type="text" name="sydwmc" placeholder="使用单位" required>
                             </div>
                             <label class="control-label col-md-2" for="sydwdm">使用单位代码</label>
                             <div class="col-md-2">
                                 <input id="sydwdm" class="form-control" type="text" name="sydwdm" placeholder="使用单位代码">
                             </div>
-                            <label class="control-label col-md-2" for="sbm">识别码</label>
+                            <label class="control-label col-md-2" for="sybh">使用编号</label>
                             <div class="col-md-2">
-                                <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码" required pattern="[0-9]{6}" title="6位数字" maxlength="6">
+                                <input id="sybh" class="form-control" type="text" name="sybh" placeholder="使用编号" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
@@ -38,29 +55,9 @@
                             <div class="col-md-3">
                                 <input id="sydd" class="form-control" type="text" name="sydd" placeholder="使用地点" required>
                             </div>
-                            <label class="control-label col-md-2" for="sybh">使用编号</label>
+                            <label class="control-label col-md-2" for="zcdm">注册代码</label>
                             <div class="col-md-2">
-                                <input id="sybh" class="form-control" type="text" name="sybh" placeholder="使用编号" required>
-                            </div>
-                            <label class="control-label col-md-2" for="sbmc">设备名称</label>
-                            <div class="col-md-2">
-                                <select id="sbmc" name="sbmc" class="form-control">
-                                    <option value="ele_room" selected="selected">曳引驱动乘客电梯</option>
-                                    <option value="ele_no_room">曳引驱动乘客电梯(无机房)</option>
-                                    <option value="escalator">自动扶梯</option>
-                                    <option value="passenger_conveyor">自动人行道</option>
-                                    <option value="dumb_waiter">杂物电梯</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="zcdm">注册代码</label>
-                            <div class="col-md-3">
-                                <input id="zcdm" class="form-control" type="text" name="zcdm" placeholder="注册代码" required pattern="[0-9]{20}" title="20位数字" maxlength="20">
-                            </div>
-                            <label class="control-label col-md-2" for="xh">型号</label>
-                            <div class="col-md-2">
-                                <input id="xh" class="form-control" type="text" name="xh" placeholder="型号" required>
+                                <input id="zcdm" class="form-control" type="text" name="zcdm" placeholder="注册代码" required pattern="[0-9]{18}" title="18位数字" maxlength="18">
                             </div>
                             <label class="control-label col-md-2" for="ccbh">出厂编号</label>
                             <div class="col-md-2">
@@ -90,21 +87,21 @@
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="gzdw">改造单位</label>
                             <div class="col-md-7">
-                                <input id="gzdw" class="form-control" type="text" name="gzdw" placeholder="改造单位" required>
+                                <input id="gzdw" class="form-control" type="text" name="gzdw" placeholder="改造单位" value="/">
                             </div>
                             <label class="control-label col-md-2" for="gzrq">改造日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="gzrq" type="text" name="gzrq" placeholder="改造日期" required>
+                                <input class="form-control datepicker" id="gzrq" type="text" name="gzrq" placeholder="改造日期" value="/">
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="zdxldw">重大修理单位</label>
                             <div class="col-md-7">
-                                <input id="zdxldw" class="form-control" type="text" name="zdxldw" placeholder="重大修理单位" required>
+                                <input id="zdxldw" class="form-control" type="text" name="zdxldw" placeholder="重大修理单位" value="/">
                             </div>
                             <label class="control-label col-md-2" for="zdxlrq">重大修理日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="zdxlrq" type="text" name="zdxlrq" placeholder="重大修理日期" required>
+                                <input class="form-control datepicker" id="zdxlrq" type="text" name="zdxlrq" placeholder="重大修理日期" value="/">
                             </div>
                         </div>
                         <!--分隔符-->
@@ -115,9 +112,9 @@
                             <div class="col-md-3">
                                 <input id="lxr" class="form-control" type="text" name="lxr" placeholder="联系人" required>
                             </div>
-                            <label class="control-label col-md-2" for="lxhm">联系号码</label>
+                            <label class="control-label col-md-2" for="lxdh">联系号码</label>
                             <div class="col-md-2">
-                                <input id="lxhm" class="form-control" type="text" name="lxhm" placeholder="联系号码" required pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
+                                <input id="lxdh" class="form-control" type="text" name="lxdh" placeholder="联系号码" required pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
                             </div>
                             <label class="control-label col-md-2" for="dtsj">电梯司机</label>
                             <div class="col-md-2">
@@ -125,13 +122,13 @@
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="aqglry">安全管理人员</label>
+                            <label class="control-label col-md-1" for="aqgly">安全管理人员</label>
                             <div class="col-md-3">
-                                <input id="aqglry" class="form-control" type="text" name="aqglry" placeholder="安全管理人员" required>
+                                <input id="aqgly" class="form-control" type="text" name="aqgly" placeholder="安全管理人员" required>
                             </div>
-                            <label class="control-label col-md-2" for="aqglryzh">安全管理人员证号</label>
+                            <label class="control-label col-md-2" for="aqglyzh">安全管理人员证号</label>
                             <div class="col-md-2">
-                                <input id="aqglryzh" class="form-control" type="text" name="aqglryzh" placeholder="安全管理人员证号" required>
+                                <input id="aqglyzh" class="form-control" type="text" name="aqglyzh" placeholder="安全管理人员证号" required>
                             </div>
                             <label class="control-label col-md-2" for="dtsjzh">电梯司机证号</label>
                             <div class="col-md-2">
@@ -198,4 +195,12 @@
 {% block script %}
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            {% for key in keys %}
+                $('#{{ key }}').val("{{ form_init[key] }}");
+            {% endfor %}
+        });
+    </script>
 {% endblock %}

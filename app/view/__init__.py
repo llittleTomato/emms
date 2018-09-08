@@ -4,5 +4,5 @@ from flask import Blueprint
 
 view = Blueprint('view', __name__)
 
-# 导入index、login、register视图函数
+# 导入视图函数
 from . import index, login, elevator, employee, report, user

@@ -1,0 +1,108 @@
+{% extends "index.html" %}
+{% block title %}
+    添加电梯
+{% endblock %}
+{% block page_nav %}
+    <li>电梯</li>
+    <li>添加电梯</li>
+{% endblock %}
+{#页面内容#}
+{% block content %}
+    <!--数据录入-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-title">
+                    <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
+                        <h3>录入电梯信息</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="form-horizontal" method="POST"
+                          action="{{ url_for('view.elevator_data_input_init') }}">
+                        <div class="form-group" style="margin-left: 15px">
+                            <label class="control-label col-md-1 col-md-offset-1" for="sbm">识别码</label>
+                            <div class="col-md-2">
+                                <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码" required
+                                       pattern="[0-9]{6}" title="6位数字" maxlength="6">
+                            </div>
+                            <label class="control-label col-md-1" for="xh">型号</label>
+                            <div class="col-md-2">
+                                <input id="xh" class="form-control" type="text" name="xh" placeholder="型号" required>
+                            </div>
+                            <label class="control-label col-md-1" for="sbmc">设备名称</label>
+                            <div class="col-md-2">
+                                <select id="sbmc" name="sbmc" class="form-control">
+                                    <option value="曳引驱动乘客电梯" selected="selected">曳引驱动乘客电梯</option>
+                                    <option value="曳引驱动乘客电梯(无机房)">曳引驱动乘客电梯(无机房)</option>
+                                    <option value="自动扶梯">自动扶梯</option>
+                                    <option value="自动人行道">自动人行道</option>
+                                    <option value="杂物电梯">杂物电梯</option>
+                                    <option value="液压电梯">液压电梯</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-4">
+                                    <button class="btn btn-primary icon-btn" type="submit"><i
+                                            class="fa fa-fw fa-lg fa-check-circle"></i>新录
+                                    </button>
+                                </div>
+                                <!-- 点击复制，弹出页面 -->
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="button" data-toggle="modal"
+                                            data-target="#myModal"><i class="fa fa-fw fa-lg fa-check-circle"></i>复制
+                                    </button>
+                                </div>
+                                <!-- 弹出页面 -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">选择被复制电梯</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <label class="control-label col-md-2 col-md-offset-2" for="sbm_cp">识别码</label>
+                                                    <div class="col-md-4">
+                                                        <input id="sbm_cp" class="form-control" type="text" name="sbm_cp" placeholder="识别码" pattern="[0-9]{6}" title="6位数字" maxlength="6">
+                                                    </div>
+                                                    <div class="col-md-2">
+                                                        <button type="submit" class="btn btn-primary" id="pre_ele">上一台</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">复制</button>
+                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="reset"><i
+                                            class="fa fa-fw fa-lg fa-refresh"></i>重置
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
+{#    <script>#}
+{#        $('#pre_ele').click(function () {#}
+{#            $('#sbm_cp').value = {{ pre_ele }};#}
+{#        });#}
+{#    </script>#}
+{% endblock %}
