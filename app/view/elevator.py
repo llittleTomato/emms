@@ -23,8 +23,10 @@ def elevator_data_input_init():
         return render_template('elevatorInput_init.html', pre_ele=session.get('pre_sbm'))
     else:
         if form['sbm_cp'] == '':
-            elevator = ElevatorRoom.query.filter(sbm=form.sbm).first()
+            elevator = ElevatorRoom.query.filter_by(sbm=form['sbm']).first()
             if elevator:
+                pass
+            else:
                 return render_template('elevatorInput_basic.html', keys=list(form), form_init=form)
 
 

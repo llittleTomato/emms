@@ -195,7 +195,6 @@
 {% block script %}
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
     <script>
         $(document).ready(function () {
             {% for key in keys %}

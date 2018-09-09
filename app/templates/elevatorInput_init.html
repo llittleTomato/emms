@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body">
                     <form class="form-horizontal" method="POST"
-                          action="{{ url_for('view.elevator_data_input_init') }}">
+                          action="{{ url_for('view.elevator_data_input_init') }}" id="fom">
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1 col-md-offset-1" for="sbm">识别码</label>
                             <div class="col-md-2">
@@ -69,17 +69,21 @@
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <label class="control-label col-md-2 col-md-offset-2" for="sbm_cp">识别码</label>
-                                                    <div class="col-md-4">
-                                                        <input id="sbm_cp" class="form-control" type="text" name="sbm_cp" placeholder="识别码" pattern="[0-9]{6}" title="6位数字" maxlength="6">
-                                                    </div>
-                                                    <div class="col-md-2">
-                                                        <button type="submit" class="btn btn-primary" id="pre_ele">上一台</button>
+                                                    <div class="col-md-6">
+                                                        <input id="sbm_cp" class="form-control" type="text" name="sbm_cp" placeholder="识别码" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="submit" class="btn btn-primary">复制</button>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                                                <div class="col-md-3 col-md-offset-2">
+                                                    <button type="button" class="btn btn-primary" id="pre_ele">复制上一台</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-primary" id="cp_bt">复制</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-default" id="close_bt" data-dismiss="modal">关闭</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -100,9 +104,25 @@
 {% block script %}
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
-{#    <script>#}
-{#        $('#pre_ele').click(function () {#}
-{#            $('#sbm_cp').value = {{ pre_ele }};#}
-{#        });#}
-{#    </script>#}
+    <script type="text/javascript">
+        $("#pre_ele").click(function(){
+            {% if session.get('pre_sbm') %}
+                $('form').submit();
+            {% else %}
+                alert("这是第一台，请新录入！");
+            {% endif %}
+        });
+        $('#cp_bt').click(function () {
+            if ($('#sbm_cp').val() == "")
+                alert("请输入复制的电梯识别码");
+            else if (($('#sbm').val() == "") || ($('#xh').val() == ""))
+                alert("请先输入录入电梯的识别码和型号，并选择设备名称");
+            else
+                $('form').submit();
+        });
+
+        $('#close_bt').click(function () {
+            $('#sbm_cp').val('');
+        });
+    </script>
 {% endblock %}

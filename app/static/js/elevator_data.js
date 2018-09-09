@@ -24,5 +24,3 @@ $(dic['sydw'][0]).blur(function () {
     if (this.value === '')
         this.value = dic['sydw'][1]
 });
-
-

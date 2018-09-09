@@ -4631,8 +4631,8 @@ a.badge:hover, a.badge:focus {
 }
 
 .alert {
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 5px;
+  margin-bottom: 5px;
   border: 1px solid transparent;
   border-radius: 4px;
 }
