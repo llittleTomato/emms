@@ -24,14 +24,14 @@
                             <label class="control-label col-md-1 col-md-offset-1" for="sbm">识别码</label>
                             <div class="col-md-2">
                                 <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码" required
-                                       pattern="[0-9]{6}" title="6位数字" maxlength="6">
+                                       onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
                             </div>
                             <label class="control-label col-md-1" for="xh">型号</label>
                             <div class="col-md-2">
                                 <input id="xh" class="form-control" type="text" name="xh" placeholder="型号" required>
                             </div>
                             <label class="control-label col-md-1" for="sbmc">设备名称</label>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <select id="sbmc" name="sbmc" class="form-control">
                                     <option value="曳引驱动乘客电梯" selected="selected">曳引驱动乘客电梯</option>
                                     <option value="曳引驱动乘客电梯(无机房)">曳引驱动乘客电梯(无机房)</option>

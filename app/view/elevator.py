@@ -48,7 +48,7 @@ def elevator_machine_data_input():
         form_machine = request.form
 
         # 根据表单内容完善电梯信息
-        if form_machine.kzfs == '信号':
+        if form_machine['kzfs'] == '信号':
             form_machine['fjr'] = 'wu'
             form_machine['mdmgl'] = 'wu'
         else:

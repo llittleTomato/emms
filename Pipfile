@@ -7,6 +7,16 @@ name = "pypi"
 
 [packages]
 flask = "*"
+flask-wtf = "*"
+wtforms = "*"
+werkzeug = "*"
+flask-login = "*"
+flask-sqlalchemy = "*"
+sqlalchemy = "*"
+mysql-connector-python = "*"
+flask-migrate = "*"
+flask-script = "*"
+uwsgi = "*"
 
 [requires]
 python_version = "3.6"
