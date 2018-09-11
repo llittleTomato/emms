@@ -48,7 +48,7 @@ def elevator_basic_data_input():
 def elevator_machine_data_input():
     if request.method == 'POST':
         form_basic = session['form_basic']
-        form_machine = request.form
+        form_machine = request.form.to_dict()
 
         # 根据表单内容完善电梯信息
         if form_machine['kzfs'] == '信号':

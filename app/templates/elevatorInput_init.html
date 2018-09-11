@@ -120,6 +120,7 @@
         });
         $("#pre_ele").click(function(){
             {% if session.get('pre_sbm') %}
+                alert('复制上一台电梯数据');
                 $('form').submit();
             {% else %}
                 alert("这是第一台，请新录入！");
