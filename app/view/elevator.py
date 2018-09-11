@@ -5,6 +5,7 @@ from app.models import db
 from flask import render_template, request, session, redirect, url_for
 from flask_login import login_required
 from app.models.elevator import lift_class_choose, ElevatorRoom
+from app.forms.elevator import ElevatorInitForm
 
 
 @view.route('/elevator_manage/')
@@ -18,16 +19,18 @@ def elevator_manage():
 @view.route('/elevator_data_input_init/', methods=['GET', 'POST'])
 @login_required
 def elevator_data_input_init():
-    form = request.form
-    if request.method == 'GET':
-        return render_template('elevatorInput_init.html', pre_ele=session.get('pre_sbm'))
-    else:
-        if form['sbm_cp'] == '':
-            elevator = ElevatorRoom.query.filter_by(sbm=form['sbm']).first()
+    form = ElevatorInitForm(request.form)
+    if request.method == 'POST' and form.validate():
+        if request.form['sbm_cp'] == '':
+            elevator = ElevatorRoom.query.filter_by(sbm=request.form['sbm']).first()
             if elevator:
-                pass
+                return render_template('elevatorInput_init.html', )
             else:
-                return render_template('elevatorInput_basic.html', keys=list(form), form_init=form)
+                return render_template('elevatorInput_basic.html', keys=list(request.form), form_init=request.form)
+        else:
+            return render_template('elevatorInput_basic.html', keys=list(request.form), form_init=request.form)
+    else:
+        return render_template('elevatorInput_init.html', pre_ele=session.get('pre_sbm'))
 
 
 @view.route('/elevator_basic_data_input/', methods=['GET', 'POST'])
@@ -49,11 +52,11 @@ def elevator_machine_data_input():
 
         # 根据表单内容完善电梯信息
         if form_machine['kzfs'] == '信号':
-            form_machine['fjr'] = 'wu'
-            form_machine['mdmgl'] = 'wu'
+            form_machine['fjr'] = '无'
+            form_machine['mdmgl'] = '无'
         else:
-            form_machine['fjr'] = 'you'
-            form_machine['mdmgl'] = 'you'
+            form_machine['fjr'] = '有'
+            form_machine['mdmgl'] = '有'
 
         # 根据设备名称选择数据库
         elevator = lift_class_choose(form_basic['sbmc'])

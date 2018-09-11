@@ -39,7 +39,7 @@
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="sydwmc">使用单位</label>
                             <div class="col-md-3">
-                                <input id="sydwmc" class="form-control" type="text" name="sydwmc" placeholder="使用单位" required>
+                                <input id="sydwmc" class="form-control" type="text" name="sydwmc" placeholder="使用单位" required onfocus="fonfocus(this, 'sydwmc')" onblur="fblur(this, 'sydwmc')">
                             </div>
                             <label class="control-label col-md-2" for="sydwdm">使用单位代码</label>
                             <div class="col-md-2">
@@ -202,4 +202,12 @@
             {% endfor %}
         });
     </script>
+    {% if form_init['sbm_cp'] == '' %}
+        <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
+    {% else %}
+        <script>
+            $('#sydwmc').val('ttt');
+        </script>
+    {% endif %}
+
 {% endblock %}

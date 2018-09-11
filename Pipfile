@@ -17,6 +17,7 @@ mysql-connector-python = "*"
 flask-migrate = "*"
 flask-script = "*"
 uwsgi = "*"
+"psycopg2" = "*"
 
 [requires]
 python_version = "3.6"

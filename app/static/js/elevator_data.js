@@ -1,5 +1,5 @@
 var dic = {
-    'sydwmc': ['#sydw', '特检院'],
+    'sydwmc': ['#sydwmc', '特检院'],
     'sydwdm': ['#sydwdm', '111111'],
     'sbm': ['#sbm', '111111'],
     'sydd': ['#sydd', 'sydd'],
@@ -11,16 +11,17 @@ var dic = {
 };
 
 $(document).ready(function () {
-    $(dic['sydwmc'][0]).val(dic['sydw'][1])
+    $(dic['sydwmc'][0]).val(dic['sydwmc'][1])
 
 });
 
-$(dic['sydw'][0]).click(function () {
-   if (this.value === dic['sydw'][1])
-       this.value = ''
-});
 
-$(dic['sydw'][0]).blur(function () {
-    if (this.value === '')
-        this.value = dic['sydw'][1]
-});
+function fonfocus(the_object, defaultValue) {
+    if (the_object.value == dic[defaultValue][1])
+       the_object.value = '';
+}
+
+function fblur(the_object, defaultValue) {
+    if (the_object.value == '')
+       the_object.value = dic[defaultValue][1];
+}

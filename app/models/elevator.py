@@ -25,8 +25,8 @@ class ElevatorRoom(Base):
     azrq = Column(String(10), nullable=True, default='/')                              # 安装日期
     gzrq = Column(String(10), nullable=True, default='/')                              # 改造日期
     zdxlrq = Column(String(10), nullable=True, default='/')                            # 重大修理日期
-    edsd = Column(String(10), nullable=False, default='/')                            # 额定速度
-    edzzl = Column(String(10), nullable=False, default='/')                          # 额定载重量 kg
+    edsd = Column(String(10), nullable=False, default='/')                             # 额定速度
+    edzzl = Column(String(10), nullable=False, default='/')                            # 额定载重量 kg
     czm_c = Column(String(10), nullable=False, default='/')                             # 层数
     czm_z = Column(String(10), nullable=False, default='/')                             # 站数
     czm_m = Column(String(10), nullable=False, default='/')                             # 门数
@@ -65,7 +65,7 @@ class ElevatorRoom(Base):
     # 限速器
     xsq_ccrq = Column(String(10), nullable=False, default='/')                         # 出厂日期
     xsq_jyrq = Column(String(10), nullable=False, default='/')                         # 校验日期
-    xsq_dzsd = Column(String(10), nullable=False, default='/')                        # 动作速度  m/s
+    xsq_dzsd = Column(String(10), nullable=False, default='/')                         # 动作速度  m/s
 
     # 井道
     jdaqm = Column(String(10), nullable=False, default='无')                            # 井道安全门
@@ -73,7 +73,8 @@ class ElevatorRoom(Base):
     bcl = Column(String(10), nullable=False, default='无')                              # 补偿链（绳）
     bcl_dq = Column(String(10), nullable=False, default='无')                           # 补偿链（绳）电气安全装置
     bcl_ft = Column(String(10), nullable=False, default='无')                           # 补偿绳防跳装置
-    gss_zj = Column(String(10), nullable=False, default='/')                           # 钢丝绳（钢带）直径 mm
+    xgzzlx = Column(String(10), nullable=False, default='钢丝绳')                        # 悬挂装置类型
+    gss_zj = Column(String(10), nullable=False, default='/')                            # 钢丝绳（钢带）直径 mm
     gss_sl = Column(String(10), nullable=False, default='/')                            # 钢丝绳（钢带）数量
     jxyjdbjl = Column(String(10), nullable=False, default='150')                        # 轿厢与井道壁距离（mm）
     ssbh = Column(String(10), nullable=False, default='无')                             # 松绳保护
@@ -93,12 +94,12 @@ class ElevatorRoom(Base):
     fjr = Column(String(10), nullable=False, default='有')                              # 防夹人保护
 
     # 缓冲器
-    hcqxs = Column(String(10), nullable=False, default='耗能型')                            # 缓冲器型式(耗能型，蓄能型)
-    hcj = Column(String(10), nullable=False, default='/')                             # 对重越程距离 mm
+    hcqxs = Column(String(10), nullable=False, default='耗能型')                         # 缓冲器型式(耗能型，蓄能型)
+    hcj = Column(String(10), nullable=False, default='/')                               # 对重越程距离 mm
 
     # 试验
     zdsy = Column(String(10), nullable=False, default='无')                             # 制动试验
-    phxs = Column(String(10), nullable=False, default='45')                           # 平衡系数 0.40-0.50之间
+    phxs = Column(String(10), nullable=False, default='45')                             # 平衡系数 0.40-0.50之间
 
     # 维保信息
     wbhtbh = Column(String(20), nullable=True, default='/')                            # 维保合同编号
