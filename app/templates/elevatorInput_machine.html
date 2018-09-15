@@ -20,70 +20,70 @@
                 <div class="card-body">
                     <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="edsd">额定速度</label>
+                            <label class="control-label col-md-1" for="ratedSpeed">额定速度</label>
                             <div class="col-md-2">
-                                <input id="edsd" class="form-control" type="text" name="edsd" placeholder="额定速度(m/s)" required>
+                                <input id="ratedSpeed" class="form-control" type="text" name="ratedSpeed" placeholder="额定速度(m/s)" required>
                             </div>
-                            <label class="control-label col-md-2" for="edzzl">额定载重量</label>
+                            <label class="control-label col-md-2" for="ratedLoad">额定载重量</label>
                             <div class="col-md-2">
-                                <input id="edzzl" class="form-control" type="text" name="edzzl" placeholder="额定载重量(kg)" required>
+                                <input id="ratedLoad" class="form-control" type="text" name="ratedLoad" placeholder="额定载重量(kg)" required>
                             </div>
-                            <label class="control-label col-md-1" for="czm_c">层站门</label>
+                            <label class="control-label col-md-1" for="floorNumber">层</label>
                             <div class="col-md-1">
-                                <input id="czm_c" class="form-control" type="text" name="czm_c" placeholder="层" required>
+                                <input id="floorNumber" class="form-control" type="text" name="floorNumber" placeholder="层" required>
                             </div>
-                            <label class="sr-only" for="czm_c">站</label>
+                            <label class="sr-only" for="stationNumber">站</label>
                             <div class="col-md-1">
-                                <input id="czm_z" class="form-control" type="text" name="czm_z" placeholder="站" required>
+                                <input id="stationNumber" class="form-control" type="text" name="stationNumber" placeholder="站" required>
                             </div>
-                            <label class="sr-only" for="czm_c">门</label>
+                            <label class="sr-only" for="doorNumber">门</label>
                             <div class="col-md-1">
-                                <input id="czm_m" class="form-control" type="text" name="czm_m" placeholder="门" required>
+                                <input id="doorNumber" class="form-control" type="text" name="doorNumber" placeholder="门" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="kzfs">控制方式</label>
+                            <label class="control-label col-md-1" for="controlMode">控制方式</label>
                             <div class="col-md-2">
-                                <select id="kzfs" name="kzfs" class="form-control">
+                                <select id="controlMode" name="controlMode" class="form-control">
                                     <option value="信号">信号</option>
                                     <option value="集选" selected="selected">集选</option>
                                     <option value="群控">群控</option>
                                     <option value="按钮">按钮</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="jxzx">轿厢装修</label>
+                            <label class="control-label col-md-2" for="carDecorate">轿厢装修</label>
                             <div class="col-md-2">
-                                <select id="jxzx" name="jxzx" class="form-control">
+                                <select id="carDecorate" name="carDecorate" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="ic_card">IC卡</label>
+                            <label class="control-label col-md-2" for="icCard">IC卡</label>
                             <div class="col-md-2">
-                                <select id="ic_card" name="ic_card" class="form-control">
+                                <select id="icCard" name="icCard" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="zdjy">自动救援</label>
+                            <label class="control-label col-md-1" for="autoRescuer">自动救援</label>
                             <div class="col-md-2">
-                                <select id="zdjy" name="zdjy" class="form-control">
+                                <select id="autoRescuer" name="autoRescuer" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="nlfk">能量反馈</label>
+                            <label class="control-label col-md-2" for="energyFeedback">能量反馈</label>
                             <div class="col-md-2">
-                                <select id="nlfk" name="nlfk" class="form-control">
+                                <select id="energyFeedback" name="energyFeedback" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="wlw">物联网</label>
+                            <label class="control-label col-md-2" for="internetOfThings">物联网</label>
                             <div class="col-md-2">
-                                <select id="wlw" name="wlw" class="form-control">
+                                <select id="internetOfThings" name="internetOfThings" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
@@ -93,33 +93,33 @@
                         <div class="card-diver">
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="zjxs">主机型式</label>
+                            <label class="control-label col-md-1" for="machineType">主机型式</label>
                             <div class="col-md-2">
-                                <select id="zjxs" name="zjxs" class="form-control">
+                                <select id="machineType" name="machineType" class="form-control">
                                     <option value="同步" selected="selected">同步主机</option>
                                     <option value="异步">异步主机</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="zjxh">主机型号</label>
+                            <label class="control-label col-md-2" for="machineModel">主机型号</label>
                             <div class="col-md-2">
-                                <input id="zjxh" class="form-control" type="text" name="zjxh" placeholder="主机型号" required>
+                                <input id="machineModel" class="form-control" type="text" name="machineModel" placeholder="主机型号" required>
                             </div>
-                            <label class="control-label col-md-2" for="zjbh">主机编号</label>
+                            <label class="control-label col-md-2" for="machineNumber">主机编号</label>
                             <div class="col-md-2">
-                                <input id="zjbh" class="form-control" type="text" name="zjbh" placeholder="主机编号" required>
+                                <input id="machineNumber" class="form-control" type="text" name="machineNumber" placeholder="主机编号" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="sdjjcz">手动紧急操作装置</label>
+                            <label class="control-label col-md-1" for="manualOperate">手动紧急操作装置</label>
                             <div class="col-md-2">
-                                <select id="sdjjcz" name="sdjjcz" class="form-control">
+                                <select id="manualOperate" name="manualOperate" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="sxcs">上行超速保护装置</label>
+                            <label class="control-label col-md-2" for="ascendOverspeed">上行超速保护装置</label>
                             <div class="col-md-2">
-                                <select id="sxcs" name="sxcs" class="form-control">
+                                <select id="ascendOverspeed" name="ascendOverspeed" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
@@ -136,205 +136,205 @@
                         <div class="card-diver">
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="tsfs">调速方式</label>
+                            <label class="control-label col-md-1" for="speedGovernMethod">调速方式</label>
                             <div class="col-md-2">
-                                <select id="tsfs" name="tsfs" class="form-control">
+                                <select id="speedGovernMethod" name="speedGovernMethod" class="form-control">
                                     <option value="变频" selected="selected">变频</option>
                                     <option value="双速">双速</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="kzgxh">控制柜型号</label>
+                            <label class="control-label col-md-2" for="controlCabinetModel">控制柜型号</label>
                             <div class="col-md-2">
-                                <input id="kzgxh" class="form-control" type="text" name="kzgxh" placeholder="主机型号" required>
+                                <input id="controlCabinetModel" class="form-control" type="text" name="controlCabinetModel" placeholder="主机型号" required>
                             </div>
-                            <label class="control-label col-md-2" for="kzgbh">控制柜编号</label>
+                            <label class="control-label col-md-2" for="controlCabinetNumber">控制柜编号</label>
                             <div class="col-md-2">
-                                <input id="kzgbh" class="form-control" type="text" name="kzgbh" placeholder="主机编号" required>
+                                <input id="controlCabinetNumber" class="form-control" type="text" name="controlCabinetNumber" placeholder="主机编号" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="jjddyx">紧急电动运行</label>
+                            <label class="control-label col-md-1" for="emergencyElectricOperate">紧急电动运行</label>
                             <div class="col-md-2">
-                                <select id="jjddyx" name="jjddyx" class="form-control">
+                                <select id="emergencyElectricOperate" name="emergencyElectricOperate" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="plzz">旁路装置</label>
+                            <label class="control-label col-md-2" for="doorBypass">旁路装置</label>
                             <div class="col-md-2">
-                                <select id="plzz" name="plzz" class="form-control">
+                                <select id="doorBypass" name="doorBypass" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="mhljc">门回路检测</label>
+                            <label class="control-label col-md-2" for="doorLoopDetect">门回路检测</label>
                             <div class="col-md-2">
-                                <select id="mhljc" name="mhljc" class="form-control">
+                                <select id="doorLoopDetect" name="doorLoopDetect" class="form-control">
                                     <option value="有">有</option>
                                     <option value="无" selected="selected">无</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="dcx">断错相保护</label>
+                            <label class="control-label col-md-1" for="phaseFaultProtect">断错相保护</label>
                             <div class="col-md-2">
-                                <select id="dcx" name="dcx" class="form-control">
+                                <select id="phaseFaultProtect" name="phaseFaultProtect" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="zdqgzbh">制动器故障保护</label>
+                            <label class="control-label col-md-2" for="brakeFaultProtect">制动器故障保护</label>
                             <div class="col-md-2">
-                                <select id="zdqgzbh" name="zdqgzbh" class="form-control">
+                                <select id="brakeFaultProtect" name="brakeFaultProtect" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="xsq_ccrq">限速器出厂日期</label>
+                            <label class="control-label col-md-1" for="governorManufactureDate">限速器出厂日期</label>
                             <div class="col-md-2">
-                                <input id="xsq_ccrq" class="form-control datepicker" type="text" name="xsq_ccrq" placeholder="限速器出厂日期" required>
+                                <input id="governorManufactureDate" class="form-control datepicker" type="text" name="governorManufactureDate" placeholder="限速器出厂日期" required>
                             </div>
-                            <label class="control-label col-md-2" for="xsq_jyrq">限速器校验</label>
+                            <label class="control-label col-md-2" for="governorCheckDate">限速器校验日期</label>
                             <div class="col-md-2">
-                                <input id="xsq_jyrq" class="form-control datepicker" type="text" name="xsq_jyrq" placeholder="校验日期" required>
+                                <input id="governorCheckDate" class="form-control datepicker" type="text" name="governorCheckDate" placeholder="校验日期" required>
                             </div>
-                            <label class="sr-only" for="xsq_dzsd">校验速度</label>
+                            <label class="sr-only" for="governorSpeed">校验速度</label>
                             <div class="col-md-2">
-                                <input id="xsq_dzsd" class="form-control" type="text" name="xsq_dzsd" placeholder="校验速度(m/s)" required>
+                                <input id="governorSpeed" class="form-control" type="text" name="governorSpeed" placeholder="校验速度(m/s)" required>
                             </div>
                         </div>
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="bcl">补偿链</label>
+                            <label class="control-label col-md-1" for="compensateChain">补偿链</label>
                             <div class="col-md-2">
-                                <select id="bcl" name="bcl" class="form-control">
+                                <select id="compensateChain" name="compensateChain" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="bcl_dq">补偿链电气装置</label>
+                            <label class="control-label col-md-2" for="compensateRopeSwitch">补偿链电气装置</label>
                             <div class="col-md-2">
-                                <select id="bcl_dq" name="bcl_dq" class="form-control">
+                                <select id="compensateRopeSwitch" name="compensateRopeSwitch" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="bcl_ft">补偿链防跳装置</label>
+                            <label class="control-label col-md-2" for="compensateRopeAntiRebound">补偿链防跳装置</label>
                             <div class="col-md-2">
-                                <select id="bcl_ft" name="bcl_ft" class="form-control">
+                                <select id="compensateRopeAntiRebound" name="compensateRopeAntiRebound" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="xgzzlx">悬挂装置类型</label>
+                            <label class="control-label col-md-1" for="suspensionType">悬挂装置类型</label>
                             <div class="col-md-2">
-                                <select id="xgzzlx" name="xgzzlx" class="form-control">
+                                <select id="suspensionType" name="suspensionType" class="form-control">
                                     <option value="钢丝绳" selected="selected">钢丝绳</option>
                                     <option value="钢带">钢带</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="gss_zj">钢丝绳(带)直径</label>
+                            <label class="control-label col-md-2" for="ropeDiameter">钢丝绳(带)直径</label>
                             <div class="col-md-2">
-                                <input id="gss_zj" class="form-control" type="text" name="gss_zj" placeholder="钢丝绳（带）直径" required>
+                                <input id="ropeDiameter" class="form-control" type="text" name="ropeDiameter" placeholder="钢丝绳（带）直径" required>
                             </div>
-                            <label class="control-label col-md-2" for="gss_sl">钢丝绳(带)数量</label>
+                            <label class="control-label col-md-2" for="ropeNumber">钢丝绳(带)数量</label>
                             <div class="col-md-2">
-                                <input id="gss_sl" class="form-control" type="text" name="gss_sl" placeholder="钢丝绳（带）数量" required>
+                                <input id="ropeNumber" class="form-control" type="text" name="ropeNumber" placeholder="钢丝绳（带）数量" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="jdaqm">井道安全门</label>
+                            <label class="control-label col-md-1" for="wellSafetyDoor">井道安全门</label>
                             <div class="col-md-2">
-                                <select id="jdaqm" name="jdaqm" class="form-control">
+                                <select id="wellSafetyDoor" name="wellSafetyDoor" class="form-control">
                                     <option value="有">有</option>
                                     <option value="无" selected="selected">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="jdjxm">井道检修门</label>
+                            <label class="control-label col-md-2" for="wellAccessDoor">井道检修门</label>
                             <div class="col-md-2">
-                                <select id="jdjxm" name="jdjxm" class="form-control">
+                                <select id="wellAccessDoor" name="wellAccessDoor" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="aqc">安全窗</label>
+                            <label class="control-label col-md-2" for="safetyWindow">安全窗</label>
                             <div class="col-md-2">
-                                <select id="aqc" name="aqc" class="form-control">
+                                <select id="safetyWindow" name="safetyWindow" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="jxcmj">轿厢超面积</label>
+                            <label class="control-label col-md-1" for="carOverArea">轿厢超面积</label>
                             <div class="col-md-2">
-                                <select id="jxcmj" name="jxcmj" class="form-control">
+                                <select id="carOverArea" name="carOverArea" class="form-control">
                                     <option value="有">有</option>
                                     <option value="无" selected="selected">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="czbh">超载保护装置</label>
+                            <label class="control-label col-md-2" for="overloadProtect">超载保护装置</label>
                             <div class="col-md-2">
-                                <select id="czbh" name="czbh" class="form-control">
+                                <select id="overloadProtect" name="overloadProtect" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="dzaqq">对重安全钳</label>
+                            <label class="control-label col-md-2" for="counterweightSafetyGear">对重安全钳</label>
                             <div class="col-md-2">
-                                <select id="dzaqq" name="dzaqq" class="form-control">
-                                    <option value="有">有</option>
-                                    <option value="无" selected="selected">无</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="jmms">轿门门锁</label>
-                            <div class="col-md-2">
-                                <select id="jmms" name="jmms" class="form-control">
-                                    <option value="有">有</option>
-                                    <option value="无" selected="selected">无</option>
-                                </select>
-                            </div>
-                            <label class="control-label col-md-2" for="fbm">轿门开门限制</label>
-                            <div class="col-md-2">
-                                <select id="fbm" name="fbm" class="form-control">
-                                    <option value="有">有</option>
-                                    <option value="无" selected="selected">无</option>
-                                </select>
-                            </div>
-                            <label class="control-label col-md-2" for="blm">玻璃门</label>
-                            <div class="col-md-2">
-                                <select id="blm" name="blm" class="form-control">
+                                <select id="counterweightSafetyGear" name="counterweightSafetyGear" class="form-control">
                                     <option value="有">有</option>
                                     <option value="无" selected="selected">无</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="zdgm">自动关门装置</label>
+                            <label class="control-label col-md-1" for="carDoorLock">轿门门锁</label>
                             <div class="col-md-2">
-                                <select id="zdgm" name="zdgm" class="form-control">
+                                <select id="carDoorLock" name="carDoorLock" class="form-control">
+                                    <option value="有">有</option>
+                                    <option value="无" selected="selected">无</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-md-2" for="carDoorRestrictedOpen">轿门开门限制</label>
+                            <div class="col-md-2">
+                                <select id="carDoorRestrictedOpen" name="carDoorRestrictedOpen" class="form-control">
+                                    <option value="有">有</option>
+                                    <option value="无" selected="selected">无</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-md-2" for="glassDoor">玻璃门</label>
+                            <div class="col-md-2">
+                                <select id="glassDoor" name="glassDoor" class="form-control">
+                                    <option value="有">有</option>
+                                    <option value="无" selected="selected">无</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left: 15px">
+                            <label class="control-label col-md-1" for="autoDoorClose">自动关门装置</label>
+                            <div class="col-md-2">
+                                <select id="autoDoorClose" name="autoDoorClose" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="hcqxs">缓冲器型式</label>
+                            <label class="control-label col-md-2" for="bufferType">缓冲器型式</label>
                             <div class="col-md-2">
-                                <select id="hcqxs" name="hcqxs" class="form-control">
+                                <select id="bufferType" name="bufferType" class="form-control">
                                     <option value="耗能型" selected="selected">耗能型</option>
                                     <option value="蓄能型">蓄能型</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="hcj">对重缓冲距</label>
+                            <label class="control-label col-md-2" for="counterweightOverrunDistance">对重缓冲距</label>
                             <div class="col-md-2">
-                                <input id="hcj" class="form-control" type="text" name="hcj" placeholder="对重缓冲距(mm)" required>
+                                <input id="counterweightOverrunDistance" class="form-control" type="text" name="counterweightOverrunDistance" placeholder="对重缓冲距(mm)" required>
                             </div>
                         </div>
                         <div class="card-footer">

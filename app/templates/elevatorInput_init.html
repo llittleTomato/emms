@@ -21,18 +21,18 @@
                     <form class="form-horizontal" method="POST"
                           action="{{ url_for('view.elevator_data_input_init') }}" id="fom">
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1 col-md-offset-1" for="sbm">识别码</label>
+                            <label class="control-label col-md-1 col-md-offset-1" for="idCode">识别码</label>
                             <div class="col-md-2">
-                                <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码" required
+                                <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码" required
                                        onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
                             </div>
-                            <label class="control-label col-md-1" for="xh">型号</label>
+                            <label class="control-label col-md-1" for="model">型号</label>
                             <div class="col-md-2">
-                                <input id="xh" class="form-control" type="text" name="xh" placeholder="型号" required>
+                                <input id="model" class="form-control" type="text" name="model" placeholder="型号" required>
                             </div>
-                            <label class="control-label col-md-1" for="sbmc">设备名称</label>
+                            <label class="control-label col-md-1" for="deviceName">设备名称</label>
                             <div class="col-md-3">
-                                <select id="sbmc" name="sbmc" class="form-control">
+                                <select id="deviceName" name="deviceName" class="form-control">
                                     <option value="曳引驱动乘客电梯" selected="selected">曳引驱动乘客电梯</option>
                                     <option value="曳引驱动乘客电梯(无机房)">曳引驱动乘客电梯(无机房)</option>
                                     <option value="自动扶梯">自动扶梯</option>
@@ -68,9 +68,9 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="row">
-                                                    <label class="control-label col-md-2 col-md-offset-2" for="sbm_cp">识别码</label>
+                                                    <label class="control-label col-md-2 col-md-offset-2" for="idCode_cp">识别码</label>
                                                     <div class="col-md-6">
-                                                        <input id="sbm_cp" class="form-control" type="text" name="sbm_cp" placeholder="识别码" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
+                                                        <input id="idCode_cp" class="form-control" type="text" name="idCode_cp" placeholder="识别码" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
                                                     </div>
                                                 </div>
                                             </div>
@@ -113,32 +113,4 @@
 {% block script %}
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
-    <script type="text/javascript">
-        $('#new_input').click(function () {
-            $('#sbm_cp').val('');
-            $('form').submit();
-        });
-        $("#pre_ele").click(function(){
-            {% if session.get('pre_sbm') %}
-                alert('复制上一台电梯数据');
-                $('form').submit();
-            {% else %}
-                alert("这是第一台，请新录入！");
-            {% endif %}
-        });
-        $('#cp_bt').click(function () {
-            if ($('#sbm_cp').val() == "")
-                alert("请输入复制的电梯识别码");
-            else if ($('#sbm_cp').val().length < 6)
-                alert("请输入正确的识别码");
-            else if (($('#sbm').val() == "") || ($('#xh').val() == ""))
-                alert("请先输入录入电梯的识别码和型号，并选择设备名称");
-            else
-                $('form').submit();
-        });
-
-        $('#close_bt').click(function () {
-            $('#sbm_cp').val('');
-        });
-    </script>
 {% endblock %}

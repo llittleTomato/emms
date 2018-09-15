@@ -20,160 +20,160 @@
                 <div class="card-body">
                     <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_basic_data_input') }}">
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="sbm">识别码</label>
+                            <label class="control-label col-md-1" for="idCode">识别码</label>
                             <div class="col-md-3">
-                                <input id="sbm" class="form-control" type="text" name="sbm" placeholder="识别码" readonly>
+                                <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码" readonly>
                             </div>
-                            <label class="control-label col-md-2" for="xh">型号</label>
+                            <label class="control-label col-md-2" for="model">型号</label>
                             <div class="col-md-2">
-                                <input id="xh" class="form-control" type="text" name="xh" placeholder="型号" readonly>
+                                <input id="model" class="form-control" type="text" name="model" placeholder="型号" readonly>
                             </div>
-                            <label class="control-label col-md-2" for="sbmc">设备名称</label>
+                            <label class="control-label col-md-2" for="deviceName">设备名称</label>
                             <div class="col-md-2">
-                                <input id="sbmc" class="form-control" type="text" name="sbmc" placeholder="设备名称" readonly>
+                                <input id="deviceName" class="form-control" type="text" name="deviceName" placeholder="设备名称" readonly>
                             </div>
                         </div>
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="sydwmc">使用单位</label>
+                            <label class="control-label col-md-1" for="userEntityName">使用单位</label>
                             <div class="col-md-3">
-                                <input id="sydwmc" class="form-control" type="text" name="sydwmc" placeholder="使用单位" required onfocus="fonfocus(this, 'sydwmc')" onblur="fblur(this, 'sydwmc')">
+                                <input id="userEntityName" class="form-control" type="text" name="userEntityName" placeholder="使用单位" required onfocus="fonfocus(this, 'sydwmc')" onblur="fblur(this, 'sydwmc')">
                             </div>
-                            <label class="control-label col-md-2" for="sydwdm">使用单位代码</label>
+                            <label class="control-label col-md-2" for="userEntityCode">使用单位代码</label>
                             <div class="col-md-2">
-                                <input id="sydwdm" class="form-control" type="text" name="sydwdm" placeholder="使用单位代码">
+                                <input id="userEntityCode" class="form-control" type="text" name="userEntityCode" placeholder="使用单位代码">
                             </div>
-                            <label class="control-label col-md-2" for="sybh">使用编号</label>
+                            <label class="control-label col-md-2" for="numberOfUse">使用编号</label>
                             <div class="col-md-2">
-                                <input id="sybh" class="form-control" type="text" name="sybh" placeholder="使用编号" required>
+                                <input id="numberOfUse" class="form-control" type="text" name="numberOfUse" placeholder="使用编号" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="sydd">使用地点</label>
+                            <label class="control-label col-md-1" for="locationOfUse">使用地点</label>
                             <div class="col-md-3">
-                                <input id="sydd" class="form-control" type="text" name="sydd" placeholder="使用地点" required>
+                                <input id="locationOfUse" class="form-control" type="text" name="locationOfUse" placeholder="使用地点" required>
                             </div>
-                            <label class="control-label col-md-2" for="zcdm">注册代码</label>
+                            <label class="control-label col-md-2" for="regCode">注册代码</label>
                             <div class="col-md-2">
-                                <input id="zcdm" class="form-control" type="text" name="zcdm" placeholder="注册代码" required pattern="[0-9]{18}" title="18位数字" maxlength="18">
+                                <input id="regCode" class="form-control" type="text" name="regCode" placeholder="注册代码" required pattern="[0-9]{18}" title="18位数字" maxlength="18">
                             </div>
-                            <label class="control-label col-md-2" for="ccbh">出厂编号</label>
+                            <label class="control-label col-md-2" for="factoryNumber">出厂编号</label>
                             <div class="col-md-2">
-                                <input id="ccbh" class="form-control" type="text" name="ccbh" placeholder="出厂编号" required>
+                                <input id="factoryNumber" class="form-control" type="text" name="factoryNumber" placeholder="出厂编号" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="zzdw">制造单位</label>
+                            <label class="control-label col-md-1" for="manufactureCompany">制造单位</label>
                             <div class="col-md-7">
-                                <input id="zzdw" class="form-control" type="text" name="zzdw" placeholder="制造单位" required>
+                                <input id="manufactureCompany" class="form-control" type="text" name="manufactureCompany" placeholder="制造单位" required>
                             </div>
-                            <label class="control-label col-md-2" for="zzrq">制造日期</label>
+                            <label class="control-label col-md-2" for="manufactureDate">制造日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="zzrq" type="text" name="zzrq" placeholder="制造日期" required>
+                                <input class="form-control datepicker" id="manufactureDate" type="text" name="manufactureDate" placeholder="制造日期" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="azdw">安装单位</label>
+                            <label class="control-label col-md-1" for="installCompany">安装单位</label>
                             <div class="col-md-7">
-                                <input id="azdw" class="form-control" type="text" name="azdw" placeholder="安装单位" required>
+                                <input id="installCompany" class="form-control" type="text" name="installCompany" placeholder="安装单位" required>
                             </div>
-                            <label class="control-label col-md-2" for="azrq">安装日期</label>
+                            <label class="control-label col-md-2" for="installDate">安装日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="azrq" type="text" name="azrq" placeholder="安装日期" required>
+                                <input class="form-control datepicker" id="installDate" type="text" name="installDate" placeholder="安装日期" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="gzdw">改造单位</label>
+                            <label class="control-label col-md-1" for="renovateCompany">改造单位</label>
                             <div class="col-md-7">
-                                <input id="gzdw" class="form-control" type="text" name="gzdw" placeholder="改造单位" value="/">
+                                <input id="renovateCompany" class="form-control" type="text" name="renovateCompany" placeholder="改造单位" value="/">
                             </div>
-                            <label class="control-label col-md-2" for="gzrq">改造日期</label>
+                            <label class="control-label col-md-2" for="renovateDate">改造日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="gzrq" type="text" name="gzrq" placeholder="改造日期" value="/">
+                                <input class="form-control datepicker" id="renovateDate" type="text" name="renovateDate" placeholder="改造日期" value="/">
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="zdxldw">重大修理单位</label>
+                            <label class="control-label col-md-1" for="majorRepairCompany">重大修理单位</label>
                             <div class="col-md-7">
-                                <input id="zdxldw" class="form-control" type="text" name="zdxldw" placeholder="重大修理单位" value="/">
+                                <input id="majorRepairCompany" class="form-control" type="text" name="majorRepairCompany" placeholder="重大修理单位" value="/">
                             </div>
-                            <label class="control-label col-md-2" for="zdxlrq">重大修理日期</label>
+                            <label class="control-label col-md-2" for="majorRepairDate">重大修理日期</label>
                             <div class="col-md-2">
-                                <input class="form-control datepicker" id="zdxlrq" type="text" name="zdxlrq" placeholder="重大修理日期" value="/">
+                                <input class="form-control datepicker" id="majorRepairDate" type="text" name="majorRepairDate" placeholder="重大修理日期" value="/">
                             </div>
                         </div>
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="lxr">联系人</label>
+                            <label class="control-label col-md-1" for="contactPerson">联系人</label>
                             <div class="col-md-3">
-                                <input id="lxr" class="form-control" type="text" name="lxr" placeholder="联系人" required>
+                                <input id="contactPerson" class="form-control" type="text" name="contactPerson" placeholder="联系人" required>
                             </div>
-                            <label class="control-label col-md-2" for="lxdh">联系号码</label>
+                            <label class="control-label col-md-2" for="contactNumber">联系号码</label>
                             <div class="col-md-2">
-                                <input id="lxdh" class="form-control" type="text" name="lxdh" placeholder="联系号码" required pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
+                                <input id="contactNumber" class="form-control" type="text" name="contactNumber" placeholder="联系号码" required pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
                             </div>
-                            <label class="control-label col-md-2" for="dtsj">电梯司机</label>
+                            <label class="control-label col-md-2" for="liftAttendant">电梯司机</label>
                             <div class="col-md-2">
-                                <input id="dtsj" class="form-control" type="text" name="dtsj" placeholder="电梯司机" required>
+                                <input id="liftAttendant" class="form-control" type="text" name="liftAttendant" placeholder="电梯司机" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="aqgly">安全管理人员</label>
+                            <label class="control-label col-md-1" for="safetyManager">安全管理人员</label>
                             <div class="col-md-3">
-                                <input id="aqgly" class="form-control" type="text" name="aqgly" placeholder="安全管理人员" required>
+                                <input id="safetyManager" class="form-control" type="text" name="safetyManager" placeholder="安全管理人员" required>
                             </div>
-                            <label class="control-label col-md-2" for="aqglyzh">安全管理人员证号</label>
+                            <label class="control-label col-md-2" for="safetyManagerCertificate">安全管理人员证号</label>
                             <div class="col-md-2">
-                                <input id="aqglyzh" class="form-control" type="text" name="aqglyzh" placeholder="安全管理人员证号" required>
+                                <input id="safetyManagerCertificate" class="form-control" type="text" name="safetyManagerCertificate" placeholder="安全管理人员证号" required>
                             </div>
-                            <label class="control-label col-md-2" for="dtsjzh">电梯司机证号</label>
+                            <label class="control-label col-md-2" for="liftAttendantCertificate">电梯司机证号</label>
                             <div class="col-md-2">
-                                <input id="dtsjzh" class="form-control" type="text" name="dtsjzh" placeholder="电梯司机证号" required>
+                                <input id="liftAttendantCertificate" class="form-control" type="text" name="liftAttendantCertificate" placeholder="电梯司机证号" required>
                             </div>
                         </div>
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="wbhtbh">维保合同编号</label>
+                            <label class="control-label col-md-1" for="maintenanceContractNumber">维保合同编号</label>
                             <div class="col-md-3">
-                                <input id="wbhtbh" class="form-control" type="text" name="wbhtbh" placeholder="维保合同编号" required>
+                                <input id="maintenanceContractNumber" class="form-control" type="text" name="maintenanceContractNumber" placeholder="维保合同编号" required>
                             </div>
-                            <label class="control-label col-md-2" for="wbdj">维保等级</label>
+                            <label class="control-label col-md-2" for="maintenanceLevel">维保等级</label>
                             <div class="col-md-2">
-                                <select id="wbdj" name="wbdj" class="form-control">
+                                <select id="maintenanceLevel" name="maintenanceLevel" class="form-control">
                                     <option value="A" selected="selected">维保等级A</option>
                                     <option value="B">维保等级B</option>
                                     <option value="C">维保等级C</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="wbry_a">维保人员A</label>
+                            <label class="control-label col-md-2" for="maintenancePersonA">维保人员A</label>
                             <div class="col-md-2">
-                                <input id="wbry_a" class="form-control" type="text" name="wbry_a" placeholder="维保人员A" required>
+                                <input id="maintenancePersonA" class="form-control" type="text" name="maintenancePersonA" placeholder="维保人员A" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="wbksrq">维保开始日期</label>
+                            <label class="control-label col-md-1" for="maintenanceStartDate">维保开始日期</label>
                             <div class="col-md-3">
-                                <input id="wbksrq" class="form-control datepicker" type="text" name="wbksrq" placeholder="维保开始日期" required>
+                                <input id="maintenanceStartDate" class="form-control datepicker" type="text" name="maintenanceStartDate" placeholder="维保开始日期" required>
                             </div>
-                            <label class="control-label col-md-2" for="wbjsrq">维保结束日期</label>
+                            <label class="control-label col-md-2" for="maintenanceEndDate">维保结束日期</label>
                             <div class="col-md-2">
-                                <input id="wbjsrq" class="form-control datepicker" type="text" name="wbjsrq" placeholder="维保结束日期" required>
+                                <input id="maintenanceEndDate" class="form-control datepicker" type="text" name="maintenanceEndDate" placeholder="维保结束日期" required>
                             </div>
-                            <label class="control-label col-md-2" for="wbry_b">维保人员B</label>
+                            <label class="control-label col-md-2" for="maintenancePersonB">维保人员B</label>
                             <div class="col-md-2">
-                                <input id="wbry_b" class="form-control" type="text" name="wbry_b" placeholder="维保人员B" required>
+                                <input id="maintenancePersonB" class="form-control" type="text" name="maintenancePersonB" placeholder="维保人员B" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="wbbz">维保备注</label>
+                            <label class="control-label col-md-1" for="maintenanceRemark">维保备注</label>
                             <div class="col-md-11">
-                                <textarea class="form-control" id="wbbz" rows="3" required></textarea>
+                                <textarea class="form-control" id="maintenanceRemark" rows="3" required></textarea>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -202,12 +202,11 @@
             {% endfor %}
         });
     </script>
-    {% if form_init['sbm_cp'] == '' %}
+    {% if form_init['idCode_cp'] == '' %}
         <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
     {% else %}
         <script>
-            $('#sydwmc').val('ttt');
+            $('#userEntityName').val('ttt');
         </script>
     {% endif %}
-
 {% endblock %}
