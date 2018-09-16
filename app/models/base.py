@@ -14,4 +14,3 @@ class Base(db.Model):
                 setattr(self, key, value)
 
 
-

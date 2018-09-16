@@ -113,4 +113,16 @@
 {% block script %}
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
+    <script type="text/javascript">
+        alert({{ session.get('pre_idCode') }});
+        $("#pre_ele").click(function(){
+            if ({{ session.get('pre_idCode') }}){
+                $('#idCode_cp').val("{{ session.get('pre_idCode') }}");
+                $('form').submit();
+            }
+            else{
+                alert("这是第一台，请新录入！");
+            }
+});
+    </script>
 {% endblock %}

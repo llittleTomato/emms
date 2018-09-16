@@ -195,18 +195,22 @@
 {% block script %}
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
-    <script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
+    <script type="text/javascript">
         $(document).ready(function () {
+            var key;
+            {% if elevator_cp_data == '' %}
+                for (key in dics){
+                    $('#'+key).val(dics[key]);
+                }
+            {% else %}
+                {% for key in elevator_cp_data %}
+                    $('#{{ key }}').val("{{ elevator_cp_data[key] }}");
+                {% endfor %}
+            {% endif %}
             {% for key in keys %}
                 $('#{{ key }}').val("{{ form_init[key] }}");
             {% endfor %}
         });
     </script>
-    {% if form_init['idCode_cp'] == '' %}
-        <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
-    {% else %}
-        <script>
-            $('#userEntityName').val('ttt');
-        </script>
-    {% endif %}
 {% endblock %}
