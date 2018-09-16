@@ -25,12 +25,12 @@ def user_register():
             db.session.add(company)
             db.session.add(user)
             db.session.commit()
-            sqls = (
-                        'create table elevator' + str(company.id) + ' like elevator',
-                        'create table employee' + str(company.id) + ' like employee',
-                    )
-            for sql in sqls:
-                db.session.execute(sql)
+            # sqls = (
+            #             'create table elevator' + str(company.id) + ' like elevator',
+            #             'create table employee' + str(company.id) + ' like employee',
+            #         )
+            # for sql in sqls:
+            #     db.session.execute(sql)
         else:
             db.session.add(user)
             db.session.commit()

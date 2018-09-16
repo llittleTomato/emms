@@ -4,7 +4,7 @@ from . import view
 from app.models import db
 from flask import render_template, request, session, redirect, url_for
 from flask_login import login_required
-from app.models.elevator import lift_class_choose, ElevatorRoom
+from app.models.elevator import lift_class_choose, lift_html_choose, ElevatorRoom
 from app.forms.elevator import ElevatorInitForm
 
 
@@ -13,7 +13,7 @@ from app.forms.elevator import ElevatorInitForm
 def elevator_manage():
     # elevators = Elevator.query.all()
     elevators = ''
-    return render_template('elevatorManage.html', elevators=elevators)
+    return render_template('elevator/elevatorManage.html', elevators=elevators)
 
 
 @view.route('/elevator_data_input_init/', methods=['GET', 'POST'])
@@ -22,27 +22,28 @@ def elevator_data_input_init():
     form = ElevatorInitForm(request.form)
     if request.method == 'POST' and form.validate():
         session['idCode_cp'] = request.form['idCode_cp']
+        session['html'] = lift_html_choose(request.form['deviceName'])
         if request.form['idCode_cp'] == '':
-            return render_template('elevatorInput_basic.html', keys=list(request.form), form_init=request.form.to_dict(), elevator_cp_data='')
+            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form.to_dict(), elevator_cp_data='')
         else:
             elevator = ElevatorRoom.query.filter_by(idCode=request.form['idCode_cp']).first()
-            return render_template('elevatorInput_basic.html', keys=list(request.form), form_init=request.form, elevator_cp_data=elevator.__dict__)
+            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form, elevator_cp_data=elevator.__dict__)
     else:
-        return render_template('elevatorInput_init.html', messages=form.errors)
+        return render_template('elevator/elevatorInput_init.html', messages=form.errors)
 
 
 @view.route('/elevator_basic_data_input/', methods=['GET', 'POST'])
 @login_required
 def elevator_basic_data_input():
-    if request.method == 'GET':
-        return render_template('elevatorInput_basic.html')
-    else:
+    if request.method == 'POST':
         if session['idCode_cp'] == '':
-            return render_template('elevatorInput_machine.html', elevato_cp_data='')
+            return render_template('elevator/' + + session['html'][1], elevato_cp_data='')
         else:
             session['form_basic'] = request.form
             elevator = ElevatorRoom.query.filter_by(idCode=session['idCode_cp']).first()
-            return render_template('elevatorInput_machine.html', elevator_cp_data=elevator.__dict__)
+            return render_template('elevator/' + session['html'][1], elevator_cp_data=elevator.__dict__)
+    else:
+        return render_template('elevator/' + session['html'][0])
 
 
 @view.route('/elevator_machine_data_input/', methods=['GET', 'POST'])
@@ -72,4 +73,4 @@ def elevator_machine_data_input():
 
         return render_template('index.html')
     else:
-        return render_template('elevatorInput_machine.html')
+        return render_template('elevator/' + session['html'][1])
