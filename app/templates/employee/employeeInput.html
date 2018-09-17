@@ -1,0 +1,88 @@
+{% extends "index.html" %}
+{% block title %}
+    添加员工
+{% endblock %}
+{% block page_nav %}
+    <li>员工</li>
+    <li>添加员工</li>
+{% endblock %}
+{#页面内容#}
+{% block content %}
+	<div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-title">
+                    <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
+                        <h3>录入人员信息</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="form-horizontal" method="POST"
+                          action="{{ url_for('view.employee_data_input') }}" id="form">
+                        <div class="form-group" style="margin-left: 15px">
+                            <label class="control-label col-md-1" for="name">姓名</label>
+                            <div class="col-md-2">
+                                <input id="name" class="form-control" type="text" name="name" placeholder="姓名" required>
+                            </div>
+                            <label class="control-label col-md-1" for="email">Email</label>
+                            <div class="col-md-3">
+                                <input id="email" class="form-control" type="email" name="email" placeholder="Email" required>
+                            </div>
+                            <label class="control-label col-md-1" for="phoneNumber">手机号码</label>
+                            <div class="col-md-3">
+                                <input id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="手机号码" required
+                                       pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
+                            </div>
+                        </div>
+                        <div class="form-group" style="margin-left: 15px">
+                            <label class="control-label col-md-1" for="certificateType">证书类型</label>
+                            <div class="col-md-2">
+                                <select id="certificateType" name="certificateType" class="form-control">
+                                    <option value="A1">A1</option>
+                                    <option value="A2">A2</option>
+                                    <option value="A3">A3</option>
+                                    <option value="A4">A4</option>
+                                    <option value="T1">T1</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-md-1" for="certificateNumber">证书号码</label>
+                            <div class="col-md-3">
+                                <input id="certificateNumber" class="form-control" type="text" name="certificateNumber" placeholder="证书号码" required>
+                            </div>
+                            <label class="control-label col-md-1" for="jobType">工作职责</label>
+                            <div class="col-md-3">
+                                <input id="jobType" class="form-control" type="text" name="jobType" placeholder="工作职责" required>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-4">
+                                    <button class="btn btn-primary icon-btn" type="submit" id="new_input"><i
+                                            class="fa fa-fw fa-lg fa-check-circle"></i>录入
+                                    </button>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="reset"><i
+                                            class="fa fa-fw fa-lg fa-refresh"></i>重置
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {% if messages %}
+                            <div class="alert alert-warning">
+                                {% for message in messages %}
+                                    {% for key in messages[message] %}
+                                        <p><strong class="text-center">{{ key }}</strong></p>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    {{ super() }}
+{% endblock %}

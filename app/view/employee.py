@@ -1,17 +1,29 @@
 __author__ = 'sky'
 
 from . import view
-from flask import render_template
+from app.models import db
+from flask import render_template, request
 from flask_login import login_required
+from app.models.employee import Employee
 
 
-@view.route('/employee_manage/')
-@login_required
-def employee_manage():
-    return render_template('employeeManage.html')
-
-
-@view.route('/employee_data_input/')
+@view.route('/employee_data_input/', methods=['GET', 'POST'])
 @login_required
 def employee_data_input():
-    return render_template('employeeInput.html')
+    if request.method == 'POST':
+        employee = Employee()
+        employee.set_attrs(request.form)
+        db.session.add(employee)
+        db.session.commit()
+        return render_template('employee/employeeInput.html')
+    else:
+        return render_template('employee/employeeInput.html')
+
+
+@view.route('/employee_manage/', methods=['GET', 'POST'])
+@login_required
+def employee_manage():
+    employees = Employee.query.all()
+    return render_template('employee/employeeManage.html', employees=employees)
+
+

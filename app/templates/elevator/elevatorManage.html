@@ -59,45 +59,45 @@
     </div>
     <!--查询结果显示表格-->
     <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <table class="table table-hover table-bordered" id="sampleTable">
-                                <thead>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover table-bordered" id="sampleTable">
+                        <thead>
+                        <tr>
+                            <th>选择</th>
+                            <th>ID</th>
+                            <th>识别码</th>
+                            <th>设备名称</th>
+                            <th>制造单位</th>
+                            <th>制造日期</th>
+                            <th>型号</th>
+                            <th>使用编号</th>
+                            <th>联系人</th>
+                            <th>联系电话</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                            {% for elevator in elevators %}
                                 <tr>
-                                    <th>选择</th>
-                                    <th>ID</th>
-                                    <th>识别码</th>
-                                    <th>设备名称</th>
-                                    <th>制造单位</th>
-                                    <th>制造日期</th>
-                                    <th>型号</th>
-                                    <th>使用编号</th>
-                                    <th>联系人</th>
-                                    <th>联系电话</th>
+                                    <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>
+                                    <td>{{ elevator.id }}</td>
+                                    <td>{{ elevator.idCode }}</td>
+                                    <td>{{ elevator.deviceName }}</td>
+                                    <td>{{ elevator.manufactureCompany }}</td>
+                                    <td>{{ elevator.manufactureDate }}</td>
+                                    <td>{{ elevator.model }}</td>
+                                    <td>{{ elevator.numberOfUse }}</td>
+                                    <td>{{ elevator.contactPerson }}</td>
+                                    <td>{{ elevator.contactNumber }}</td>
                                 </tr>
-                                </thead>
-                                <tbody>
-                                    {% for elevator in elevators %}
-                                        <tr>
-                                            <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>
-                                            <td>{{ elevator.id }}</td>
-                                            <td>{{ elevator.idCode }}</td>
-                                            <td>{{ elevator.deviceName }}</td>
-                                            <td>{{ elevator.manufactureCompany }}</td>
-                                            <td>{{ elevator.manufactureDate }}</td>
-                                            <td>{{ elevator.model }}</td>
-                                            <td>{{ elevator.numberOfUse }}</td>
-                                            <td>{{ elevator.contactPerson }}</td>
-                                            <td>{{ elevator.contactNumber }}</td>
-                                        </tr>
-                                    {% endfor %}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
+                            {% endfor %}
+                        </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+    </div>
 {% endblock %}
 <!-- Javascripts-->
 {% block script %}

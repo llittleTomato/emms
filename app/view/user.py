@@ -34,13 +34,13 @@ def user_register():
         else:
             db.session.add(user)
             db.session.commit()
-        return render_template('userRegister.html', messages={'message': ['注册成功！']})
+        return render_template('user/userRegister.html', messages={'message': ['注册成功！']})
     else:
-        return render_template('userRegister.html', messages=form.errors)
+        return render_template('user/userRegister.html', messages=form.errors)
 
 
 @view.route('/user_manage/')
 @login_required
 def user_manage():
     users = User.query.all()
-    return render_template('userManage.html', users=users)
+    return render_template('user/userManage.html', users=users)

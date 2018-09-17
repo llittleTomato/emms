@@ -1,9 +1,10 @@
+// 电梯数据初始值
 var dics = {
     'userEntityName': '特检院',
     'userEntityCode': '111111',
     'locationOfUse': 'sydd',
     'numberOfUse': 'L1',
-    'regCode': '12345678901234567890',
+    'regCode': '123456789012345678',
 };
 
 function fonfocus(the_object, defaultValue) {
