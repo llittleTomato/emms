@@ -11,8 +11,7 @@ from app.forms.elevator import ElevatorInitForm
 @view.route('/elevator_manage/')
 @login_required
 def elevator_manage():
-    # elevators = Elevator.query.all()
-    elevators = ''
+    elevators = ElevatorRoom.query.all()
     return render_template('elevator/elevatorManage.html', elevators=elevators)
 
 
@@ -36,10 +35,10 @@ def elevator_data_input_init():
 @login_required
 def elevator_basic_data_input():
     if request.method == 'POST':
+        session['form_basic'] = request.form
         if session['idCode_cp'] == '':
-            return render_template('elevator/' + + session['html'][1], elevato_cp_data='')
+            return render_template('elevator/' + session['html'][1], elevato_cp_data='')
         else:
-            session['form_basic'] = request.form
             elevator = ElevatorRoom.query.filter_by(idCode=session['idCode_cp']).first()
             return render_template('elevator/' + session['html'][1], elevator_cp_data=elevator.__dict__)
     else:
@@ -71,6 +70,6 @@ def elevator_machine_data_input():
         # 保存本次录入数据电梯的识别码，用于下次复制
         session['pre_idCode'] = form_basic['idCode']
 
-        return render_template('index.html')
+        return render_template('elevator/elevatorInput_init.html')
     else:
         return render_template('elevator/' + session['html'][1])

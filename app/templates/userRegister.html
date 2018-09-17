@@ -22,28 +22,28 @@
                             <h3>添加用户</h3>
                         </div>
                         <form class="form-group" method="POST" action="{{ url_for('view.user_register') }}">
-                            <label for="inputEmail" class="sr-only">Email</label>
-                            <input type="text" id="inputEmail" class="form-control" placeholder="Email" required
+                            <label for="email" class="sr-only">Email</label>
+                            <input type="text" id="email" class="form-control" placeholder="Email" required
                                    autofocus
                                    name="email">
-                            <label for="inputPassword" class="sr-only">密码</label>
-                            <input type="password" id="inputPassword" class="form-control" placeholder="密码" required
+                            <label for="password" class="sr-only">密码</label>
+                            <input type="password" id="password" class="form-control" placeholder="密码" required
                                    name="password">
-                            <label for="inputCompany" class="sr-only">公司</label>
-                            <input type="text" id="inputCompany" class="form-control" placeholder="公司名称" required
+                            <label for="company" class="sr-only">公司</label>
+                            <input type="text" id="company" class="form-control" placeholder="公司名称" required
                                    name="company">
-                            <label for="inputComAddress" class="sr-only">公司地址</label>
-                            <input type="text" id="inputComAddress" class="form-control" placeholder="公司地址" required
+                            <label for="company_address" class="sr-only">公司地址</label>
+                            <input type="text" id="company_address" class="form-control" placeholder="公司地址" required
                                    name="company_address">
-                            <label for="inputLinkman" class="sr-only">联系人</label>
-                            <input type="text" id="inputLinkman" class="form-control" placeholder="联系人" required
+                            <label for="linkman" class="sr-only">联系人</label>
+                            <input type="text" id="linkman" class="form-control" placeholder="联系人" required
                                    name="linkman">
-                            <label for="inputPhoneNumber" class="sr-only">手机号码</label>
-                            <input type="text" id="inputPhoneNumber" class="form-control" placeholder="手机号码 11位"
+                            <label for="phone_number" class="sr-only">手机号码</label>
+                            <input type="text" id="phone_number" class="form-control" placeholder="手机号码 11位"
                                    required
                                    name="phone_number" maxlength="11">
-                            <label for="inputAuthority" class="sr-only">权限</label>
-                            <select class="form-control" id="inputAuthority" name="authority">
+                            <label for="authority" class="sr-only">权限</label>
+                            <select class="form-control" id="authority" name="authority">
                                 <option value="super_admin">超级管理员</option>
                                 <option value="com_admin">公司管理员</option>
                                 <option value="com_person">公司普通人员</option>

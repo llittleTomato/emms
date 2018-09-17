@@ -21,16 +21,10 @@ class ElevatorBasic(Base):
     locationOfUse = Column(String(30), nullable=False, default='/')                 # 使用地点
     numberOfUse = Column(String(15), nullable=False, default='/')                   # 使用编号
     deviceName = Column(String(20), nullable=False)                                 # 设备名称
-    controlMode = Column(String(10), nullable=False, default='集选')                 # 控制方式
     manufactureDate = Column(String(10), nullable=True, default='/')                # 制造日期
     installDate = Column(String(10), nullable=True, default='/')                    # 安装日期
     renovateDate = Column(String(10), nullable=True, default='/')                   # 改造日期
     majorRepairDate = Column(String(10), nullable=True, default='/')                # 重大修理日期
-    ratedSpeed = Column(String(10), nullable=False, default='/')                    # 额定速度
-    ratedLoad = Column(String(10), nullable=False, default='/')                     # 额定载重量 kg
-    floorNumber = Column(String(10), nullable=False, default='/')                   # 层数
-    stationNumber = Column(String(10), nullable=False, default='/')                 # 站数
-    doorNumber = Column(String(10), nullable=False, default='/')                    # 门数
     safetyManager = Column(String(20), nullable=True, default='/')                  # 安全管理员
     safetyManagerCertificate = Column(String(20), nullable=True, default='/')       # 安全管理员证号
     liftAttendant = Column(String(20), nullable=True, default='/')                  # 电梯司机

@@ -11,6 +11,11 @@
     <!--数据录入-->
     <div class="row">
         <div class="col-md-12">
+{#            <div class="card">#}
+{#                <div class="card-title">#}
+{#                    <p>开始---<strong>需录入电梯信息</strong>---电梯基础信息---电梯设备信息---结束</p>#}
+{#                </div>#}
+{#            </div>#}
             <div class="card">
                 <div class="card-title">
                     <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
@@ -114,15 +119,13 @@
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
     <script type="text/javascript">
-        alert({{ session.get('pre_idCode') }});
         $("#pre_ele").click(function(){
-            if ({{ session.get('pre_idCode') }}){
+            {% if session.get('pre_idCode') %}
                 $('#idCode_cp').val("{{ session.get('pre_idCode') }}");
                 $('form').submit();
-            }
-            else{
+            {% else %}
                 alert("这是第一台，请新录入！");
-            }
-});
+            {% endif %}
+        });
     </script>
 {% endblock %}

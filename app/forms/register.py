@@ -26,7 +26,3 @@ class RegisterForm(Form):
             raise ValidationError('公司已存在公司管理员账户，不能再次注册')
         elif not User.query.filter_by(company=field.data).first() and self.authority.data == 'com_person':
             raise ValidationError('公司不存在，请先注册公司管理员账户')
-
-
-
-

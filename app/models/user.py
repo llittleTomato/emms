@@ -14,8 +14,8 @@ class User(UserMixin, Base):
     _password = Column('password', String(128), nullable=False)
     company = Column(String(64), nullable=False)
     company_address = Column(String(100), nullable=False)
-    linkman = Column(String(64), nullable=False)
-    phone_number = Column(String(11), nullable=False)
+    linkman = Column(String(10), nullable=False)
+    phone_number = Column(String(15), nullable=False)
     authority = Column(String(15), nullable=False)
 
     @property
