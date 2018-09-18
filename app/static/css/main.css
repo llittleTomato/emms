@@ -3606,13 +3606,13 @@ tbody.collapse.in {
 }
 
 .nav-tabs > li > a:hover {
-  color: #009688;
-  border-bottom-color: #009688;
+  color: #46515c;
+  border-bottom-color: #333c47;
 }
 
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
-  color: #009688;
-  border-bottom: 2px solid #009688;
+  color: #46515c;
+  border-bottom: 2px solid #333c47;
   cursor: default;
 }
 
@@ -3630,7 +3630,7 @@ tbody.collapse.in {
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
   color: #fff;
-  background-color: #009688;
+  background-color: #46515c;
 }
 
 .nav-stacked > li {
@@ -4137,12 +4137,12 @@ tbody.collapse.in {
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
   color: #eee;
-  background-color: #00756a;
+  background-color: #46515c;
 }
 
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
   color: #fff;
-  background-color: #00756a;
+  background-color: #46515c;
 }
 
 .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
@@ -4168,7 +4168,7 @@ tbody.collapse.in {
 }
 
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-  background-color: #00756a;
+  background-color: #46515c;
   color: #fff;
 }
 
@@ -4178,11 +4178,11 @@ tbody.collapse.in {
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
     color: #eee;
-    background-color: #00756a;
+    background-color: #46515c;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
     color: #fff;
-    background-color: #00756a;
+    background-color: #46515c;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
     color: #ccc;
@@ -4330,7 +4330,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 }
 
 .breadcrumb > li + li:before {
-  content: "/ ";
+  content: "> ";
   padding: 0 5px;
   color: #ccc;
 }
@@ -4380,7 +4380,7 @@ fieldset[disabled] .navbar-inverse .btn-link:focus {
 .pagination > li > span:hover,
 .pagination > li > span:focus {
   z-index: 2;
-  color: #004a43;
+  color: #46515c;
   background-color: #eeeeee;
   border-color: #ddd;
 }
@@ -13574,12 +13574,12 @@ be a descendant of the grid when it is being dragged.
 
 ::-moz-selection {
   color: #FFF;
-  background-color: #00635a;
+  background-color: #46515c;
 }
 
 ::selection {
   color: #FFF;
-  background-color: #00635a;
+  background-color: #46515c;
 }
 
 .main-header .navbar {
@@ -13670,12 +13670,12 @@ be a descendant of the grid when it is being dragged.
 }
 
 .only-sidebar.sidebar-collapse .sidebar .logo .sidebar-toggle {
-  color: #009688;
+  color: #46515c;
 }
 
 .only-sidebar .sidebar .logo {
   color: #FFF;
-  background-color: #009688;
+  background-color: #46515c;
 }
 
 .only-sidebar .sidebar .logo .sidebar-toggle {
@@ -15428,7 +15428,7 @@ be a descendant of the grid when it is being dragged.
 }
 
 .user .user-tabs > li.active > a {
-  border-left: 3px solid #009688;
+  border-left: 3px solid #46515c;
   border-bottom: 0;
   background-color: #eee !important;
 }

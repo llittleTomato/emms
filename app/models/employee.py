@@ -13,3 +13,4 @@ class Employee(Base):
     certificateType = Column(String(20), nullable=True)                                    # 证件类型
     certificateNumber = Column(String(20), nullable=True)                                  # 证件号码
     jobType = Column(String(20), nullable=True)                                            # 工作职责（维保，急修，检验，审核）
+
