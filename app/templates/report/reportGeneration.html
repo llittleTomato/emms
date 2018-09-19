@@ -1,12 +1,38 @@
 {% extends "index.html" %}
+{% block linkcss %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='css/reporttable.css') }}"></script>
+{% endblock %}
 {% block title %}
     报告生成
 {% endblock %}
 {% block page_nav %}
     <li>报告</li>
-    <li>报告生成</li>
+    <li>报告录入</li>
 {% endblock %}
 {#页面内容#}
 {% block content %}
-	<h1>报告生成</h1>
+	<!--查询条件-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <form class="form-horizontal" method="POST"
+                              action="{{ url_for('view.report_generation') }}" id="form">
+                    <h4 class="text-center">曳引驱动乘客电梯年度自检报告</h4>
+                    <table class="table-bordered">
+                        <tr>
+                            <td>使用单位名称</td>
+                            <td>是的发送到发送到发的说法</td>
+                            <td>报告编号</td>
+                            <td>00000011111</td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!-- Javascripts-->
+{% block script %}
+	{{ super() }}
 {% endblock %}

@@ -92,17 +92,17 @@ class ElevatorNoRoom(ElevatorBasic):
     id = Column(Integer, primary_key=True, autoincrement=True)                          # 数据编号
 
 
-class Escalator(Base):
+class Escalator(ElevatorBasic):
     __tablename__ = 'escalator'
     id = Column(Integer, primary_key=True, autoincrement=True)                          # 数据编号
 
 
-class PassengerConveyor(Base):
+class PassengerConveyor(ElevatorBasic):
     __tablename__ = 'passenger_conveyor'
     id = Column(Integer, primary_key=True, autoincrement=True)                          # 数据编号
 
 
-class DumbWaiter(Base):
+class DumbWaiter(ElevatorBasic):
     __tablename__ = 'dumb_waiter'
     id = Column(Integer, primary_key=True, autoincrement=True)  # 数据编号
 

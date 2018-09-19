@@ -1,0 +1,116 @@
+{% extends "index.html" %}
+{% block title %}
+    报告生成
+{% endblock %}
+{% block page_nav %}
+    <li>报告</li>
+    <li>报告生成</li>
+{% endblock %}
+{#页面内容#}
+{% block content %}
+	<!--查询条件-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-title">
+                    <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
+                        <h3>录入电梯定期检验自检报告信息</h3>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form class="form-horizontal" method="POST"
+                          action="{{ url_for('view.report_init') }}" id="form">
+                        <div class="form-group" style="margin-left: 15px">
+                            <label class="control-label col-md-1 col-md-offset-1" for="reportID">报告编号</label>
+                            <div class="col-md-2">
+                                <input id="reportID" class="form-control" type="text" name="reportID" placeholder="报告编号" required>
+                            </div>
+                            <label class="control-label col-md-1" for="idCode">识别码</label>
+                            <div class="col-md-2">
+                                <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码" required
+                                       onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
+                            </div>
+                            <label class="control-label col-md-1" for="deviceName">设备名称</label>
+                            <div class="col-md-3">
+                                <select id="deviceName" name="deviceName" class="form-control">
+                                    <option value="曳引驱动乘客电梯" selected="selected">曳引驱动乘客电梯</option>
+                                    <option value="曳引驱动乘客电梯(无机房)">曳引驱动乘客电梯(无机房)</option>
+                                    <option value="自动扶梯">自动扶梯</option>
+                                    <option value="自动人行道">自动人行道</option>
+                                    <option value="杂物电梯">杂物电梯</option>
+                                    <option value="液压电梯">液压电梯</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-md-2 col-md-offset-4">
+                                    <button class="btn btn-primary icon-btn" type="submit" id="new_input"><i
+                                            class="fa fa-fw fa-lg fa-check-circle"></i>生成
+                                    </button>
+                                </div>
+                                <!-- 点击复制，弹出页面 -->
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="button" data-toggle="modal"
+                                            data-target="#myModal"><i class="fa fa-fw fa-lg fa-check-circle"></i>复制
+                                    </button>
+                                </div>
+                                <!-- 弹出页面 -->
+                                <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                     aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                </button>
+                                                <h4 class="modal-title" id="myModalLabel">选择被复制电梯</h4>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <label class="control-label col-md-2 col-md-offset-2" for="idCode_cp">识别码</label>
+                                                    <div class="col-md-6">
+                                                        <input id="idCode_cp" class="form-control" type="text" name="idCode_cp" placeholder="识别码" onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <div class="col-md-3 col-md-offset-2">
+                                                    <button type="button" class="btn btn-primary" id="pre_ele">复制上一台</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-primary" id="cp_bt">复制</button>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <button type="button" class="btn btn-default" id="close_bt" data-dismiss="modal">关闭</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <button class="btn btn-primary icon-btn" type="reset"><i
+                                            class="fa fa-fw fa-lg fa-refresh"></i>重置
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        {% if messages %}
+                            <div class="alert alert-warning">
+                                {% for message in messages %}
+                                    {% for key in messages[message] %}
+                                        <p><strong class="text-center">{{ key }}</strong></p>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!-- Javascripts-->
+{% block script %}
+	{{ super() }}
+{% endblock %}
