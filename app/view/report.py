@@ -29,7 +29,7 @@ def report_manage():
     return render_template('report/reportManage.html')
 
 
-@view.route('/report_show/', methods=['GET', 'POST'])
+@view.route('/report_show/')
 @login_required
 def report_show():
     return render_template('report/reportShow.html')
