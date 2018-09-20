@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+{% block linkcss %}
+    {{ super() }}
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+{% endblock %}
+{% block title %}
+    报告生成
+{% endblock %}
+{% block page_nav %}
+    <li>报告</li>
+    <li>报告录入</li>
+{% endblock %}
+{#页面内容#}
+{% block content %}
+	<!--查询条件-->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <a class="media" href="{{ url_for('file', filename='test.pdf') }}"></a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+<!-- Javascripts-->
+{% block script %}
+	{{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.media.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('a.media').media(width=1200, height=1000);
+        });
+    </script>
+{% endblock %}

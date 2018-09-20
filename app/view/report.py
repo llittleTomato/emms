@@ -27,3 +27,9 @@ def report_generation():
 @login_required
 def report_manage():
     return render_template('report/reportManage.html')
+
+
+@view.route('/report_show/', methods=['GET', 'POST'])
+@login_required
+def report_show():
+    return render_template('report/reportShow.html')
