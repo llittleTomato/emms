@@ -7,10 +7,10 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/pdfobject.js') }}"></script>
 </head>
 <body>
-    <div id="pdf_viewer" style="width: 100%; height: 100%"></div>
+    <div id="pdf_viewer"></div>
     <script type="text/javascript">
         if (PDFObject.supportsPDFs){
-            PDFObject.embed('{{ url_for('static', filename='reportfile/test.pdf') }}', '#pdf_viewer');
+            PDFObject.embed('/static/reportfile/' + '{{ filename }}', '#pdf_viewer');
         }
         else {
             location.href = "/canvas";

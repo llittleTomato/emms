@@ -18,40 +18,15 @@
             <div class="card">
                 <div class="card-body">
                     <form class="form-horizontal" method="POST"
-                          action="{{ url_for('view.report_manage') }}" id="form">
+                          action="{{ url_for('view.report_generation') }}" id="form">
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="name">姓名</label>
+                            <label class="control-label col-md-1 col-md-offset-2" for="idCode">识别码</label>
                             <div class="col-md-2">
-                                <input id="name" class="form-control" type="text" name="name" placeholder="姓名" required>
+                                <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码">
                             </div>
-                            <label class="control-label col-md-1" for="email">Email</label>
-                            <div class="col-md-3">
-                                <input id="email" class="form-control" type="email" name="email" placeholder="Email" required>
-                            </div>
-                            <label class="control-label col-md-1" for="phoneNumber">手机号码</label>
-                            <div class="col-md-3">
-                                <input id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="手机号码" required
-                                       pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
-                            </div>
-                        </div>
-                        <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="certificateType">证书类型</label>
-                            <div class="col-md-2">
-                                <select id="certificateType" name="certificateType" class="form-control">
-                                    <option value="A1">A1</option>
-                                    <option value="A2">A2</option>
-                                    <option value="A3">A3</option>
-                                    <option value="A4">A4</option>
-                                    <option value="T1">T1</option>
-                                </select>
-                            </div>
-                            <label class="control-label col-md-1" for="certificateNumber">证书号码</label>
-                            <div class="col-md-3">
-                                <input id="certificateNumber" class="form-control" type="text" name="certificateNumber" placeholder="证书号码" required>
-                            </div>
-                            <label class="control-label col-md-1" for="jobType">工作职责</label>
-                            <div class="col-md-3">
-                                <input id="jobType" class="form-control" type="text" name="jobType" placeholder="工作职责" required>
+                            <label class="control-label col-md-1" for="email">使用单位</label>
+                            <div class="col-md-4">
+                                <input id="userEntityName" class="form-control" type="text" name="userEntityName" placeholder="使用单位">
                             </div>
                         </div>
                         <div class="card-footer">
@@ -81,27 +56,29 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th>选择</th>
                             <th>ID</th>
-                            <th>姓名</th>
-                            <th>Email</th>
-                            <th>手机号码</th>
-                            <th>证件类型</th>
-                            <th>证件号码</th>
-                            <th>工作职责</th>
+                            <th>识别码</th>
+                            <th>使用单位</th>
+                            <th>设备名称</th>
+                            <th>报告编号</th>
+                            <th>限速器校验日期</th>
+                            <th>限速器动作速度</th>
+                            <th>对重缓冲器距离</th>
+                            <th>重载试验</th>
                         </tr>
                         </thead>
                         <tbody>
-                            {% for employee in employees %}
+                            {% for elevator in elevators %}
                                 <tr>
-                                    <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>
-                                    <td>{{ employee.id }}</td>
-                                    <td>{{ employee.name }}</td>
-                                    <td>{{ employee.email }}</td>
-                                    <td>{{ employee.phoneNumber }}</td>
-                                    <td>{{ employee.certificateType }}</td>
-                                    <td>{{ employee.certificateNumber }}</td>
-                                    <td>{{ employee.jobType }}</td>
+                                    <td>{{ elevator.id }}</td>
+                                    <td>{{ elevator.idCode }}</td>
+                                    <td>{{ elevator.userEntityName }}</td>
+                                    <td>{{ elevator.deviceName }}</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
                                 </tr>
                             {% endfor %}
                         </tbody>

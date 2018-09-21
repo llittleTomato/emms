@@ -3,13 +3,16 @@ __author__ = 'sky'
 from . import view
 from flask import render_template, request
 from flask_login import login_required
+from app.models.elevator import ElevatorRoom
 
 
 @view.route('/report_generation/', methods=['GET', 'POST'])
 @login_required
 def report_generation():
     if request.method == 'POST':
-        return render_template('report/reportGeneration.html')
+        # elevators = ElevatorRoom.query.filter_by(idCode=request.form['idCode']).first()
+        elevators = ElevatorRoom.query.all()
+        return render_template('report/reportGeneration.html', elevators=elevators)
     else:
         return render_template('report/reportGeneration.html')
 
@@ -23,4 +26,5 @@ def report_manage():
 @view.route('/report_show/', methods=['GET'])
 @login_required
 def report_show():
-    return render_template('report/reportShow.html')
+    filename = 'test.pdf'
+    return render_template('report/reportShow.html', filename=filename)
