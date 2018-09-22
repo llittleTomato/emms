@@ -10,3 +10,4 @@ from . import elevatorBasic, elevator
 from . import employee
 from . import user, userUnit
 from . import company
+from . import report

@@ -18,7 +18,7 @@
             <div class="card">
                 <div class="card-body">
                     <form class="form-horizontal" method="POST"
-                          action="{{ url_for('view.report_generation') }}" id="form_query">
+                          action="{{ url_for('view.report_generation') }}" id="form_query" name="form_query">
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1 col-md-offset-2" for="idCode">识别码</label>
                             <div class="col-md-2">
@@ -54,51 +54,60 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-hover table-bordered" id="sampleTable">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>识别码</th>
-                            <th>使用单位</th>
-                            <th>设备名称</th>
-                            <th>报告编号</th>
-                            <th>限速器校验日期</th>
-                            <th>限速器动作速度</th>
-                            <th>对重缓冲器距离</th>
-                            <th>重载试验</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for i, elevator in elevators %}
-                            <tr>
-                                <td>{{ i+1 }}</td>
-                                <td>{{ elevator.idCode }}</td>
-                                <td>{{ elevator.userEntityName }}</td>
-                                <td>{{ elevator.deviceName }}</td>
-                                <td>
-                                    <input id="reportID" class="form-control" type="text" name="reportID"
-                                           placeholder="报告编号">
-                                </td>
-                                <td>
-                                    <input id="governorCheckDate" class="form-control datepicker" type="text"
-                                           name="governorCheckDate" placeholder="校验日期" required>
-                                </td>
-                                <td>
-                                    <input id="governorSpeed" class="form-control" type="text" name="governorSpeed"
-                                           placeholder="校验速度(m/s)" required>
-                                </td>
-                                <td>
-                                    <input id="counterweightOverrunDistance" class="form-control" type="text"
-                                           name="counterweightOverrunDistance" placeholder="对重缓冲距(mm)" required>
-                                </td>
-                                <td>
-                                    <input id="counterweightOverrunDistance" class="form-control" type="text"
-                                           name="counterweightOverrunDistance" placeholder="对重缓冲距(mm)" required>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                        </tbody>
-                    </table>
+                    <form class="form-horizontal" method="POST"
+                          action="{{ url_for('view.report_generation') }}" id="form_table" name="form_table">
+                        <table class="table table-hover table-bordered" id="sampleTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>识别码</th>
+                                    <th>使用单位</th>
+                                    <th>设备名称</th>
+                                    <th>报告编号</th>
+                                    <th>限速器校验日期</th>
+                                    <th>限速器动作速度</th>
+                                    <th>对重缓冲器距离</th>
+                                    <th>重载试验</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for i, elevator in elevators %}
+                                <tr>
+                                    <td>{{ i+1 }}</td>
+                                    <td>
+                                        <input id="idCode" class="form-control" type="text"
+                                               name="{{ i+1 }}" placeholder="识别码" readonly value="{{ elevator.idCode }}">
+                                    </td>
+                                    <td>{{ elevator.userEntityName }}</td>
+                                    <td>{{ elevator.deviceName }}</td>
+                                    <td>
+                                        <input id="reportID" class="form-control" type="text"
+                                               name="reportID_{{ elevator.idCode }}"
+                                               placeholder="报告编号">
+                                    </td>
+                                    <td>
+                                        <input id="governorCheckDate" class="form-control datepicker" type="text"
+                                               name="governorCheckDate_{{ elevator.idCode }}" placeholder="校验日期">
+                                    </td>
+                                    <td>
+                                        <input id="governorSpeed" class="form-control" type="text"
+                                               name="governorSpeed_{{ elevator.idCode }}"
+                                               placeholder="校验速度(m/s)">
+                                    </td>
+                                    <td>
+                                        <input id="counterweightOverrunDistance" class="form-control" type="text"
+                                               name="counterweightOverrunDistance_{{ elevator.idCode }}"
+                                               placeholder="对重缓冲距(mm)">
+                                    </td>
+                                    <td>
+                                        <input id="brakeTest" class="form-control" type="text"
+                                               name="brakeTest_{{ elevator.idCode }}" placeholder="制动试验">
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </form>
                 </div>
                 <div class="card-footer">
                     <div class="row">
@@ -126,6 +135,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript">
         $('#sampleTable').DataTable();
         $("#bt_query").click(function () {
@@ -135,6 +145,10 @@
             else {
                 $('#form_query').submit();
             }
+        });
+        $("#bt_generation").click(function () {
+
+            $('#form_table').submit();
         });
     </script>
 {% endblock %}
