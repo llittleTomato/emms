@@ -12,27 +12,28 @@
 {% endblock %}
 {#页面内容#}
 {% block content %}
-	<!--查询条件-->
+    <!--查询条件-->
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
                     <form class="form-horizontal" method="POST"
-                          action="{{ url_for('view.report_generation') }}" id="form">
+                          action="{{ url_for('view.report_generation') }}" id="form_query">
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1 col-md-offset-2" for="idCode">识别码</label>
                             <div class="col-md-2">
                                 <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码">
                             </div>
-                            <label class="control-label col-md-1" for="email">使用单位</label>
+                            <label class="control-label col-md-1" for="userEntityName">使用单位</label>
                             <div class="col-md-4">
-                                <input id="userEntityName" class="form-control" type="text" name="userEntityName" placeholder="使用单位">
+                                <input id="userEntityName" class="form-control" type="text" name="userEntityName"
+                                       placeholder="使用单位">
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-2 col-md-offset-4">
-                                    <button class="btn btn-primary icon-btn" type="submit" id="new_input"><i
+                                    <button class="btn btn-primary icon-btn" type="button" id="bt_query"><i
                                             class="fa fa-fw fa-lg fa-check-circle"></i>查询
                                     </button>
                                 </div>
@@ -68,21 +69,50 @@
                         </tr>
                         </thead>
                         <tbody>
-                            {% for elevator in elevators %}
-                                <tr>
-                                    <td>{{ elevator.id }}</td>
-                                    <td>{{ elevator.idCode }}</td>
-                                    <td>{{ elevator.userEntityName }}</td>
-                                    <td>{{ elevator.deviceName }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            {% endfor %}
+                        {% for i, elevator in elevators %}
+                            <tr>
+                                <td>{{ i+1 }}</td>
+                                <td>{{ elevator.idCode }}</td>
+                                <td>{{ elevator.userEntityName }}</td>
+                                <td>{{ elevator.deviceName }}</td>
+                                <td>
+                                    <input id="reportID" class="form-control" type="text" name="reportID"
+                                           placeholder="报告编号">
+                                </td>
+                                <td>
+                                    <input id="governorCheckDate" class="form-control datepicker" type="text"
+                                           name="governorCheckDate" placeholder="校验日期" required>
+                                </td>
+                                <td>
+                                    <input id="governorSpeed" class="form-control" type="text" name="governorSpeed"
+                                           placeholder="校验速度(m/s)" required>
+                                </td>
+                                <td>
+                                    <input id="counterweightOverrunDistance" class="form-control" type="text"
+                                           name="counterweightOverrunDistance" placeholder="对重缓冲距(mm)" required>
+                                </td>
+                                <td>
+                                    <input id="counterweightOverrunDistance" class="form-control" type="text"
+                                           name="counterweightOverrunDistance" placeholder="对重缓冲距(mm)" required>
+                                </td>
+                            </tr>
+                        {% endfor %}
                         </tbody>
                     </table>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-4">
+                            <button class="btn btn-primary icon-btn" type="button" id="bt_generation"><i
+                                    class="fa fa-fw fa-lg fa-check-circle"></i>生成报告
+                            </button>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary icon-btn" type="reset"><i
+                                    class="fa fa-fw fa-lg fa-refresh"></i>重置
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,12 +120,21 @@
 {% endblock %}
 <!-- Javascripts-->
 {% block script %}
-	{{ super() }}
+    {{ super() }}
     {#    表格加载用js，以下4个js必须同时使用    #}
     {#    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>    已经在base.html文件中加载，无需再次加载#}
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
     <script type="text/javascript">
         $('#sampleTable').DataTable();
+        $("#bt_query").click(function () {
+            if (($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
+                ShowFailure('请输入查询条件');
+            }
+            else {
+                $('#form_query').submit();
+            }
+        });
     </script>
 {% endblock %}

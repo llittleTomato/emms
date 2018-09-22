@@ -3,7 +3,7 @@ __author__ = 'sky'
 from . import view
 from app.models import db
 from flask import render_template, request, session, redirect, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models.elevator import lift_class_choose, lift_html_choose, ElevatorRoom
 from app.forms.elevator import ElevatorInitForm
 
@@ -12,7 +12,7 @@ from app.forms.elevator import ElevatorInitForm
 @login_required
 def elevator_manage():
     elevators = ElevatorRoom.query.all()
-    return render_template('elevator/elevatorManage.html', elevators=elevators)
+    return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
 
 
 @view.route('/elevator_data_input_init/', methods=['GET', 'POST'])
@@ -52,6 +52,9 @@ def elevator_machine_data_input():
         form_basic = session['form_basic']
         form_machine = request.form.to_dict()
 
+        # 设置电梯维保单位
+        form_basic['maintenanceCompany'] = current_user.company
+
         # 根据表单内容完善电梯信息
         if form_machine['controlMode'] == '信号':
             form_machine['carDoorAntiClamp'] = '无'
@@ -62,8 +65,12 @@ def elevator_machine_data_input():
 
         # 根据设备名称选择数据库
         elevator = lift_class_choose(form_basic['deviceName'])
+
+        # 将表单内容写入电梯类内属性
         elevator.set_attrs(form_basic)
         elevator.set_attrs(form_machine)
+
+        # 将数据写入数据库
         db.session.add(elevator)
         db.session.commit()
 

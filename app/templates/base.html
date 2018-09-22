@@ -44,7 +44,7 @@
                 <!-- Sidebar Menu-->
                 <ul class="sidebar-menu">
 	                {% block nav_sidebar %}
-                        {% if session['authority'] == 'super_admin' %}
+                        {% if current_user.authority == 'super_admin' %}
                             <li><a href="{{ url_for('view.index') }}"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
                             <li class="treeview"><a href="#"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span></a>
                                 <ul class="treeview-menu">
@@ -71,7 +71,7 @@
                                     <li><a href="{{ url_for('view.user_manage') }}"><i class="fa fa-users fa-fw"></i> 用户管理</a></li>
                                 </ul>
                             </li>
-                        {% elif session['authority'] == 'com_admin' %}
+                        {% elif current_user.authority == 'com_admin' %}
                             <li><a href="{{ url_for('view.index') }}"><i class="fa fa-home fa-fw fa-lg"></i><span>首页</span></a></li>
                             <li class="treeview"><a href="#"><i class="fa fa-cog fa-fw fa-lg"></i><span>电梯</span></a>
                                 <ul class="treeview-menu">
@@ -92,7 +92,7 @@
                                     <li><a href="{{ url_for('view.report_show') }}" target="_blank"><i class="fa fa-files-o fa-fw"></i> 报告查看</a></li>
                                 </ul>
                             </li>
-                        {% elif session['authority'] == 'com_person' %}
+                        {% elif current_user.authority == 'com_person' %}
                             <li class="treeview"><a href="#"><i class="fa fa-file-text-o fa-fw fa-lg"></i><span>报告</span></a>
                                 <ul class="treeview-menu">
                                     <li><a href="{{ url_for('view.report_generation') }}"><i class="fa fa-edit fa-fw"></i> 报告生成</a></li>

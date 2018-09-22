@@ -77,15 +77,6 @@ class ElevatorRoom(ElevatorBasic):
     brakeTest = Column(String(10), nullable=False, default='无')                         # 制动试验
     balanceCoefficient = Column(String(10), nullable=False, default='45')                # 平衡系数 0.40-0.50之间
 
-    # 维保信息
-    maintenanceContractNumber = Column(String(20), nullable=True, default='/')          # 维保合同编号
-    maintenanceStartDate = Column(String(10), nullable=True, default='/')               # 维保开始日期
-    maintenanceEndDate = Column(String(10), nullable=True, default='/')                 # 维保结束日期
-    maintenancePersonA = Column(String(10), nullable=False, default='/')                # 维保人员 A
-    maintenancePersonB = Column(String(10), nullable=False, default='/')                # 维保人员 B
-    maintenanceLevel = Column(String(10), nullable=False, default='A')                  # 维保等级 A，B...
-    maintenanceRemark = Column(String(300), nullable=False, default='/')                # 维保备注
-
 
 class ElevatorNoRoom(ElevatorBasic):
     __tablename__ = 'elevator_no_room'

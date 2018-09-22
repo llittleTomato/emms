@@ -17,10 +17,6 @@ def login():
             login_user(user, remember=form.remember_me.data)
             next = request.args.get('next')
             if not next or not next.startswith('/'):
-                session['authority'] = user.authority    # session中保存登录用户权限
-                if user.authority != 'super_admin':
-                    company = Company.query.filter_by(company=user.company).first()
-                    session['company_id'] = company.id    # 当公司的用户登录时，session中保存公司编号，用来查询elevator+id数据表
                 return render_template('index.html')
             return redirect(next)
         else:

@@ -8,8 +8,8 @@ class ElevatorBasic(Base):
     __abstract__ = True
     # 电梯基础信息
     id = Column(Integer, primary_key=True, autoincrement=True)                      # 数据编号
-    idCode = Column(String(6), unique=True, nullable=False)                         # 识别码
-    regCode = Column(String(18), unique=True, nullable=False)                       # 注册代码
+    idCode = Column(String(6), nullable=False)                                      # 识别码
+    regCode = Column(String(18), nullable=False)                                    # 注册代码
     model = Column(String(30), nullable=False, default='/')                         # 型号
     factoryNumber = Column(String(20), nullable=False, default='/')                 # 出厂编号
     manufactureCompany = Column(String(50), nullable=False, default='/')            # 制造单位
@@ -31,3 +31,13 @@ class ElevatorBasic(Base):
     liftAttendantCertificate = Column(String(20), nullable=True, default='/')       # 司机证号
     contactPerson = Column(String(10), nullable=True, default='/')                  # 联系人
     contactNumber = Column(String(15), nullable=True, default='/')                  # 联系电话
+
+    # 维保信息
+    maintenanceCompany = Column(String(100), nullable=False, default='/')           # 维保单位
+    maintenanceContractNumber = Column(String(20), nullable=True, default='/')      # 维保合同编号
+    maintenanceStartDate = Column(String(10), nullable=True, default='/')           # 维保开始日期
+    maintenanceEndDate = Column(String(10), nullable=True, default='/')             # 维保结束日期
+    maintenancePersonA = Column(String(10), nullable=False, default='/')            # 维保人员 A
+    maintenancePersonB = Column(String(10), nullable=False, default='/')            # 维保人员 B
+    maintenanceLevel = Column(String(10), nullable=False, default='A')              # 维保等级 A，B...
+    maintenanceRemark = Column(String(300), nullable=False, default='/')            # 维保备注
