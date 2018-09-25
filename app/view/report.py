@@ -20,22 +20,22 @@ def report_generation():
             return render_template('report/reportGeneration.html', elevators=enumerate(elevators))
         else:     # 判断是报告数据提交
             data = request.form.to_dict()
-            rowcount = (len(data)-1)//6
-            for count in range(1, rowcount+1):
-                report = ReportElevatorRoom()
-                idcode = data.get(str(count))
-                elevator = ElevatorRoom.query.filter_by(idCode=idcode).first()
-                elevatorValue = elevator.__dict__
-                del elevatorValue['_sa_instance_state']
-                report.set_attrs(elevatorValue)
-                report.reportID = data.get('reportID_'+idcode)
-                report.governorCheckDate = data.get('governorCheckDate_'+idcode)
-                report.governorSpeed = data.get('governorSpeed_'+idcode)
-                report.counterweightOverrunDistance = data.get('counterweightOverrunDistance_'+idcode)
-                report.brakeTest = data.get('brakeTest_'+idcode)
-                report.reportYear = '2018'
-                db.session.add(report)
-                db.session.commit()
+            for key in data:
+                if 'reportID' in key:
+                    idcode = data[key].replace('reportID', '')
+                    report = ReportElevatorRoom()
+                    elevator = ElevatorRoom.query.filter_by(idCode=idcode).first()
+                    elevatorvalue = elevator.__dict__
+                    del elevatorvalue['_sa_instance_state']
+                    report.set_attrs(elevatorvalue)
+                    report.reportID = data.get('reportID'+idcode)
+                    report.governorCheckDate = data.get('governorCheckDate'+idcode)
+                    report.governorSpeed = data.get('governorSpeed'+idcode)
+                    report.counterweightOverrunDistance = data.get('counterweightOverrunDistance'+idcode)
+                    report.brakeTest = data.get('brakeTest'+idcode)
+                    report.reportYear = '2018'
+                    db.session.add(report)
+                    db.session.commit()
             return render_template('report/reportGeneration.html')
     else:
         return render_template('report/reportGeneration.html')

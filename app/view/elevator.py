@@ -76,6 +76,7 @@ def elevator_machine_data_input():
 
         # 保存本次录入数据电梯的识别码，用于下次复制
         session['pre_idCode'] = form_basic['idCode']
+        session.pop('form_basic', None)
 
         return render_template('elevator/elevatorInput_init.html')
     else:

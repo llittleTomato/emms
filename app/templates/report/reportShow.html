@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="pdfview">
 <head>
     <meta charset="UTF-8">
     <title>自检报告</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/report.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='js/pdfobject.js') }}"></script>
 </head>
-<body>
+<body class="pdfview">
     <div id="pdf_viewer"></div>
     <script type="text/javascript">
         if (PDFObject.supportsPDFs){

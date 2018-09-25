@@ -1854,7 +1854,7 @@ table th[class*="col-"] {
 }
 
 .table-responsive {
-  overflow-x: auto;
+  overflow-x: scroll;
   min-height: 0.01%;
 }
 
@@ -1963,6 +1963,15 @@ input[type="checkbox"]:focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
+}
+
+input::-webkit-input-placeholder {
+  /* placeholder颜色  */
+  color: #000000;
+  /* placeholder字体大小  */
+  font-size: 14px;
+  /* placeholder位置  */
+  text-align: center;
 }
 
 output {
@@ -14387,6 +14396,10 @@ be a descendant of the grid when it is being dragged.
   margin-top: 5px;
   text-align: left;
   padding: 0;
+}
+
+.breadcrumb > li {
+  font-size: 16px;
 }
 
 @media (max-width: 480px) {
