@@ -1,12 +1,13 @@
 __author__ = 'sky'
 
 from . import view
-from flask import render_template, request
+from flask import render_template, request, url_for
 from flask_login import login_required
 from app.models import db
 from app.models.elevator import ElevatorRoom
 from app.models.report import ReportElevatorRoom
 from sqlalchemy import or_, and_
+from docxtpl import DocxTemplate
 
 
 @view.route('/report_generation/', methods=['GET', 'POST'])
@@ -34,8 +35,13 @@ def report_generation():
                     report.counterweightOverrunDistance = data.get('counterweightOverrunDistance'+idcode)
                     report.brakeTest = data.get('brakeTest'+idcode)
                     report.reportYear = '2018'
+
+                    # 录入数据库
                     db.session.add(report)
                     db.session.commit()
+
+                    # 生成docx文件
+
             return render_template('report/reportGeneration.html')
     else:
         return render_template('report/reportGeneration.html')
@@ -52,3 +58,15 @@ def report_manage():
 def report_show():
     filename = 'test.pdf'
     return render_template('report/reportShow.html', filename=filename)
+
+
+@view.route('/report_test/', methods=['GET'])
+@login_required
+def report_test():
+    # doc = DocxTemplate(url_for('static', filename='reportpdf/elevator_room.docx'))
+    doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
+    context = {'company': '特检院'}
+    doc.render(context)
+    doc.save('app/static/reportpdf/test.docx')
+    return render_template('report/reporttest.html')
+
