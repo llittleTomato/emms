@@ -65,7 +65,7 @@ def report_show():
 def report_test():
     # doc = DocxTemplate(url_for('static', filename='reportpdf/elevator_room.docx'))
     doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
-    context = {'company': '特检院'}
+    context = {'company': 'ok'}
     doc.render(context)
     doc.save('app/static/reportpdf/test.docx')
     return render_template('report/reporttest.html')
