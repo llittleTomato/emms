@@ -1,0 +1,26 @@
+自检结果处所有原代码+R，自检结论处所有原代码英文首字母缩写
+轿厢装修 读卡器等未写代码
+1.4（5）需要对安全管理人员证号做判断，未填写则该项无此项
+3.7 carWellCle 根据carDoorLock判断 单位是mm （默认是0.15，或为"/"）
+6.12 根据doorVaneAndRoller判断doorVane的数值（默认5，或为"/"）
+
+注释        原代码        现代码
+额定速度    ratedSpeed    rSpeed
+额定载重量  ratedLoad     rLoad
+层数        floorNumber   fN
+站数        stationNumber sN
+门数        doorNumber    dN
+安全管理员  safetyManager saM
+电梯司机    liftAttendant liA
+维保开始日期 maintenanceStartDate mSDate
+维保结束日期 maintenanceEndDate   mEDate
+制动器故障保护 brakeFaultProtect  brakeFProtect
+紧急电动运行装置 emergencyElectricOperate  emEOperate
+轿厢井道壁距离 carWellClearance  carWellCle 
+对重越程距离   counterweightOverrunDistance  cwOvDis
+补偿链（绳）电气安全装置 compensateRopeSwitch  compSwitch
+补偿绳防跳装置  compensateRopeAntiRebound  compRebound
+松绳保护  ropeCreepProtect  ropeCreep
+轿门开门限制装置  carDoorRestrictedOpen  carDoorRestrOp
+防夹人保护 carDoorAntiClamp  DoorAntiClamp
+对重安全钳  counterweightSafetyGear  cwSaftyGear
