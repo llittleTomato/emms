@@ -26,19 +26,20 @@ def report_generation():
                     idcode = data[key].replace('reportID', '')
                     report = ReportElevatorRoom()
                     elevator = ElevatorRoom.query.filter_by(idCode=idcode).first()
-                    elevatorvalue = elevator.__dict__
-                    del elevatorvalue['_sa_instance_state']
-                    report.set_attrs(elevatorvalue)
-                    report.reportID = data.get('reportID'+idcode)
-                    report.governorCheckDate = data.get('governorCheckDate'+idcode)
-                    report.governorSpeed = data.get('governorSpeed'+idcode)
-                    report.counterweightOverrunDistance = data.get('counterweightOverrunDistance'+idcode)
-                    report.brakeTest = data.get('brakeTest'+idcode)
-                    report.reportYear = '2018'
+                    report_data = elevator.__dict__
+                    del report_data['_sa_instance_state']
+                    report_data['reportID'] = data.get('reportID'+idcode)
+                    report_data['governorCheckDate'] = data.get('governorCheckDate'+idcode)
+                    report_data['governorSpeed'] = data.get('governorSpeed'+idcode)
+                    report_data['counterweightOverrunDistance'] = data.get('counterweightOverrunDistance'+idcode)
+                    report_data['brakeTest'] = data.get('brakeTest'+idcode)
+                    report_data['reportYear'] = '2018'
+
+                    report.set_attrs(report_data)
 
                     # 录入数据库
-                    db.session.add(report)
-                    db.session.commit()
+                    # db.session.add(report)
+                    # db.session.commit()
 
                     # 生成docx文件
 
