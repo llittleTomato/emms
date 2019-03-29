@@ -20,25 +20,25 @@
                 <div class="card-body">
                     <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="ratedSpeed">额定速度</label>
+                            <label class="control-label col-md-1" for="rSpeed">额定速度</label>
                             <div class="col-md-2">
-                                <input id="ratedSpeed" class="form-control" type="text" name="ratedSpeed" placeholder="额定速度(m/s)" required>
+                                <input id="rSpeed" class="form-control" type="text" name="rSpeed" placeholder="额定速度(m/s)" required>
                             </div>
-                            <label class="control-label col-md-2" for="ratedLoad">额定载重量</label>
+                            <label class="control-label col-md-2" for="rLoad">额定载重量</label>
                             <div class="col-md-2">
-                                <input id="ratedLoad" class="form-control" type="text" name="ratedLoad" placeholder="额定载重量(kg)" required>
+                                <input id="rLoad" class="form-control" type="text" name="rLoad" placeholder="额定载重量(kg)" required>
                             </div>
-                            <label class="control-label col-md-1" for="floorNumber">层</label>
+                            <label class="control-label col-md-1" for="fN">层</label>
                             <div class="col-md-1">
-                                <input id="floorNumber" class="form-control" type="text" name="floorNumber" placeholder="层" required>
+                                <input id="fN" class="form-control" type="text" name="fN" placeholder="层" required>
                             </div>
-                            <label class="sr-only" for="stationNumber">站</label>
+                            <label class="sr-only" for="sN">站</label>
                             <div class="col-md-1">
-                                <input id="stationNumber" class="form-control" type="text" name="stationNumber" placeholder="站" required>
+                                <input id="sN" class="form-control" type="text" name="sN" placeholder="站" required>
                             </div>
-                            <label class="sr-only" for="doorNumber">门</label>
+                            <label class="sr-only" for="dN">门</label>
                             <div class="col-md-1">
-                                <input id="doorNumber" class="form-control" type="text" name="doorNumber" placeholder="门" required>
+                                <input id="dN" class="form-control" type="text" name="dN" placeholder="门" required>
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
@@ -153,9 +153,9 @@
                             </div>
                         </div>
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1" for="emergencyElectricOperate">紧急电动运行</label>
+                            <label class="control-label col-md-1" for="emEOperate">紧急电动运行</label>
                             <div class="col-md-2">
-                                <select id="emergencyElectricOperate" name="emergencyElectricOperate" class="form-control">
+                                <select id="emEOperate" name="emEOperate" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
@@ -183,9 +183,9 @@
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="brakeFaultProtect">制动器故障保护</label>
+                            <label class="control-label col-md-2" for="brakeFProtect">制动器故障保护</label>
                             <div class="col-md-2">
-                                <select id="brakeFaultProtect" name="brakeFaultProtect" class="form-control">
+                                <select id="brakeFProtect" name="brakeFProtect" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
@@ -223,9 +223,9 @@
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="compensateRopeAntiRebound">补偿链防跳装置</label>
+                            <label class="control-label col-md-2" for="compRebound">补偿链防跳装置</label>
                             <div class="col-md-2">
-                                <select id="compensateRopeAntiRebound" name="compensateRopeAntiRebound" class="form-control">
+                                <select id="compRebound" name="compRebound" class="form-control">
                                     <option value="有" selected="selected">有</option>
                                     <option value="无">无</option>
                                 </select>
@@ -286,9 +286,9 @@
                                     <option value="无">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="counterweightSafetyGear">对重安全钳</label>
+                            <label class="control-label col-md-2" for="cwSaftyGear">对重安全钳</label>
                             <div class="col-md-2">
-                                <select id="counterweightSafetyGear" name="counterweightSafetyGear" class="form-control">
+                                <select id="cwSaftyGear" name="cwSaftyGear" class="form-control">
                                     <option value="有">有</option>
                                     <option value="无" selected="selected">无</option>
                                 </select>
@@ -302,9 +302,9 @@
                                     <option value="无" selected="selected">无</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="carDoorRestrictedOpen">轿门开门限制</label>
+                            <label class="control-label col-md-2" for="carDoorRestrOp">轿门开门限制</label>
                             <div class="col-md-2">
-                                <select id="carDoorRestrictedOpen" name="carDoorRestrictedOpen" class="form-control">
+                                <select id="carDoorRestrOp" name="carDoorRestrOp" class="form-control">
                                     <option value="有">有</option>
                                     <option value="无" selected="selected">无</option>
                                 </select>
@@ -332,9 +332,9 @@
                                     <option value="蓄能型">蓄能型</option>
                                 </select>
                             </div>
-                            <label class="control-label col-md-2" for="counterweightOverrunDistance">对重缓冲距</label>
+                            <label class="control-label col-md-2" for="cwOvDis">对重缓冲距</label>
                             <div class="col-md-2">
-                                <input id="counterweightOverrunDistance" class="form-control" type="text" name="counterweightOverrunDistance" placeholder="对重缓冲距(mm)" required>
+                                <input id="cwOvDis" class="form-control" type="text" name="cwOvDis" placeholder="对重缓冲距(mm)" required>
                             </div>
                         </div>
                         <div class="card-footer">

@@ -5,9 +5,10 @@ from flask import render_template, request, url_for
 from flask_login import login_required
 from app.models import db
 from app.models.elevator import ElevatorRoom
-from app.models.report import ReportElevatorRoom
+from app.models.report import ReportElevatorRoom, reportdatadealroom
 from sqlalchemy import or_, and_
 from docxtpl import DocxTemplate
+import subprocess
 
 
 @view.route('/report_generation/', methods=['GET', 'POST'])
@@ -31,7 +32,7 @@ def report_generation():
                     report_data['reportID'] = data.get('reportID'+idcode)
                     report_data['governorCheckDate'] = data.get('governorCheckDate'+idcode)
                     report_data['governorSpeed'] = data.get('governorSpeed'+idcode)
-                    report_data['counterweightOverrunDistance'] = data.get('counterweightOverrunDistance'+idcode)
+                    report_data['cwOvDis'] = data.get('cwOvDis'+idcode)
                     report_data['brakeTest'] = data.get('brakeTest'+idcode)
                     report_data['reportYear'] = '2018'
 
@@ -42,6 +43,10 @@ def report_generation():
                     # db.session.commit()
 
                     # 生成docx文件
+                    doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
+                    reportdata = reportdatadealroom(report_data)
+                    doc.render(reportdata)
+                    doc.save('app/static/reportpdf/test.docx')
 
             return render_template('report/reportGeneration.html')
     else:
@@ -64,10 +69,11 @@ def report_show():
 @view.route('/report_test/', methods=['GET'])
 @login_required
 def report_test():
-    # doc = DocxTemplate(url_for('static', filename='reportpdf/elevator_room.docx'))
-    doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
-    context = {'company': 'ok'}
-    doc.render(context)
-    doc.save('app/static/reportpdf/test.docx')
+    # doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
+    # context = {'company': 'ok'}
+    # doc.render(context)
+    # doc.save('app/static/reportpdf/test.docx')
+    # libreoffice --convert-to pdf elevator_room.docx
+    output = subprocess.check_output(['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir', 'app/static/reportpdf/'])
     return render_template('report/reporttest.html')
 

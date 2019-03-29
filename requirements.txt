@@ -10,3 +10,4 @@ flask-migrate
 flask-script
 uwsgi
 docxtpl
+pypandoc

@@ -24,9 +24,9 @@ class ElevatorBasic(Base):
     installDate = Column(String(10), nullable=True, default='/')  # 安装日期
     renovateDate = Column(String(10), nullable=True, default='/')  # 改造日期
     majorRepairDate = Column(String(10), nullable=True, default='/')  # 重大修理日期
-    safetyManager = Column(String(20), nullable=True, default='/')  # 安全管理员
+    saM = Column(String(20), nullable=True, default='/')  # 安全管理员
     safetyManagerCertificate = Column(String(20), nullable=True, default='/')  # 安全管理员证号
-    liftAttendant = Column(String(20), nullable=True, default='/')  # 电梯司机
+    liA = Column(String(20), nullable=True, default='/')  # 电梯司机
     liftAttendantCertificate = Column(String(20), nullable=True, default='/')  # 司机证号
     contactPerson = Column(String(10), nullable=True, default='/')  # 联系人
     contactNumber = Column(String(15), nullable=True, default='/')  # 联系电话
@@ -34,8 +34,8 @@ class ElevatorBasic(Base):
     # 维保信息
     maintenanceCompany = Column(String(100), nullable=False, default='/')  # 维保单位
     maintenanceContractNumber = Column(String(20), nullable=True, default='/')  # 维保合同编号
-    maintenanceStartDate = Column(String(10), nullable=True, default='/')  # 维保开始日期
-    maintenanceEndDate = Column(String(10), nullable=True, default='/')  # 维保结束日期
+    mSDate = Column(String(10), nullable=True, default='/')  # 维保开始日期
+    mEDate = Column(String(10), nullable=True, default='/')  # 维保结束日期
     maintenancePersonA = Column(String(10), nullable=False, default='/')  # 维保人员 A
     maintenancePersonB = Column(String(10), nullable=False, default='/')  # 维保人员 B
     maintenanceLevel = Column(String(10), nullable=False, default='A')  # 维保等级 A，B...
@@ -46,11 +46,11 @@ class ElevatorRoomMachine(Base):
     __abstract__ = True
     # 电梯配置信息
     controlMode = Column(String(10), nullable=False, default='集选')  # 控制方式
-    ratedSpeed = Column(String(10), nullable=False, default='/')  # 额定速度
-    ratedLoad = Column(String(10), nullable=False, default='/')  # 额定载重量 kg
-    floorNumber = Column(String(10), nullable=False, default='/')  # 层数
-    stationNumber = Column(String(10), nullable=False, default='/')  # 站数
-    doorNumber = Column(String(10), nullable=False, default='/')  # 门数
+    rSpeed = Column(String(10), nullable=False, default='/')  # 额定速度
+    rLoad = Column(String(10), nullable=False, default='/')  # 额定载重量 kg
+    fN = Column(String(10), nullable=False, default='/')  # 层数
+    sN = Column(String(10), nullable=False, default='/')  # 站数
+    dN = Column(String(10), nullable=False, default='/')  # 门数
     carDecorate = Column(String(10), nullable=False, default='无')  # 轿厢装修
     icCard = Column(String(10), nullable=False, default='无')  # IC卡
     autoRescuer = Column(String(10), nullable=False, default='无')  # 自动救援（停电自平层）
@@ -69,10 +69,10 @@ class ElevatorRoomMachine(Base):
     speedGovernMethod = Column(String(10), nullable=False, default='变频')  # 调速方式（变频，双速）
     controlCabinetModel = Column(String(20), nullable=False, default='/')  # 控制柜型号
     controlCabinetNumber = Column(String(20), nullable=False, default='/')  # 控制柜编号
-    emergencyElectricOperate = Column(String(10), nullable=False, default='有')  # 紧急电动运行装置
+    emEOperate = Column(String(10), nullable=False, default='有')  # 紧急电动运行装置
     doorBypass = Column(String(10), nullable=False, default='无')  # 层门和轿门旁路装置
     doorLoopDetect = Column(String(10), nullable=False, default='无')  # 门回路检测功能
-    brakeFaultProtect = Column(String(10), nullable=False, default='无')  # 制动器故障保护
+    brakeFProtect = Column(String(10), nullable=False, default='无')  # 制动器故障保护
     phaseFaultProtect = Column(String(10), nullable=False, default='有')  # 断错相保护
 
     # 限速器
@@ -84,31 +84,31 @@ class ElevatorRoomMachine(Base):
     wellSafetyDoor = Column(String(10), nullable=False, default='无')  # 井道安全门
     wellAccessDoor = Column(String(10), nullable=False, default='无')  # 井道检修门
     compensateChain = Column(String(10), nullable=False, default='无')  # 补偿链（绳）
-    compensateRopeSwitch = Column(String(10), nullable=False, default='无')  # 补偿链（绳）电气安全装置
-    compensateRopeAntiRebound = Column(String(10), nullable=False, default='无')  # 补偿绳防跳装置
+    compSwitch = Column(String(10), nullable=False, default='无')  # 补偿链（绳）电气安全装置
+    compRebound = Column(String(10), nullable=False, default='无')  # 补偿绳防跳装置
     suspensionType = Column(String(10), nullable=False, default='钢丝绳')  # 悬挂装置类型
     ropeDiameter = Column(String(10), nullable=False, default='/')  # 钢丝绳（钢带）直径 mm
     ropeNumber = Column(String(10), nullable=False, default='/')  # 钢丝绳（钢带）数量
     carWellClearance = Column(String(10), nullable=False, default='150')  # 轿厢与井道壁距离（mm）
-    ropeCreepProtect = Column(String(10), nullable=False, default='无')  # 松绳保护
+    ropeCreep = Column(String(10), nullable=False, default='无')  # 松绳保护
 
     # 轿厢与对重
     safetyWindow = Column(String(10), nullable=False, default='无')  # 安全窗
     carOverArea = Column(String(10), nullable=False, default='无')  # 轿厢超面积
     overloadProtect = Column(String(10), nullable=False, default='有')  # 超载保护
-    counterweightSafetyGear = Column(String(10), nullable=False, default='无')  # 对重安全钳
+    cwSaftyGear = Column(String(10), nullable=False, default='无')  # 对重安全钳
 
     # 层门与轿门
     carDoorLock = Column(String(10), nullable=False, default='无')  # 轿门门锁装置
-    carDoorRestrictedOpen = Column(String(10), nullable=False, default='无')  # 轿门开门限制装置（防扒门）
+    carDoorRestrOp = Column(String(10), nullable=False, default='无')  # 轿门开门限制装置（防扒门）
     glassDoor = Column(String(10), nullable=False, default='无')  # 玻璃门
     autoDoorClose = Column(String(10), nullable=False, default='有')  # 自动关门
-    doorVaneAndRoller = Column(String(10), nullable=False, default='有')  # 门刀、门锁滚轮
-    carDoorAntiClamp = Column(String(10), nullable=False, default='有')  # 防夹人保护
+    # doorVane = Column(String(10), nullable=False, default='有')  # 门刀、门锁滚轮
+    doorAntiClamp = Column(String(10), nullable=False, default='有')  # 防夹人保护
 
     # 缓冲器
     bufferType = Column(String(10), nullable=False, default='耗能型')  # 缓冲器型式(耗能型，蓄能型)
-    counterweightOverrunDistance = Column(String(10), nullable=False, default='/')  # 对重越程距离 mm
+    cwOvDis = Column(String(10), nullable=False, default='/')  # 对重越程距离 mm
 
     # 试验
     brakeTest = Column(String(10), nullable=False, default='无')  # 制动试验
