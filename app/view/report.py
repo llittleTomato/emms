@@ -9,17 +9,19 @@ from app.models.report import ReportElevatorRoom, reportdatadealroom
 from sqlalchemy import or_, and_
 from docxtpl import DocxTemplate
 import subprocess
+import time
 
 
 @view.route('/report_generation/', methods=['GET', 'POST'])
 @login_required
 def report_generation():
     if request.method == 'POST':
-        if request.form.get('idCode') or request.form.get('userEntityName'):      # 判断是查询
+        if request.form.get('maintenanceContractNumber') or request.form.get('idCode') or request.form.get('userEntityName'):      # 判断是查询
             elevators = db.session.query(ElevatorRoom).filter(
-                and_(ElevatorRoom.idCode.like('%' + request.form['idCode'] + '%'),
+                and_(ElevatorRoom.maintenanceContractNumber.like('%' + request.form['maintenanceContractNumber'] + '%'),
+                     ElevatorRoom.idCode.like('%' + request.form['idCode'] + '%'),
                      ElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%')).all()
-            return render_template('report/reportGeneration.html', elevators=enumerate(elevators))
+            return render_template('report/reportGeneration.html', elevators=enumerate(elevators), year=time.strftime('%Y', time.localtime(time.time())))
         else:     # 判断是报告数据提交
             data = request.form.to_dict()
             for key in data:
@@ -34,7 +36,7 @@ def report_generation():
                     report_data['governorSpeed'] = data.get('governorSpeed'+idcode)
                     report_data['cwOvDis'] = data.get('cwOvDis'+idcode)
                     report_data['brakeTest'] = data.get('brakeTest'+idcode)
-                    report_data['reportYear'] = '2018'
+                    report_data['reportYear'] = time.strftime('%Y', time.localtime(time.time()))
 
                     report.set_attrs(report_data)
 
@@ -69,11 +71,9 @@ def report_show():
 @view.route('/report_test/', methods=['GET'])
 @login_required
 def report_test():
-    # doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
-    # context = {'company': 'ok'}
-    # doc.render(context)
-    # doc.save('app/static/reportpdf/test.docx')
     # libreoffice --convert-to pdf elevator_room.docx
-    output = subprocess.check_output(['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir', 'app/static/reportpdf/'])
+    # subprocess.check_output(['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir', 'app/static/reportpdf/'])
+    time1 = time.strftime('%Y', time.localtime(time.time()))
+    print(time1)
     return render_template('report/reporttest.html')
 

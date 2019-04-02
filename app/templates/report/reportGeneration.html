@@ -22,12 +22,16 @@
                     <form class="form-horizontal" method="POST"
                           action="{{ url_for('view.report_generation') }}" id="form_query" name="form_query">
                         <div class="form-group" style="margin-left: 15px">
-                            <label class="control-label col-md-1 col-md-offset-2" for="idCode">识别码</label>
+                            <label class="control-label col-md-1 col-md-offset-1" for="maintenanceContractNumber">合同编号</label>
+                            <div class="col-md-2">
+                                <input id="maintenanceContractNumber" class="form-control" type="text" name="maintenanceContractNumber" placeholder="合同编号">
+                            </div>
+                            <label class="control-label col-md-1" for="idCode">识别码</label>
                             <div class="col-md-2">
                                 <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码">
                             </div>
                             <label class="control-label col-md-1" for="userEntityName">使用单位</label>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <input id="userEntityName" class="form-control" type="text" name="userEntityName"
                                        placeholder="使用单位">
                             </div>
@@ -39,7 +43,7 @@
                                             class="fa fa-fw fa-lg fa-check-circle"></i>查询
                                     </button>
                                 </div>
-                                <div class="col-md-2">
+                                <div class="col-md-2 col-md-offset-1">
                                     <button class="btn btn-primary icon-btn" type="reset"><i
                                             class="fa fa-fw fa-lg fa-refresh"></i>重置
                                     </button>
@@ -84,23 +88,25 @@
                                         <td>
                                             <input id="reportID" class="" type="text" style="width: 110px;text-align: center;"
                                                    name="reportID{{ elevator.idCode }}"
-                                                   placeholder="报告编号">
+                                                   placeholder="报告编号"
+                                                   value="{{ elevator.idCode }}{{ year }}">
                                         </td>
                                         <td>
                                             <input id="governorCheckDate" class="datepicker" type="text"
                                                    style="width: 100px;text-align: center;"
-                                                   name="governorCheckDate{{ elevator.idCode }}" placeholder="校验日期">
+                                                   name="governorCheckDate{{ elevator.idCode }}" placeholder="校验日期"
+                                                   value="{{ elevator.governorCheckDate }}" >
                                         </td>
                                         <td>
                                             <input id="governorSpeed" class="" type="text" style="width: 100px;text-align: center;"
                                                    name="governorSpeed{{ elevator.idCode }}"
-                                                   placeholder="校验速度(m/s)">
+                                                   placeholder="校验速度(m/s)" value="{{ elevator.governorSpeed }}">
                                         </td>
                                         <td>
                                             <input id="cwOvDis" class="" type="text"
                                                    style="width: 100px;text-align: center;"
                                                    name="cwOvDis{{ elevator.idCode }}"
-                                                   placeholder="对重缓冲距(mm)">
+                                                   placeholder="对重缓冲距(mm)" value="{{ elevator.cwOvDis }}">
                                         </td>
                                         <td>
                                             <input id="brakeTest" class="" type="text" style="width: 100px;text-align: center;"
@@ -120,7 +126,7 @@
                                     class="fa fa-fw fa-lg fa-check-circle"></i>生成报告
                             </button>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-md-offset-1">
                             <button class="btn btn-primary icon-btn" type="reset"><i
                                     class="fa fa-fw fa-lg fa-refresh"></i>重置
                             </button>
@@ -135,7 +141,6 @@
 {% block script %}
     {{ super() }}
     {#    表格加载用js，以下4个js必须同时使用    #}
-    {#    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>    已经在base.html文件中加载，无需再次加载#}
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
@@ -165,7 +170,7 @@
             });
         });
         $("#bt_query").click(function () {
-            if (($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
+            if (($('#maintenanceContractNumber').val() == "") && ($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
                 ShowFailure('请输入查询条件');
             }
             else {
