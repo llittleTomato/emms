@@ -22,6 +22,7 @@ def user_register():
             # 公司不存在，且注册时选择了公司管理员，则允许创建用户，并创建相关数据表
             company = Company()
             company.set_attrs(form.data)
+            company.company_number = "%04d" % (Company.query.count() + 1)
             db.session.add(company)
             db.session.add(user)
             db.session.commit()

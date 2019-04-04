@@ -2,11 +2,13 @@ __author__ = 'sky'
 
 from . import view
 from flask import render_template, request, url_for
-from flask_login import login_required
+from flask_login import login_required, current_user
 from app.models import db
 from app.models.elevator import ElevatorRoom
 from app.models.report import ReportElevatorRoom, reportdatadealroom
-from sqlalchemy import or_, and_
+from app.models.company import Company
+from app.models.user import User
+from sqlalchemy import and_
 from docxtpl import DocxTemplate
 import subprocess
 import time
@@ -21,12 +23,15 @@ def report_generation():
                 and_(ElevatorRoom.maintenanceContractNumber.like('%' + request.form['maintenanceContractNumber'] + '%'),
                      ElevatorRoom.idCode.like('%' + request.form['idCode'] + '%'),
                      ElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%')).all()
-            return render_template('report/reportGeneration.html', elevators=enumerate(elevators), year=time.strftime('%Y', time.localtime(time.time())))
+            reporttime = time.strftime('%Y%m%d', time.localtime((time.time())))
+            company = Company()
+            companynumber = company.query.filter_by(company=current_user.company).first()
+            return render_template('report/reportGeneration.html', elevators=enumerate(elevators), company_number=companynumber.company_number, reporttime=reporttime)
         else:     # 判断是报告数据提交
             data = request.form.to_dict()
             for key in data:
-                if 'reportID' in key:
-                    idcode = data[key].replace('reportID', '')
+                if 'idCode' in key:
+                    idcode = data[key].replace('idCode', '')
                     report = ReportElevatorRoom()
                     elevator = ElevatorRoom.query.filter_by(idCode=idcode).first()
                     report_data = elevator.__dict__
@@ -49,6 +54,9 @@ def report_generation():
                     reportdata = reportdatadealroom(report_data)
                     doc.render(reportdata)
                     doc.save('app/static/reportpdf/test.docx')
+                    subprocess.check_output(
+                        ['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir',
+                         'app/static/reportpdf/'])
 
             return render_template('report/reportGeneration.html')
     else:

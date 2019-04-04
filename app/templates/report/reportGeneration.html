@@ -82,14 +82,19 @@
                                 {% for i, elevator in elevators %}
                                     <tr>
                                         <td>{{ i+1 }}</td>
-                                        <td>{{ elevator.idCode }}</td>
+                                        <td>
+                                            <input id="idCode" type="text" style="width: 55px;border-width: 0px;"
+                                                   name="idCode{{ elevator.idCode }}"
+                                                   placeholder="识别码"
+                                                   value="{{ elevator.idCode }}">
+                                        </td>
                                         <td>{{ elevator.userEntityName }}</td>
                                         <td>{{ elevator.deviceName }}</td>
                                         <td>
                                             <input id="reportID" class="" type="text" style="width: 110px;text-align: center;"
                                                    name="reportID{{ elevator.idCode }}"
                                                    placeholder="报告编号"
-                                                   value="{{ elevator.idCode }}{{ year }}">
+                                                   value="{{ elevator.idCode }}{{ company_number }}{{ reporttime }}">
                                         </td>
                                         <td>
                                             <input id="governorCheckDate" class="datepicker" type="text"

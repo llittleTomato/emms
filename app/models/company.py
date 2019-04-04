@@ -9,6 +9,7 @@ class Company(Base):
     __tablename__ = 'company'
     id = Column(Integer, primary_key=True, autoincrement=True)
     company = Column(String(64),unique=True, nullable=False)
+    company_number = Column(String(4), unique=True, nullable=False)
     company_address = Column(String(100), nullable=False)
     linkman = Column(String(10), nullable=False)
     phone_number = Column(String(15), nullable=False)
