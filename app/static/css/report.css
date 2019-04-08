@@ -9,3 +9,14 @@
     border-style: none;
     border-width: 0;
 }
+
+.content-report {
+  height: 100%;
+  background-color: #E5E5E5;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}

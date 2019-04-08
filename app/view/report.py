@@ -81,7 +81,5 @@ def report_show():
 def report_test():
     # libreoffice --convert-to pdf elevator_room.docx
     # subprocess.check_output(['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir', 'app/static/reportpdf/'])
-    time1 = time.strftime('%Y', time.localtime(time.time()))
-    print(time1)
     return render_template('report/reporttest.html')
 
