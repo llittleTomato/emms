@@ -20,3 +20,71 @@
   -o-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
 }
+
+.report-table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 5px;
+}
+
+.report-table > thead > tr > th,
+.report-table > thead > tr > td,
+.report-table > tbody > tr > th,
+.report-table > tbody > tr > td,
+.report-table > tfoot > tr > th,
+.report-table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.428571429;
+  vertical-align: center;
+  border-top: 1px solid #757575;
+  text-align: center;
+}
+
+.report-table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #757575;
+}
+
+.report-table > caption + thead > tr:first-child > th,
+.report-table > caption + thead > tr:first-child > td,
+.report-table > colgroup + thead > tr:first-child > th,
+.report-table > colgroup + thead > tr:first-child > td,
+.report-table > thead:first-child > tr:first-child > th,
+.report-table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+
+.report-table > tbody + tbody {
+  border-top: 2px solid #757575;
+}
+
+.report-table .report-table {
+  background-color: #e5e5e5;
+}
+
+.report-table-bordered {
+  border: 2px solid #757575;
+}
+
+.report-table-bordered > thead > tr > th,
+.report-table-bordered > thead > tr > td,
+.report-table-bordered > tbody > tr > th,
+.report-table-bordered > tbody > tr > td,
+.report-table-bordered > tfoot > tr > th,
+.report-table-bordered > tfoot > tr > td {
+  border: 1px solid #757575;
+}
+
+.report-table-bordered > thead > tr > th,
+.report-table-bordered > thead > tr > td {
+  border-bottom-width: 0;
+}
+
+.report-table td,
+  .report-table th {
+    background-color: #fff !important;
+  }
+  .report-table-bordered th,
+  .report-table-bordered td {
+    border: 1px solid #757575 !important;
+  }

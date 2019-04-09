@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/report.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
-</head>
-<body>
+{% extends "report/reportShow.html" %}
+{% block content %}
     <div class="content-report">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -684,5 +677,4 @@
             </div>
         </div>
     </div>
-</body>
-</html>
+{% endblock %}

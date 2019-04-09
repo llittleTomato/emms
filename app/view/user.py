@@ -18,21 +18,15 @@ def user_register():
         user.set_attrs(form.data)
         # 判断是否已经存在该公司，如不存在，则创建该公司的公司管理员账户，并创建相应数据表
         # 如果存在，则只能创建公司普通人员账户，不创建数据表
-        if user.authority == 'com_admin':
+        if user.authority == 'com_person':
+            db.session.add(user)
+            db.session.commit()
+        else:
             # 公司不存在，且注册时选择了公司管理员，则允许创建用户，并创建相关数据表
             company = Company()
             company.set_attrs(form.data)
-            company.company_number = "%04d" % (Company.query.count() + 1)
+            company.company_number = "%03d" % (Company.query.count() + 1)
             db.session.add(company)
-            db.session.add(user)
-            db.session.commit()
-            # sqls = (
-            #             'create table elevator' + str(company.id) + ' like elevator',
-            #             'create table employee' + str(company.id) + ' like employee',
-            #         )
-            # for sql in sqls:
-            #     db.session.execute(sql)
-        else:
             db.session.add(user)
             db.session.commit()
         return render_template('user/userRegister.html', messages={'message': ['注册成功！']})

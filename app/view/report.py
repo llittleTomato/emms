@@ -23,7 +23,7 @@ def report_generation():
                 and_(ElevatorRoom.maintenanceContractNumber.like('%' + request.form['maintenanceContractNumber'] + '%'),
                      ElevatorRoom.idCode.like('%' + request.form['idCode'] + '%'),
                      ElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%')).all()
-            reporttime = time.strftime('%Y%m%d', time.localtime((time.time())))
+            reporttime = time.strftime('%y%m', time.localtime((time.time())))
             company = Company()
             companynumber = company.query.filter_by(company=current_user.company).first()
             return render_template('report/reportGeneration.html', elevators=enumerate(elevators), company_number=companynumber.company_number, reporttime=reporttime)
@@ -73,7 +73,7 @@ def report_manage():
 @login_required
 def report_show():
     filename = 'test.pdf'
-    return render_template('report/reportShow.html', filename=filename)
+    return render_template('report/reportShow-pdf.html', filename=filename)
 
 
 @view.route('/report_test/', methods=['GET'])
@@ -81,5 +81,5 @@ def report_show():
 def report_test():
     # libreoffice --convert-to pdf elevator_room.docx
     # subprocess.check_output(['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir', 'app/static/reportpdf/'])
-    return render_template('report/reporttest.html')
+    return render_template('report/report_ele_room.html')
 

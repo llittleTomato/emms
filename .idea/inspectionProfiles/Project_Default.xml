@@ -4,7 +4,7 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="17">
+          <list size="27">
             <item index="0" class="java.lang.String" itemvalue="uwsgi" />
             <item index="1" class="java.lang.String" itemvalue="flask-migrate" />
             <item index="2" class="java.lang.String" itemvalue="python-docx" />
@@ -22,6 +22,16 @@
             <item index="14" class="java.lang.String" itemvalue="pypandoc" />
             <item index="15" class="java.lang.String" itemvalue="wtforms" />
             <item index="16" class="java.lang.String" itemvalue="flask" />
+            <item index="17" class="java.lang.String" itemvalue="jinja2" />
+            <item index="18" class="java.lang.String" itemvalue="protobuf" />
+            <item index="19" class="java.lang.String" itemvalue="alembic" />
+            <item index="20" class="java.lang.String" itemvalue="six" />
+            <item index="21" class="java.lang.String" itemvalue="wheel" />
+            <item index="22" class="java.lang.String" itemvalue="python-dateutil" />
+            <item index="23" class="java.lang.String" itemvalue="mako" />
+            <item index="24" class="java.lang.String" itemvalue="itsdangerous" />
+            <item index="25" class="java.lang.String" itemvalue="click" />
+            <item index="26" class="java.lang.String" itemvalue="markupsafe" />
           </list>
         </value>
       </option>
