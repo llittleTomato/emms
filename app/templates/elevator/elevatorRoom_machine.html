@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body">
                     <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="rSpeed">额定速度</label>
                             <div class="col-md-2">
                                 <input id="rSpeed" class="form-control" type="text" name="rSpeed" placeholder="额定速度(m/s)" required>
@@ -41,7 +41,7 @@
                                 <input id="dN" class="form-control" type="text" name="dN" placeholder="门" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="controlMode">控制方式</label>
                             <div class="col-md-2">
                                 <select id="controlMode" name="controlMode" class="form-control">
@@ -66,7 +66,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="autoRescuer">自动救援</label>
                             <div class="col-md-2">
                                 <select id="autoRescuer" name="autoRescuer" class="form-control">
@@ -92,7 +92,7 @@
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="machineType">主机型式</label>
                             <div class="col-md-2">
                                 <select id="machineType" name="machineType" class="form-control">
@@ -109,7 +109,7 @@
                                 <input id="machineNumber" class="form-control" type="text" name="machineNumber" placeholder="主机编号" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="manualOperate">手动紧急操作装置</label>
                             <div class="col-md-2">
                                 <select id="manualOperate" name="manualOperate" class="form-control">
@@ -135,7 +135,7 @@
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="speedGovernMethod">调速方式</label>
                             <div class="col-md-2">
                                 <select id="speedGovernMethod" name="speedGovernMethod" class="form-control">
@@ -152,7 +152,7 @@
                                 <input id="controlCabinetNumber" class="form-control" type="text" name="controlCabinetNumber" placeholder="主机编号" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="emEOperate">紧急电动运行</label>
                             <div class="col-md-2">
                                 <select id="emEOperate" name="emEOperate" class="form-control">
@@ -175,7 +175,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="phaseFaultProtect">断错相保护</label>
                             <div class="col-md-2">
                                 <select id="phaseFaultProtect" name="phaseFaultProtect" class="form-control">
@@ -191,7 +191,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="governorManufactureDate">限速器出厂日期</label>
                             <div class="col-md-2">
                                 <input id="governorManufactureDate" class="form-control datepicker" type="text" name="governorManufactureDate" placeholder="限速器出厂日期" required>
@@ -208,7 +208,7 @@
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="compensateChain">补偿链</label>
                             <div class="col-md-2">
                                 <select id="compensateChain" name="compensateChain" class="form-control">
@@ -231,7 +231,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="suspensionType">悬挂装置类型</label>
                             <div class="col-md-2">
                                 <select id="suspensionType" name="suspensionType" class="form-control">
@@ -248,7 +248,7 @@
                                 <input id="ropeNumber" class="form-control" type="text" name="ropeNumber" placeholder="钢丝绳（带）数量" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="wellSafetyDoor">井道安全门</label>
                             <div class="col-md-2">
                                 <select id="wellSafetyDoor" name="wellSafetyDoor" class="form-control">
@@ -271,7 +271,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="carOverArea">轿厢超面积</label>
                             <div class="col-md-2">
                                 <select id="carOverArea" name="carOverArea" class="form-control">
@@ -294,7 +294,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="carDoorLock">轿门门锁</label>
                             <div class="col-md-2">
                                 <select id="carDoorLock" name="carDoorLock" class="form-control">
@@ -317,7 +317,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="autoDoorClose">自动关门装置</label>
                             <div class="col-md-2">
                                 <select id="autoDoorClose" name="autoDoorClose" class="form-control">

@@ -88,3 +88,10 @@
   .report-table-bordered td {
     border: 1px solid #757575 !important;
   }
+
+  .report-page-header {
+    margin-bottom: 0px;
+    border-bottom: #9f9f9f;
+    border-bottom-style: solid;
+    padding-bottom: 25px;
+  }

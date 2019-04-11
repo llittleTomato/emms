@@ -69,7 +69,7 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th>选择</th>
+                            <th>操作</th>
                             <th>ID</th>
                             <th>识别码</th>
                             <th>设备名称</th>
@@ -84,7 +84,7 @@
                         <tbody>
                             {% for id, elevator in elevators %}
                                 <tr>
-                                    <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>
+{#                                    <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>#}
                                     <td>{{ id+1 }}</td>
                                     <td>{{ elevator.idCode }}</td>
                                     <td>{{ elevator.deviceName }}</td>
@@ -94,6 +94,11 @@
                                     <td>{{ elevator.numberOfUse }}</td>
                                     <td>{{ elevator.contactPerson }}</td>
                                     <td>{{ elevator.contactNumber }}</td>
+                                    <td>
+                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode) }}" target="_blank">查看</a>
+                                        &nbsp&nbsp&nbsp&nbsp
+                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode) }}" target="_blank">更新</a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>

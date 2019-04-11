@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body">
                     <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_basic_data_input') }}">
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="maintenanceContractNumber">合同编号</label>
                             <div class="col-md-3">
                                 <input id="maintenanceContractNumber" class="form-control" type="text" name="maintenanceContractNumber" placeholder="合同编号" readonly>
@@ -36,7 +36,7 @@
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="userEntityName">使用单位</label>
                             <div class="col-md-7">
                                 <input id="userEntityName" class="form-control" type="text" name="userEntityName" placeholder="使用单位" required onfocus="fonfocus(this, 'sydwmc')" onblur="fblur(this, 'sydwmc')">
@@ -46,7 +46,7 @@
                                 <input id="userEntityCode" class="form-control" type="text" name="userEntityCode" placeholder="使用单位代码">
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="locationOfUse">使用地点</label>
                             <div class="col-md-7">
                                 <input id="locationOfUse" class="form-control" type="text" name="locationOfUse" placeholder="使用地点" required>
@@ -56,7 +56,7 @@
                                 <input id="numberOfUse" class="form-control" type="text" name="numberOfUse" placeholder="使用编号" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="model">型号</label>
                             <div class="col-md-3">
                                 <input id="model" class="form-control" type="text" name="model" placeholder="型号">
@@ -70,7 +70,7 @@
                                 <input id="factoryNumber" class="form-control" type="text" name="factoryNumber" placeholder="出厂编号" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="manufactureCompany">制造单位</label>
                             <div class="col-md-7">
                                 <input id="manufactureCompany" class="form-control" type="text" name="manufactureCompany" placeholder="制造单位" required>
@@ -80,7 +80,7 @@
                                 <input class="form-control datepicker" id="manufactureDate" type="text" name="manufactureDate" placeholder="制造日期" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="installCompany">安装单位</label>
                             <div class="col-md-7">
                                 <input id="installCompany" class="form-control" type="text" name="installCompany" placeholder="安装单位" required>
@@ -90,7 +90,7 @@
                                 <input class="form-control datepicker" id="installDate" type="text" name="installDate" placeholder="安装日期" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="renovateCompany">改造单位</label>
                             <div class="col-md-7">
                                 <input id="renovateCompany" class="form-control" type="text" name="renovateCompany" placeholder="改造单位" value="/">
@@ -100,7 +100,7 @@
                                 <input class="form-control datepicker" id="renovateDate" type="text" name="renovateDate" placeholder="改造日期" value="/">
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="majorRepairCompany">重大修理单位</label>
                             <div class="col-md-7">
                                 <input id="majorRepairCompany" class="form-control" type="text" name="majorRepairCompany" placeholder="重大修理单位" value="/">
@@ -113,7 +113,7 @@
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="contactPerson">联系人</label>
                             <div class="col-md-3">
                                 <input id="contactPerson" class="form-control" type="text" name="contactPerson" placeholder="联系人" required>
@@ -127,7 +127,7 @@
                                 <input id="liA" class="form-control" type="text" name="liA" placeholder="电梯司机" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="saM">安全管理人员</label>
                             <div class="col-md-3">
                                 <input id="saM" class="form-control" type="text" name="saM" placeholder="安全管理人员" required>
@@ -144,7 +144,7 @@
                         <!--分隔符-->
                         <div class="card-diver">
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="maintenanceLevel">维保等级</label>
                             <div class="col-md-3">
                                 <select id="maintenanceLevel" name="maintenanceLevel" class="form-control">
@@ -162,7 +162,7 @@
                                 <input id="maintenancePersonB" class="form-control" type="text" name="maintenancePersonB" placeholder="维保人员B" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="mSDate">维保开始日期</label>
                             <div class="col-md-3">
                                 <input id="mSDate" class="form-control datepicker" type="text" name="mSDate" placeholder="维保开始日期" required>
@@ -172,7 +172,7 @@
                                 <input id="mEDate" class="form-control datepicker" type="text" name="mEDate" placeholder="维保结束日期" required>
                             </div>
                         </div>
-                        <div class="form-group" style="margin-left: 15px">
+                        <div class="form-group">
                             <label class="control-label col-md-1" for="maintenanceRemark">维保备注</label>
                             <div class="col-md-11">
                                 <textarea class="form-control" id="maintenanceRemark" rows="3" required></textarea>

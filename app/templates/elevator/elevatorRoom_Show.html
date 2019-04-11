@@ -1,0 +1,517 @@
+{% extends "elevator/elevatorShow.html" %}
+{#页面内容#}
+{% block content %}
+    <!--数据录入-->
+    <div class="content-report">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="card">
+                    <div class="card-title">
+                        <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
+                            <h3>电梯信息</h3>
+                        </div>
+                    </div>
+                    <div class="card-body text-center">
+                        <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_basic_data_input') }}">
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="maintenanceContractNumber">合同编号</label>
+                                <div class="col-md-3">
+                                    <input id="maintenanceContractNumber" class="form-control" type="text" name="maintenanceContractNumber" placeholder="合同编号" readonly>
+                                </div>
+                                <label class="control-label col-md-1" for="idCode">识别码</label>
+                                <div class="col-md-3">
+                                    <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码" readonly>
+                                </div>
+                                <label class="control-label col-md-1" for="deviceName">设备名称</label>
+                                <div class="col-md-3">
+                                    <input id="deviceName" class="form-control" type="text" name="deviceName" placeholder="设备名称" readonly>
+                                </div>
+                            </div>
+                            <!--分隔符-->
+                            <div class="card-diver">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="userEntityName">使用单位</label>
+                                <div class="col-md-7">
+                                    <input id="userEntityName" class="form-control" type="text" name="userEntityName" placeholder="使用单位" required onfocus="fonfocus(this, 'sydwmc')" onblur="fblur(this, 'sydwmc')">
+                                </div>
+                                <label class="control-label col-md-1" for="userEntityCode">使用单位代码</label>
+                                <div class="col-md-3">
+                                    <input id="userEntityCode" class="form-control" type="text" name="userEntityCode" placeholder="使用单位代码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="locationOfUse">使用地点</label>
+                                <div class="col-md-7">
+                                    <input id="locationOfUse" class="form-control" type="text" name="locationOfUse" placeholder="使用地点" required>
+                                </div>
+                                <label class="control-label col-md-1" for="numberOfUse">使用编号</label>
+                                <div class="col-md-3">
+                                    <input id="numberOfUse" class="form-control" type="text" name="numberOfUse" placeholder="使用编号" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="model">型号</label>
+                                <div class="col-md-3">
+                                    <input id="model" class="form-control" type="text" name="model" placeholder="型号">
+                                </div>
+                                <label class="control-label col-md-1" for="regCode">注册代码</label>
+                                <div class="col-md-3">
+                                    <input id="regCode" class="form-control" type="text" name="regCode" placeholder="注册代码" required pattern="[0-9]{18}" title="18位数字" maxlength="18">
+                                </div>
+                                <label class="control-label col-md-1" for="factoryNumber">出厂编号</label>
+                                <div class="col-md-3">
+                                    <input id="factoryNumber" class="form-control" type="text" name="factoryNumber" placeholder="出厂编号" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="manufactureCompany">制造单位</label>
+                                <div class="col-md-7">
+                                    <input id="manufactureCompany" class="form-control" type="text" name="manufactureCompany" placeholder="制造单位" required>
+                                </div>
+                                <label class="control-label col-md-1" for="manufactureDate">制造日期</label>
+                                <div class="col-md-3">
+                                    <input class="form-control datepicker" id="manufactureDate" type="text" name="manufactureDate" placeholder="制造日期" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="installCompany">安装单位</label>
+                                <div class="col-md-7">
+                                    <input id="installCompany" class="form-control" type="text" name="installCompany" placeholder="安装单位" required>
+                                </div>
+                                <label class="control-label col-md-1" for="installDate">安装日期</label>
+                                <div class="col-md-3">
+                                    <input class="form-control datepicker" id="installDate" type="text" name="installDate" placeholder="安装日期" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="renovateCompany">改造单位</label>
+                                <div class="col-md-7">
+                                    <input id="renovateCompany" class="form-control" type="text" name="renovateCompany" placeholder="改造单位" value="/">
+                                </div>
+                                <label class="control-label col-md-1" for="renovateDate">改造日期</label>
+                                <div class="col-md-3">
+                                    <input class="form-control datepicker" id="renovateDate" type="text" name="renovateDate" placeholder="改造日期" value="/">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="majorRepairCompany">重大修理单位</label>
+                                <div class="col-md-7">
+                                    <input id="majorRepairCompany" class="form-control" type="text" name="majorRepairCompany" placeholder="重大修理单位" value="/">
+                                </div>
+                                <label class="control-label col-md-1" for="majorRepairDate">重大修理日期</label>
+                                <div class="col-md-3">
+                                    <input class="form-control datepicker" id="majorRepairDate" type="text" name="majorRepairDate" placeholder="重大修理日期" value="/">
+                                </div>
+                            </div>
+                            <!--分隔符-->
+                            <div class="card-diver">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="contactPerson">联系人</label>
+                                <div class="col-md-3">
+                                    <input id="contactPerson" class="form-control" type="text" name="contactPerson" placeholder="联系人" required>
+                                </div>
+                                <label class="control-label col-md-1" for="contactNumber">联系号码</label>
+                                <div class="col-md-3">
+                                    <input id="contactNumber" class="form-control" type="text" name="contactNumber" placeholder="联系号码" required pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
+                                </div>
+                                <label class="control-label col-md-1" for="liA">电梯司机</label>
+                                <div class="col-md-3">
+                                    <input id="liA" class="form-control" type="text" name="liA" placeholder="电梯司机" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="saM">安全管理人员</label>
+                                <div class="col-md-3">
+                                    <input id="saM" class="form-control" type="text" name="saM" placeholder="安全管理人员" required>
+                                </div>
+                                <label class="control-label col-md-1" for="safetyManagerCertificate">安全管理人员证号</label>
+                                <div class="col-md-3">
+                                    <input id="safetyManagerCertificate" class="form-control" type="text" name="safetyManagerCertificate" placeholder="安全管理人员证号" required>
+                                </div>
+                                <label class="control-label col-md-1" for="liftAttendantCertificate">电梯司机证号</label>
+                                <div class="col-md-3">
+                                    <input id="liftAttendantCertificate" class="form-control" type="text" name="liftAttendantCertificate" placeholder="电梯司机证号" required>
+                                </div>
+                            </div>
+                            <!--分隔符-->
+                            <div class="card-diver">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="maintenanceLevel">维保等级</label>
+                                <div class="col-md-3">
+                                    <select id="maintenanceLevel" name="maintenanceLevel" class="form-control">
+                                        <option value="A" selected="selected">维保等级A</option>
+                                        <option value="B">维保等级B</option>
+                                        <option value="C">维保等级C</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="maintenancePersonA">维保人员A</label>
+                                <div class="col-md-3">
+                                    <input id="maintenancePersonA" class="form-control" type="text" name="maintenancePersonA" placeholder="维保人员A" required>
+                                </div>
+                                <label class="control-label col-md-1" for="maintenancePersonB">维保人员B</label>
+                                <div class="col-md-3">
+                                    <input id="maintenancePersonB" class="form-control" type="text" name="maintenancePersonB" placeholder="维保人员B" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="mSDate">维保开始日期</label>
+                                <div class="col-md-3">
+                                    <input id="mSDate" class="form-control datepicker" type="text" name="mSDate" placeholder="维保开始日期" required>
+                                </div>
+                                <label class="control-label col-md-1" for="mEDate">维保结束日期</label>
+                                <div class="col-md-3">
+                                    <input id="mEDate" class="form-control datepicker" type="text" name="mEDate" placeholder="维保结束日期" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="maintenanceRemark">维保备注</label>
+                                <div class="col-md-11">
+                                    <textarea class="form-control" id="maintenanceRemark" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="rSpeed">额定速度</label>
+                                <div class="col-md-3">
+                                    <input id="rSpeed" class="form-control" type="text" name="rSpeed" placeholder="额定速度(m/s)" required>
+                                </div>
+                                <label class="control-label col-md-1" for="rLoad">额定载重量</label>
+                                <div class="col-md-3">
+                                    <input id="rLoad" class="form-control" type="text" name="rLoad" placeholder="额定载重量(kg)" required>
+                                </div>
+                                <label class="control-label col-md-1" for="fN">层站门</label>
+                                <div class="col-md-1">
+                                    <input id="fN" class="form-control" type="text" name="fN" placeholder="层" required>
+                                </div>
+                                <label class="sr-only" for="sN">站</label>
+                                <div class="col-md-1">
+                                    <input id="sN" class="form-control" type="text" name="sN" placeholder="站" required>
+                                </div>
+                                <label class="sr-only" for="dN">门</label>
+                                <div class="col-md-1">
+                                    <input id="dN" class="form-control" type="text" name="dN" placeholder="门" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="controlMode">控制方式</label>
+                                <div class="col-md-3">
+                                    <select id="controlMode" name="controlMode" class="form-control">
+                                        <option value="信号">信号</option>
+                                        <option value="集选" selected="selected">集选</option>
+                                        <option value="群控">群控</option>
+                                        <option value="按钮">按钮</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="carDecorate">轿厢装修</label>
+                                <div class="col-md-3">
+                                    <select id="carDecorate" name="carDecorate" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="icCard">IC卡</label>
+                                <div class="col-md-3">
+                                    <select id="icCard" name="icCard" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="autoRescuer">自动救援</label>
+                                <div class="col-md-3">
+                                    <select id="autoRescuer" name="autoRescuer" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="energyFeedback">能量反馈</label>
+                                <div class="col-md-3">
+                                    <select id="energyFeedback" name="energyFeedback" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="internetOfThings">物联网</label>
+                                <div class="col-md-3">
+                                    <select id="internetOfThings" name="internetOfThings" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--分隔符-->
+                            <div class="card-diver">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="machineType">主机型式</label>
+                                <div class="col-md-3">
+                                    <select id="machineType" name="machineType" class="form-control">
+                                        <option value="同步" selected="selected">同步主机</option>
+                                        <option value="异步">异步主机</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="machineModel">主机型号</label>
+                                <div class="col-md-3">
+                                    <input id="machineModel" class="form-control" type="text" name="machineModel" placeholder="主机型号" required>
+                                </div>
+                                <label class="control-label col-md-1" for="machineNumber">主机编号</label>
+                                <div class="col-md-3">
+                                    <input id="machineNumber" class="form-control" type="text" name="machineNumber" placeholder="主机编号" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="manualOperate">手动紧急操作装置</label>
+                                <div class="col-md-3">
+                                    <select id="manualOperate" name="manualOperate" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="ascendOverspeed">上行超速保护装置</label>
+                                <div class="col-md-3">
+                                    <select id="ascendOverspeed" name="ascendOverspeed" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="ucmp">意外移动保护装置</label>
+                                <div class="col-md-3">
+                                    <select id="ucmp" name="ucmp" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--分隔符-->
+                            <div class="card-diver">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="speedGovernMethod">调速方式</label>
+                                <div class="col-md-3">
+                                    <select id="speedGovernMethod" name="speedGovernMethod" class="form-control">
+                                        <option value="变频" selected="selected">变频</option>
+                                        <option value="双速">双速</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="controlCabinetModel">控制柜型号</label>
+                                <div class="col-md-3">
+                                    <input id="controlCabinetModel" class="form-control" type="text" name="controlCabinetModel" placeholder="主机型号" required>
+                                </div>
+                                <label class="control-label col-md-1" for="controlCabinetNumber">控制柜编号</label>
+                                <div class="col-md-3">
+                                    <input id="controlCabinetNumber" class="form-control" type="text" name="controlCabinetNumber" placeholder="主机编号" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="emEOperate">紧急电动运行</label>
+                                <div class="col-md-3">
+                                    <select id="emEOperate" name="emEOperate" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="doorBypass">旁路装置</label>
+                                <div class="col-md-3">
+                                    <select id="doorBypass" name="doorBypass" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="doorLoopDetect">门回路检测</label>
+                                <div class="col-md-3">
+                                    <select id="doorLoopDetect" name="doorLoopDetect" class="form-control">
+                                        <option value="有">有</option>
+                                        <option value="无" selected="selected">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="phaseFaultProtect">断错相保护</label>
+                                <div class="col-md-3">
+                                    <select id="phaseFaultProtect" name="phaseFaultProtect" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="brakeFProtect">制动器故障保护</label>
+                                <div class="col-md-3">
+                                    <select id="brakeFProtect" name="brakeFProtect" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="governorManufactureDate">限速器出厂日期</label>
+                                <div class="col-md-3">
+                                    <input id="governorManufactureDate" class="form-control datepicker" type="text" name="governorManufactureDate" placeholder="限速器出厂日期" required>
+                                </div>
+                                <label class="control-label col-md-1" for="governorCheckDate">限速器校验日期</label>
+                                <div class="col-md-3">
+                                    <input id="governorCheckDate" class="form-control datepicker" type="text" name="governorCheckDate" placeholder="校验日期" required>
+                                </div>
+                                <label class="control-label col-md-1" for="governorSpeed">校验速度</label>
+                                <div class="col-md-3">
+                                    <input id="governorSpeed" class="form-control" type="text" name="governorSpeed" placeholder="校验速度(m/s)" required>
+                                </div>
+                            </div>
+                            <!--分隔符-->
+                            <div class="card-diver">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="compensateChain">补偿链</label>
+                                <div class="col-md-3">
+                                    <select id="compensateChain" name="compensateChain" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="compensateRopeSwitch">补偿链电气装置</label>
+                                <div class="col-md-3">
+                                    <select id="compensateRopeSwitch" name="compensateRopeSwitch" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="compRebound">补偿链防跳装置</label>
+                                <div class="col-md-3">
+                                    <select id="compRebound" name="compRebound" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="suspensionType">悬挂装置类型</label>
+                                <div class="col-md-3">
+                                    <select id="suspensionType" name="suspensionType" class="form-control">
+                                        <option value="钢丝绳" selected="selected">钢丝绳</option>
+                                        <option value="钢带">钢带</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="ropeDiameter">钢丝绳(带)直径</label>
+                                <div class="col-md-3">
+                                    <input id="ropeDiameter" class="form-control" type="text" name="ropeDiameter" placeholder="钢丝绳（带）直径" required>
+                                </div>
+                                <label class="control-label col-md-1" for="ropeNumber">钢丝绳(带)数量</label>
+                                <div class="col-md-3">
+                                    <input id="ropeNumber" class="form-control" type="text" name="ropeNumber" placeholder="钢丝绳（带）数量" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="wellSafetyDoor">井道安全门</label>
+                                <div class="col-md-3">
+                                    <select id="wellSafetyDoor" name="wellSafetyDoor" class="form-control">
+                                        <option value="有">有</option>
+                                        <option value="无" selected="selected">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="wellAccessDoor">井道检修门</label>
+                                <div class="col-md-3">
+                                    <select id="wellAccessDoor" name="wellAccessDoor" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="safetyWindow">安全窗</label>
+                                <div class="col-md-3">
+                                    <select id="safetyWindow" name="safetyWindow" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="carOverArea">轿厢超面积</label>
+                                <div class="col-md-3">
+                                    <select id="carOverArea" name="carOverArea" class="form-control">
+                                        <option value="有">有</option>
+                                        <option value="无" selected="selected">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="overloadProtect">超载保护装置</label>
+                                <div class="col-md-3">
+                                    <select id="overloadProtect" name="overloadProtect" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="cwSaftyGear">对重安全钳</label>
+                                <div class="col-md-3">
+                                    <select id="cwSaftyGear" name="cwSaftyGear" class="form-control">
+                                        <option value="有">有</option>
+                                        <option value="无" selected="selected">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="carDoorLock">轿门门锁</label>
+                                <div class="col-md-3">
+                                    <select id="carDoorLock" name="carDoorLock" class="form-control">
+                                        <option value="有">有</option>
+                                        <option value="无" selected="selected">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="carDoorRestrOp">轿门开门限制</label>
+                                <div class="col-md-3">
+                                    <select id="carDoorRestrOp" name="carDoorRestrOp" class="form-control">
+                                        <option value="有">有</option>
+                                        <option value="无" selected="selected">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="glassDoor">玻璃门</label>
+                                <div class="col-md-3">
+                                    <select id="glassDoor" name="glassDoor" class="form-control">
+                                        <option value="有">有</option>
+                                        <option value="无" selected="selected">无</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1" for="autoDoorClose">自动关门装置</label>
+                                <div class="col-md-3">
+                                    <select id="autoDoorClose" name="autoDoorClose" class="form-control">
+                                        <option value="有" selected="selected">有</option>
+                                        <option value="无">无</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="bufferType">缓冲器型式</label>
+                                <div class="col-md-3">
+                                    <select id="bufferType" name="bufferType" class="form-control">
+                                        <option value="耗能型" selected="selected">耗能型</option>
+                                        <option value="蓄能型">蓄能型</option>
+                                    </select>
+                                </div>
+                                <label class="control-label col-md-1" for="cwOvDis">对重缓冲距</label>
+                                <div class="col-md-3">
+                                    <input id="cwOvDis" class="form-control" type="text" name="cwOvDis" placeholder="对重缓冲距(mm)" required>
+                                </div>
+                            </div>
+                            <div class="card-footer" id="submit_button">
+                                <div class="row">
+                                    <div class="col-md-2 col-md-offset-4" >
+                                        <button class="btn btn-primary icon-btn" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>提交</button>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <button class="btn btn-primary icon-btn" type="reset"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

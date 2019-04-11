@@ -6,13 +6,27 @@ from flask import render_template, request, session, redirect, url_for
 from flask_login import login_required, current_user
 from app.models.elevator import lift_class_choose, lift_html_choose, ElevatorRoom
 from app.forms.elevator import ElevatorInitForm
+from sqlalchemy import and_
 
-
+# 电梯信息管理页面
 @view.route('/elevator_manage/')
 @login_required
 def elevator_manage():
-    elevators = ElevatorRoom.query.all()
+    elevators = ElevatorRoom.query.filter_by(maintenanceCompany=current_user.company)
     return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
+
+# 电梯信息查看页面
+@view.route('/ele_show/<ele_info>', methods=['GET'])
+@login_required
+def ele_info_show(ele_info):
+    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==ele_info, ElevatorRoom.maintenanceCompany==current_user.company)).first()
+    return render_template('elevator/elevatorRoom_Show.html', elevator_data=elevator.__dict__, action='')
+
+# 电梯信息更新
+@view.route('/ele_update', methods=['POST'])
+@login_required
+def ele_update():
+    pass
 
 
 @view.route('/elevator_data_input_init/', methods=['GET', 'POST'])
@@ -25,7 +39,9 @@ def elevator_data_input_init():
         if request.form['idCode_cp'] == '':
             return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form.to_dict(), elevator_cp_data='')
         else:
-            elevator = ElevatorRoom.query.filter_by(idCode=request.form['idCode_cp']).first()
+            elevator = ElevatorRoom.query.filter(
+                and_(ElevatorRoom.idCode == request.form['idCode_cp'], ElevatorRoom.maintenanceCompany == current_user.company)).first()
+            # elevator = ElevatorRoom.query.filter_by(idCode=request.form['idCode_cp']).first()
             return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form, elevator_cp_data=elevator.__dict__)
     else:
         return render_template('elevator/elevatorInput_init.html', messages=form.errors)

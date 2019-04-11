@@ -332,6 +332,8 @@ textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  text-align: center;
+  text-align-last: center;
 }
 
 a {

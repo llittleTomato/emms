@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>电梯信息</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/report.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+{% block script %}
+    <!-- Javascripts-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.1.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            {% for key in elevator_data %}
+                $('#{{ key }}').val("{{ elevator_data[key] }}");
+            {% endfor %}
+            {% if  %}
+        });
+    </script>
+{% endblock %}
+</html>
