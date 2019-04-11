@@ -16,17 +16,33 @@ def elevator_manage():
     return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
 
 # 电梯信息查看页面
-@view.route('/ele_show/<ele_info>', methods=['GET'])
+@view.route('/ele_show/<ele_info>/<action>', methods=['GET'])
 @login_required
-def ele_info_show(ele_info):
+def ele_info_show(ele_info, action):
     elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==ele_info, ElevatorRoom.maintenanceCompany==current_user.company)).first()
-    return render_template('elevator/elevatorRoom_Show.html', elevator_data=elevator.__dict__, action='')
+    return render_template('elevator/elevatorRoom_Show.html', elevator_data=elevator.__dict__, action=action)
 
 # 电梯信息更新
 @view.route('/ele_update', methods=['POST'])
 @login_required
 def ele_update():
-    pass
+    elevator_db = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==request.form['idCode'], ElevatorRoom.maintenanceCompany==current_user.company)).first()
+    elevator_changed = lift_class_choose(request.form['deviceName'])
+    elevator_changed = elevator_db
+    elevator_changed.set_attrs(request.form)
+    db.session.delete(elevator_db)
+    db.session.add(elevator_changed)
+    db.session.commit()
+    return redirect(url_for('view.ele_info_show', ele_info=request.form['idCode'], action='0'))
+
+# 电梯数据删除
+@view.route('/ele_del/<ele_info>', methods=['GET', 'POST'])
+@login_required
+def ele_del(ele_info):
+    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==ele_info, ElevatorRoom.maintenanceCompany==current_user.company)).first()
+    db.session.delete(elevator)
+    db.session.commit()
+    return redirect(url_for('view.elevator_manage'))
 
 
 @view.route('/elevator_data_input_init/', methods=['GET', 'POST'])
@@ -41,7 +57,6 @@ def elevator_data_input_init():
         else:
             elevator = ElevatorRoom.query.filter(
                 and_(ElevatorRoom.idCode == request.form['idCode_cp'], ElevatorRoom.maintenanceCompany == current_user.company)).first()
-            # elevator = ElevatorRoom.query.filter_by(idCode=request.form['idCode_cp']).first()
             return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form, elevator_cp_data=elevator.__dict__)
     else:
         return render_template('elevator/elevatorInput_init.html', messages=form.errors)

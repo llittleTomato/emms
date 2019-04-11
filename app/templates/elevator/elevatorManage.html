@@ -69,7 +69,6 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th>操作</th>
                             <th>ID</th>
                             <th>识别码</th>
                             <th>设备名称</th>
@@ -79,6 +78,7 @@
                             <th>使用编号</th>
                             <th>联系人</th>
                             <th>联系电话</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -95,9 +95,11 @@
                                     <td>{{ elevator.contactPerson }}</td>
                                     <td>{{ elevator.contactNumber }}</td>
                                     <td>
-                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode) }}" target="_blank">查看</a>
+                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=0) }}" target="_blank">查看</a>
                                         &nbsp&nbsp&nbsp&nbsp
-                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode) }}" target="_blank">更新</a>
+                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=1) }}" target="_blank">更新</a>
+                                        &nbsp&nbsp&nbsp&nbsp
+                                        <a href="{{ url_for('view.ele_del', ele_info=elevator.idCode) }}" target="_blank">删除</a>
                                     </td>
                                 </tr>
                             {% endfor %}

@@ -3,16 +3,16 @@
 {% block content %}
     <!--数据录入-->
     <div class="content-report">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="card">
-                    <div class="card-title">
-                        <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
-                            <h3>电梯信息</h3>
+        <form class="form-horizontal" method="post" action="{{ url_for('view.ele_update') }}">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="card">
+                        <div class="card-title">
+                            <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
+                                <h3>电梯信息</h3>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body text-center">
-                        <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_basic_data_input') }}">
+                        <div class="card-body text-center">
                             <div class="form-group">
                                 <label class="control-label col-md-1" for="maintenanceContractNumber">合同编号</label>
                                 <div class="col-md-3">
@@ -172,14 +172,14 @@
                                     <textarea class="form-control" id="maintenanceRemark" rows="3" required></textarea>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-md-offset-2">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="card">
+                        <div class="card-body text-center">
                             <div class="form-group">
                                 <label class="control-label col-md-1" for="rSpeed">额定速度</label>
                                 <div class="col-md-3">
@@ -508,10 +508,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
     </div>
 {% endblock %}

@@ -19,7 +19,9 @@
             {% for key in elevator_data %}
                 $('#{{ key }}').val("{{ elevator_data[key] }}");
             {% endfor %}
-            {% if  %}
+            {% if action == '0' %}
+                $('#submit_button').attr('hidden', 'True');
+            {% endif %}
         });
     </script>
 {% endblock %}
