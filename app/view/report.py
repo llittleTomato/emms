@@ -46,17 +46,17 @@ def report_generation():
                     report.set_attrs(report_data)
 
                     # 录入数据库
-                    # db.session.add(report)
-                    # db.session.commit()
+                    db.session.add(report)
+                    db.session.commit()
 
                     # 生成docx文件
                     doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
                     reportdata = reportdatadealroom(report_data)
                     doc.render(reportdata)
                     doc.save('app/static/reportpdf/test.docx')
-                    subprocess.check_output(
-                        ['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir',
-                         'app/static/reportpdf/'])
+                    # subprocess.check_output(
+                    #     ['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir',
+                    #      'app/static/reportpdf/'])
 
             return render_template('report/reportGeneration.html')
     else:
@@ -66,7 +66,8 @@ def report_generation():
 @view.route('/report_manage/', methods=['GET', 'POST'])
 @login_required
 def report_manage():
-    return render_template('report/reportManage.html')
+    reports = ReportElevatorRoom.query.filter_by(maintenanceCompany=current_user.company)
+    return render_template('report/reportManage.html', reports=enumerate(reports))
 
 
 @view.route('/report_show/', methods=['GET'])
