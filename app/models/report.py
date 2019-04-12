@@ -23,9 +23,9 @@ def reportdatadealroom(report_data):
             reportdata[key+'C'] = '无此项'
 
     # 根据数据判断自检结论
-    reportdata['governorManufactureDateR'] = reportdata['governorManufactureDate']          # 限速器
-    reportdata['governorCheckDateR'] = reportdata['governorCheckDate']
-    reportdata['governorSpeedR'] = reportdata['governorSpeed']
+    reportdata['governorManufactureDateR'] = report_data['governorManufactureDate']          # 限速器
+    reportdata['governorCheckDateR'] = report_data['governorCheckDate']
+    reportdata['governorSpeedR'] = report_data['governorSpeed']
 
     if reportdata['carDoorLock'] == '有':           # 井道壁距离
         reportdata['carWellCleR'] = '0.15'

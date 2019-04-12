@@ -35,6 +35,8 @@ def report_generation():
                     report = ReportElevatorRoom()
                     elevator = ElevatorRoom.query.filter_by(idCode=idcode).first()
                     report_data = elevator.__dict__
+                    print(report_data['governorManufactureDate'])
+
                     del report_data['_sa_instance_state']
                     report_data['reportID'] = data.get('reportID'+idcode)
                     report_data['governorCheckDate'] = data.get('governorCheckDate'+idcode)
@@ -43,20 +45,20 @@ def report_generation():
                     report_data['brakeTest'] = data.get('brakeTest'+idcode)
                     report_data['reportYear'] = time.strftime('%Y', time.localtime(time.time()))
 
-                    report.set_attrs(report_data)
-
-                    # 录入数据库
-                    db.session.add(report)
-                    db.session.commit()
-
                     # 生成docx文件
                     doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
                     reportdata = reportdatadealroom(report_data)
                     doc.render(reportdata)
                     doc.save('app/static/reportpdf/test.docx')
+                    # 生产pdf文件
                     # subprocess.check_output(
                     #     ['libreoffice', '--convert-to', 'pdf', 'app/static/reportpdf/test.docx', '--outdir',
                     #      'app/static/reportpdf/'])
+
+                    # 录入数据库，必须放在最后，不然程序出错，docx渲染不正确
+                    report.set_attrs(report_data)
+                    db.session.add(report)
+                    db.session.commit()
 
             return render_template('report/reportGeneration.html')
     else:
