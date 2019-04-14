@@ -2,11 +2,11 @@
 {% block content %}
     <div class="content-report">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="card">
                     <div class="card-title">
                         <div class="report-page-header">
-                            <div class="pull-left">公司</div>
+                            <div class="pull-left">{{ report.maintenanceCompany }}</div>
                             <div class="pull-right">受控文件号</div>
                         </div>
                     </div>
@@ -16,68 +16,69 @@
                             <tbody>
                             <tr>
                                 <td>使用单位名称</td>
-                                <td colspan="3">111111</td>
+                                <td colspan="3">{{ report.userEntityName }}</td>
                                 <td>报告编号</td>
-                                <td>111111000120190404</td>
+                                <td>{{ report.reportID }}</td>
                             </tr>
                             <tr>
                                 <td>使用地点及编号</td>
-                                <td colspan="3">sydd L1</td>
+                                <td colspan="3">{{ report.locationOfUse }} / {{ report.numberOfUse }}</td>
                                 <td>使用单位代码</td>
-                                <td>111111</td>
+                                <td>{{ report.userEntityCode }}</td>
                             </tr>
                             <tr>
                                 <td>设备品种</td>
                                 <td colspan="3">曳引驱动乘客电梯</td>
                                 <td>识别码</td>
-                                <td>111111</td>
+                                <td>{{ report.idCode }}</td>
                             </tr>
                             <tr>
                                 <td>型 号</td>
-                                <td colspan="3">111111</td>
+                                <td colspan="3">{{ report.model }}</td>
                                 <td>控制方式</td>
-                                <td>集选</td>
+                                <td>{{ report.controlMode }}</td>
                             </tr>
                             <tr>
                                 <td>制造(改造)单位名称</td>
-                                <td colspan="3">111</td>
+                                <td colspan="3">{{ report.manufactureCompany }}</td>
                                 <td>产品编号</td>
-                                <td>111111</td>
+                                <td>{{ report.factoryNumber }}</td>
                             </tr>
                             <tr>
                                 <td>额定速度</td>
-                                <td>1.0 m/s</td>
+                                <td>{{ report.rSpeed }} m/s</td>
                                 <td>额定载重量</td>
-                                <td>1000 kg</td>
+                                <td>{{ report.rLoad }} kg</td>
                                 <td>层站门</td>
-                                <td>5层5站5门</td>
+                                <td>{{ report.fN }}层{{ report.sN }}站{{ report.dN }}门</td>
                             </tr>
                             <tr>
-                                <td rowspan="2">安全管理人员证</td>
-                                <td>1111</td>
-                                <td colspan="2">证号：11111</td>
+                                <td>安全管理人员证</td>
+                                <td>{{ report.saM }}</td>
+                                <td colspan="2">证号：{{ report.safetyManagerCertificate }}</td>
                                 <td>联系人</td>
-                                <td>1111</td>
+                                <td>{{ report.contactPerson }}</td>
                             </tr>
                             <tr>
-                                <td>（作业人员证）</td>
-                                <td colspan="2">证号：11111</td>
+                                <td>作业人员证</td>
+                                <td>{{ report.liA }}</td>
+                                <td colspan="2">证号：{{ report.liftAttendantCertificate }}</td>
                                 <td>联系电话</td>
-                                <td>13011111111</td>
+                                <td>{{ report.contactNumber }}</td>
                             </tr>
                             <tr>
                                 <td>维保合同</td>
                                 <td>编号</td>
-                                <td>1111</td>
+                                <td>{{ report.maintenanceContractNumber }}</td>
                                 <td>维保期</td>
-                                <td colspan="2">15/09/2018 ～ 15/09/2018</td>
+                                <td colspan="2">{{ report.mSDate }} ～ {{ report.mEDate }}</td>
                             </tr>
                             <tr>
-                                <td>□轿厢装修</td>
-                                <td>□读卡器</td>
-                                <td>□自动救援</td>
-                                <td>□能量反馈</td>
-                                <td>□物联网</td>
+                                <td>轿厢装修( {{ report.carDecorate }} )</td>
+                                <td>读卡器( {{ report.icCard }} )</td>
+                                <td>自动救援( {{ report.autoRescuer }} )</td>
+                                <td>能量反馈( {{ report.energyFeedback }} )</td>
+                                <td>物联网( {{ report.internetOfThings }} )</td>
                                 <td></td>
                             </tr>
                             <tr>
@@ -196,7 +197,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>(5)手动紧急操作装置</strong></td>
-                                    <td>符合</td>
+                                    <td>{{ report.manualOperateR }}</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="6">6</td>
@@ -208,23 +209,23 @@
                                 </tr>
                                 <tr>
                                     <td><strong>(4)紧急电动运行装置</strong></td>
-                                    <td><strong>符合</strong></td>
+                                    <td><strong>{{ report.emEOperateR }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td><strong>(6)层门和轿门旁路装置</strong></td>
-                                    <td><strong>符合</strong></td>
+                                    <td><strong>{{ report.doorBypassR }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td><strong>(7)门回路检测功能</strong></td>
-                                    <td><strong>符合</strong></td>
+                                    <td><strong>{{ report.doorLoopDetectR }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td><strong>(8)制动器故障保护</strong></td>
-                                    <td><strong>符合</strong></td>
+                                    <td><strong>{{ report.brakeFProtectR }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td><strong>(9)自动救援操作装置</strong></td>
-                                    <td><strong>符合</strong></td>
+                                    <td><strong>{{ report.autoRescuerR }}</strong></td>
                                 </tr>
                                 <tr>
                                     <td rowspan="3">7</td>
@@ -241,9 +242,12 @@
                                 <tr>
                                     <td>
                                         <p>(4)动作速度校验</p>
-                                        <p>(出厂日期:)</p>
+                                        <p>(出厂日期:{{ report.governorManufactureDateR }})</p>
                                     </td>
-                                    <td>m/s</td>
+                                    <td>
+                                        <p>{{ report.governorCheckDateR }}</p>
+                                        <p>{{ report.governorSpeedR }}m/s</p>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>8</td>
@@ -265,31 +269,31 @@
                                     <td rowspan="5">3井道及相关设备</td>
                                     <td rowspan="2">3.4井道安全门</td>
                                     <td>(3)门锁</td>
-                                    <td>符合</td>
-                                    <td rowspan="2">合格</td>
+                                    <td>{{ report.wellSafetyDoorR }}</td>
+                                    <td rowspan="2">{{ report.wellSafetyDoorC }}</td>
                                 </tr>
                                 <tr>
                                     <td>(4)电气安全装置</td>
-                                    <td>符合</td>
+                                    <td>{{ report.wellSafetyDoorR }}</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">11</td>
                                     <td rowspan="2">C</td>
                                     <td rowspan="2">3.5井道检修门</td>
                                     <td>(3)门锁</td>
-                                    <td>符合</td>
-                                    <td rowspan="2">合格</td>
+                                    <td>{{ report.wellAccessDoorR }}</td>
+                                    <td rowspan="2">{{ report.wellAccessDoorC }}</td>
                                 </tr>
                                 <tr>
                                     <td>(4)电气安全装置</td>
-                                    <td>符合</td>
+                                    <td>{{ report.wellAccessDoorR }}</td>
                                 </tr>
                                 <tr>
                                     <td>12</td>
                                     <td>B</td>
                                     <td colspan="2">3.7轿厢与井道壁距离</td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.carWellCleR }}</td>
+                                    <td>{{ report.carWellCleC }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -299,11 +303,11 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md-10 col-md-offset-1">
                 <div class="card">
                     <div class="card-title">
                         <div class="report-page-header">
-                            <div class="pull-left">公司</div>
+                            <div class="pull-left">{{ report.maintenanceCompany }}</div>
                             <div class="pull-right">受控文件号</div>
                         </div>
                     </div>
@@ -361,11 +365,11 @@
                                 </tr>
                                 <tr>
                                     <td><strong>(4)液位和电气安全装置</strong></td>
-                                    <td>符合</td>
+                                    <td>{{ report.bufferTypeR }}</td>
                                 </tr>
                                 <tr>
                                     <td>(5)对重越程距离</td>
-                                    <td>mm</td>
+                                    <td>{{ report.cwOvDisR }}mm</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">18</td>
@@ -384,8 +388,8 @@
                                     <td>19</td>
                                     <td>C</td>
                                     <td colspan="2"><strong>4.3(3)轿厢安全窗(门)电气安全装置</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.safetyWindowR }}</td>
+                                    <td>{{ report.safetyWindowC }}</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">20</td>
@@ -403,8 +407,8 @@
                                     <td>21</td>
                                     <td>C</td>
                                     <td colspan="2"><strong>4.6(2)轿厢超面积载货电梯的控制条件</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.carOverAreaR }}</td>
+                                    <td>{{ report.carOverAreaC }}</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">22</td>
@@ -429,8 +433,8 @@
                                     <td>24</td>
                                     <td>C</td>
                                     <td colspan="2"><strong>4.10轿厢超载保护装置</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.overloadProtectR }}</td>
+                                    <td>{{ report.overloadProtectC }}</td>
                                 </tr>
                                 <tr>
                                     <td>25</td>
@@ -452,23 +456,23 @@
                                     <td rowspan="3">C</td>
                                     <td rowspan="3">5.3补偿装置</td>
                                     <td><strong>(1)绳(链)端固定</strong></td>
-                                    <td>符合</td>
-                                    <td rowspan="3">合格</td>
+                                    <td>{{ report.compensateChainR }}</td>
+                                    <td rowspan="3">{{ report.compensateChainC }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>(2)电气安全装置</strong></td>
-                                    <td>符合</td>
+                                    <td>{{ report.compSwitchR }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>(3)补偿绳防跳装置</strong></td>
-                                    <td>符合</td>
+                                    <td>{{ report.compReboundR }}</td>
                                 </tr>
                                 <tr>
                                     <td>28</td>
                                     <td>B</td>
                                     <td colspan="2"><strong>5.5松绳(链)保护</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.ropeCreepR }}</td>
+                                    <td>{{ report.ropeCreepC }}</td>
                                 </tr>
                                 <tr>
                                     <td>29</td>
@@ -494,15 +498,15 @@
                                     <td>31</td>
                                     <td>C</td>
                                     <td colspan="2"><strong>6.4玻璃门防拖曳措施</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.glassDoorR }}</td>
+                                    <td>{{ report.glassDoorC }}</td>
                                 </tr>
                                 <tr>
                                     <td>32</td>
                                     <td>B</td>
                                     <td colspan="2"><strong>6.5防止门夹人的保护装置</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.doorAntiClampR }}</td>
+                                    <td>{{ report.doorAntiClampC }}</td>
                                 </tr>
                                 <tr>
                                     <td>33</td>
@@ -515,8 +519,8 @@
                                     <td>34</td>
                                     <td>B</td>
                                     <td colspan="2"><strong>6.7自动关闭层门装置</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.autoDoorCloseR }}td>
+                                    <td>{{ report.autoDoorCloseC }}</td>
                                 </tr>
                                 <tr>
                                     <td>35</td>
@@ -535,7 +539,7 @@
                                 </tr>
                                 <tr>
                                     <td><strong>(2)轿门门锁装置</strong></td>
-                                    <td>符合</td>
+                                    <td>{{ report.carDoorLockR }}</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">37</td>
@@ -554,18 +558,18 @@
                                     <td rowspan="2">B</td>
                                     <td rowspan="2"><strong>6.11轿门开门限制及轿门的开启</strong></td>
                                     <td><strong>(1)轿门开门限制装置</strong></td>
-                                    <td>符合</td>
-                                    <td rowspan="2">合格</td>
+                                    <td>{{ report.carDoorRestrOpR }}</td>
+                                    <td rowspan="2">{{ report.carDoorRestrOpC }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>(2)轿门的开启</strong></td>
-                                    <td>符合</td>
+                                    <td>{{ report.carDoorRestrOpR }}</td>
                                 </tr>
                                 <tr>
                                     <td>39</td>
                                     <td>C</td>
                                     <td colspan="2">6.12门刀、门锁滚轮与地坎间隙</td>
-                                    <td>≥mm</td>
+                                    <td>≥5mm</td>
                                     <td>合格</td>
                                 </tr>
                                 <tr>
@@ -580,20 +584,20 @@
                                     <td>41</td>
                                     <td>C</td>
                                     <td colspan="2"><strong>8.2轿厢上行超速保护装置试验</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.ascendOverspeedR }}</td>
+                                    <td>{{ report.ascendOverspeedC }}</td>
                                 </tr>
                                 <tr>
                                     <td rowspan="2">42</td>
                                     <td rowspan="2">B</td>
                                     <td rowspan="2"><strong>8.3轿厢意外移动保护装置试验</strong></td>
                                     <td><strong>(1)制停情况</strong></td>
-                                    <td>符合</td>
-                                    <td rowspan="2">合格</td>
+                                    <td>{{ report.ucmpR }}</td>
+                                    <td rowspan="2">{{ report.ucmpC }}</td>
                                 </tr>
                                 <tr>
                                     <td><strong>(2)自监测功能</strong></td>
-                                    <td>符合</td>
+                                    <td>{{ report.ucmpSelfDetectR }}</td>
                                 </tr>
                                 <tr>
                                     <td>43</td>
@@ -606,8 +610,8 @@
                                     <td>44</td>
                                     <td>B</td>
                                     <td colspan="2"><strong>8.5对重(平衡重)限速器-安全钳联动试验</strong></td>
-                                    <td>符合</td>
-                                    <td>合格</td>
+                                    <td>{{ report.cwSaftyGearR }}</td>
+                                    <td>{{ report.cwSaftyGearC }}</td>
                                 </tr>
                                 <tr>
                                     <td>45</td>
@@ -664,8 +668,8 @@
                                     <td>51</td>
                                     <td>B</td>
                                     <td colspan="2"><strong>8.13制动试验</strong></td>
-                                    <td>无此项</td>
-                                    <td>无此项</td>
+                                    <td>{{ report.brakeTestR }}</td>
+                                    <td>{{ report.brakeTestC }}</td>
                                 </tr>
                             </tbody>
                         </table>

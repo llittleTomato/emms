@@ -33,11 +33,11 @@ def report_generation():
                 if 'idCode' in key:
                     idcode = data[key].replace('idCode', '')
                     report = ReportElevatorRoom()
-                    elevator = ElevatorRoom.query.filter_by(idCode=idcode).first()
+                    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.maintenanceCompany == current_user.company,
+                                ElevatorRoom.idCode == idcode)).first()
                     report_data = elevator.__dict__
-                    print(report_data['governorManufactureDate'])
-
                     del report_data['_sa_instance_state']
+
                     report_data['reportID'] = data.get('reportID'+idcode)
                     report_data['governorCheckDate'] = data.get('governorCheckDate'+idcode)
                     report_data['governorSpeed'] = data.get('governorSpeed'+idcode)
@@ -72,11 +72,14 @@ def report_manage():
     return render_template('report/reportManage.html', reports=enumerate(reports))
 
 
-@view.route('/report_show/', methods=['GET'])
+@view.route('/report_show/<report_idCode>', methods=['GET'])
 @login_required
-def report_show():
-    filename = 'test.pdf'
-    return render_template('report/reportShow-pdf.html', filename=filename)
+def report_show(report_idCode):
+    report_data = ReportElevatorRoom.query.filter(and_(ReportElevatorRoom.maintenanceCompany==current_user.company, ReportElevatorRoom.idCode==report_idCode)).first()
+    report = report_data.__dict__
+    del report['_sa_instance_state']
+    report = reportdatadealroom(report)
+    return render_template('report/report_ele_room.html', report=report)
 
 
 @view.route('/report_test/', methods=['GET'])

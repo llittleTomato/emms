@@ -94,11 +94,11 @@
                                     <td>{{ report.contactPerson }}</td>
                                     <td>{{ report.contactNumber }}</td>
                                     <td>
-                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=0) }}" target="_blank">查看</a>
+                                        <a href="{{ url_for('view.report_show', report_idCode=report.idCode) }}" target="_blank">查看</a>
                                         &nbsp&nbsp&nbsp&nbsp
-                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=1) }}" target="_blank">更新</a>
+                                        <a href="{{ url_for('view.report_show', report_idCode=report.idCode) }}" target="_blank">更新</a>
                                         &nbsp&nbsp&nbsp&nbsp
-                                        <a href="{{ url_for('view.ele_del', ele_info=elevator.idCode) }}" target="_blank">删除</a>
+                                        <a href="{{ url_for('view.report_show', report_idCode=report.idCode) }}" target="_blank">删除</a>
                                     </td>
                                 </tr>
                             {% endfor %}

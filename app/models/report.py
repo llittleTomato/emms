@@ -50,18 +50,4 @@ def reportdatadealroom(report_data):
     else:
         reportdata['ucmpSelfDetectR'] = '无此项'
 
-    # 删除不需要的数据
-    # del reportdata['manualOperateC']
-    # del reportdata['emEOperateC']
-    # del reportdata['doorBypassC']
-    # del reportdata['doorLoopDetectC']
-    # del reportdata['brakeFProtectC']
-    # del reportdata['autoRescuerC']
-    # del reportdata['governorManufactureDateC']
-    # del reportdata['governorCheckDateC']
-    # del reportdata['governorSpeedC']
-    # del reportdata['compSwitchC']
-    # del reportdata['compReboundC']
-    # del reportdata['carDoorLockC']
-
     return reportdata
