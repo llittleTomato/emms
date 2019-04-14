@@ -12,7 +12,7 @@ from sqlalchemy import and_
 @view.route('/elevator_manage/')
 @login_required
 def elevator_manage():
-    elevators = ElevatorRoom.query.filter_by(maintenanceCompany=current_user.company)
+    elevators = ElevatorRoom.query.filter(and_(ElevatorRoom.status==1, ElevatorRoom.maintenanceCompany==current_user.company))
     return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
 
 # 电梯信息查看页面
@@ -27,7 +27,7 @@ def ele_info_show(ele_info, action):
 @login_required
 def ele_update():
     elevator_db = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==request.form['idCode'], ElevatorRoom.maintenanceCompany==current_user.company)).first()
-    elevator_changed = lift_class_choose(request.form['deviceName'])
+    # elevator_changed = lift_class_choose(request.form['deviceName'])
     elevator_changed = elevator_db
     elevator_changed.set_attrs(request.form)
     db.session.delete(elevator_db)
@@ -40,7 +40,7 @@ def ele_update():
 @login_required
 def ele_del(ele_info):
     elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==ele_info, ElevatorRoom.maintenanceCompany==current_user.company)).first()
-    db.session.delete(elevator)
+    elevator.status = 0
     db.session.commit()
     return redirect(url_for('view.elevator_manage'))
 

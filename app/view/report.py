@@ -1,7 +1,7 @@
 __author__ = 'sky'
 
 from . import view
-from flask import render_template, request, url_for
+from flask import render_template, request, url_for, redirect
 from flask_login import login_required, current_user
 from app.models import db
 from app.models.elevator import ElevatorRoom
@@ -80,6 +80,16 @@ def report_show(report_idCode):
     del report['_sa_instance_state']
     report = reportdatadealroom(report)
     return render_template('report/report_ele_room.html', report=report)
+
+
+@view.route('/report_del/<report_idCode>', methods=['GET', 'POST'])
+@login_required
+def report_del(report_idCode):
+    report = ReportElevatorRoom.query.filter(
+        and_(ReportElevatorRoom.idCode == report_idCode, ReportElevatorRoom.maintenanceCompany == current_user.company)).first()
+    db.session.delete(report)
+    db.session.commit()
+    return redirect(url_for('view.report_manage'))
 
 
 @view.route('/report_test/', methods=['GET'])
