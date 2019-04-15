@@ -5,7 +5,7 @@
     <div class="content-report">
         <form class="form-horizontal" method="post" action="{{ url_for('view.ele_update') }}">
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-10 col-md-offset-1">
                     <div class="card">
                         <div class="card-title">
                             <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
@@ -177,7 +177,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-8 col-md-offset-2">
+                <div class="col-md-10 col-md-offset-1">
                     <div class="card">
                         <div class="card-body text-center">
                             <div class="form-group">
@@ -514,4 +514,13 @@
             </div>
         </form>
     </div>
+{% endblock %}
+{% block script %}
+    {{ super() }}
+    <script type="text/javascript">
+        <!--设备只读属性-->
+        $(document).ready(function () {
+            $(':input').attr('readonly', 'True');
+        });
+    </script>
 {% endblock %}

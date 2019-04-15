@@ -76,7 +76,6 @@
                     <table class="table table-hover table-bordered" id="sampleTable">
                         <thead>
                         <tr>
-                            <th>选择</th>
                             <th>ID</th>
                             <th>姓名</th>
                             <th>Email</th>
@@ -84,12 +83,12 @@
                             <th>证件类型</th>
                             <th>证件号码</th>
                             <th>工作职责</th>
+                            <th>操作</th>
                         </tr>
                         </thead>
                         <tbody>
                             {% for employee in employees %}
                                 <tr>
-                                    <td><label for="check" class="sr-only">check</label><input type="checkbox" id="check"></td>
                                     <td>{{ employee.id }}</td>
                                     <td>{{ employee.name }}</td>
                                     <td>{{ employee.email }}</td>
@@ -97,6 +96,12 @@
                                     <td>{{ employee.certificateType }}</td>
                                     <td>{{ employee.certificateNumber }}</td>
                                     <td>{{ employee.jobType }}</td>
+                                    <td>
+                                        <a href="" target="_blank"
+                                        data-toggle="modal" data-target="#myModal">更新</a>
+                                        &nbsp&nbsp&nbsp&nbsp
+                                        <a href="" target="_blank">删除</a>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -104,6 +109,50 @@
                 </div>
             </div>
         </div>
+    </div>
+    <!-- 弹出页面 -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+         aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">选择被复制电梯</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <label class="control-label col-md-2 col-md-offset-2"
+                               for="idCode_cp">识别码</label>
+                        <div class="col-md-6">
+                            <input id="idCode_cp" class="form-control" type="text"
+                                   name="idCode_cp" placeholder="识别码"
+                                   onkeyup="value=value.replace(/[^\d]/g,'')" maxlength="6">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-md-3 col-md-offset-2">
+                        <button type="button" class="btn btn-primary" id="pre_ele">复制上一台
+                        </button>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-primary" id="cp_bt">复制</button>
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button" class="btn btn-default" id="close_bt"
+                                data-dismiss="modal">关闭
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary icon-btn" type="reset"><i
+                class="fa fa-fw fa-lg fa-refresh"></i>重置
+        </button>
     </div>
 {% endblock %}
 <!-- Javascripts-->
