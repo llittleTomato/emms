@@ -5,6 +5,7 @@ from app.models import db
 from flask import render_template, request
 from flask_login import login_required, current_user
 from app.models.employee import Employee
+from sqlalchemy import and_
 
 # 人员信息录入
 @view.route('/employee_data_input/', methods=['GET', 'POST'])
@@ -24,8 +25,8 @@ def employee_data_input():
 @view.route('/employee_manage', methods=['GET', 'POST'])
 @login_required
 def employee_manage():
-    employees = Employee.query.all()
-    return render_template('employee/employeeManage.html', employees=employees)
+    employees = Employee.query.filter(and_(Employee.status==1, Employee.company==current_user.company))
+    return render_template('employee/employeeManage.html', employees=enumerate(employees))
 
 # 人员信息查看
 @view.route('/employee_show', methods=['GET', 'POST'])
