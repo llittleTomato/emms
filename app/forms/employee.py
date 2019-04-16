@@ -21,13 +21,3 @@ class EmployeeForm(Form):
         if field.data != '':
             if not ElevatorRoom.query.filter_by(idCode=field.data).first():
                 raise ValidationError('被复制的电梯不存在!')
-
-
-class ElevatorBasicForm(Form):
-    # 对输入的电梯基础信息进行验证
-    pass
-
-
-class ElevatorMachineForm(Form):
-    # 对输入的电梯信息进行验证
-    pass

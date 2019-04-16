@@ -10,7 +10,7 @@
     <div id="pdf_viewer"></div>
     <script type="text/javascript">
         if (PDFObject.supportsPDFs){
-            PDFObject.embed('/static/reportpdf/' + '{{ filename }}', '#pdf_viewer');
+            PDFObject.embed('/static/reportdocx/' + '{{ filename }}', '#pdf_viewer');
         }
         else {
             location.href = "/canvas";

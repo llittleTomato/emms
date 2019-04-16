@@ -1,10 +1,12 @@
+import os
+
 __author__ = 'sky'
 
 from app.models import db
 from app.models.user import User
 from app.models.company import Company
 from . import view
-from flask import render_template, request
+from flask import render_template, request, current_app
 from app.forms.register import RegisterForm
 from flask_login import login_required
 
@@ -29,6 +31,8 @@ def user_register():
             db.session.add(company)
             db.session.add(user)
             db.session.commit()
+            # 创建报告保存文件夹，根据公司编号创建，如超级管理员为001，则文件夹名为001
+            os.makedirs(os.path.join(current_app.config['DOCXFILE_DIR'], company.company_number))
         return render_template('user/userRegister.html', messages={'message': ['注册成功！']})
     else:
         return render_template('user/userRegister.html', messages=form.errors)

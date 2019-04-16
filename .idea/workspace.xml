@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24e4a2d1-600f-47df-b1d1-f2ca12e17f13" name="Default" comment="完善报告管理功能，电梯管理功能">
+    <list default="true" id="24e4a2d1-600f-47df-b1d1-f2ca12e17f13" name="Default" comment="完善人员录入、管理功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/forms/elevator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/forms/elevator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/employee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/employee/employeeInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/employee/employeeInput.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/employee/employeeManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/employee/employeeManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/employee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/forms/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/forms/employee.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/secure.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/secure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/setting.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/setting.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/static/reportpdf/test.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/report/reportManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/report/reportManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/report/reportShow-pdf.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/report/reportShow-pdf.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,42 +56,12 @@
     <favorites_list name="emms" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorInput_init.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1005">
-              <caret line="97" column="50" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/employee.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="15" column="11" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/employee.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="28" column="89" selection-start-line="28" selection-start-column="89" selection-end-line="28" selection-end-column="89" />
-              <folding>
-                <element signature="e#20#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/elevator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="126" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="126" />
+            <state relative-caret-position="120">
+              <caret line="14" column="126" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="126" />
               <folding>
                 <element signature="e#20#38#0" expanded="true" />
               </folding>
@@ -96,11 +69,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/employee/employeeManage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="157" column="68" selection-start-line="157" selection-start-column="68" selection-end-line="157" selection-end-column="68" />
+            <state relative-caret-position="1890">
+              <caret line="126" column="66" selection-start-line="126" selection-start-column="66" selection-end-line="126" selection-end-column="66" />
             </state>
           </provider>
         </entry>
@@ -108,20 +81,38 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="86" column="55" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="55" />
+            <state relative-caret-position="437">
+              <caret line="91" column="58" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/view/report.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="27" column="152" selection-start-line="27" selection-start-column="152" selection-end-line="27" selection-end-column="152" />
+              <folding>
+                <element signature="e#20#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/view/report.py">
+        <entry file="file://$PROJECT_DIR$/app/view/user.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="71" column="72" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="72" />
-              <folding>
-                <element signature="e#20#38#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="480">
+              <caret line="34" column="97" selection-start-line="34" selection-start-column="97" selection-end-line="34" selection-end-column="97" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/setting.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" selection-start-line="10" selection-end-line="10" />
             </state>
           </provider>
         </entry>
@@ -188,10 +179,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/templates/userRegister.html" />
-        <option value="$PROJECT_DIR$/app/forms/report.py" />
-        <option value="$PROJECT_DIR$/app/templates/report/reportInit.html" />
-        <option value="$PROJECT_DIR$/app/templates/reportShow1.html" />
         <option value="$PROJECT_DIR$/app/static/css/reporttable.css" />
         <option value="$PROJECT_DIR$/app/templates/report/reportShow1.html" />
         <option value="$PROJECT_DIR$/app/view/index.py" />
@@ -216,7 +203,6 @@
         <option value="$PROJECT_DIR$/app/models/company.py" />
         <option value="$PROJECT_DIR$/app/templates/report/reportGeneration.html" />
         <option value="$PROJECT_DIR$/app/forms/register.py" />
-        <option value="$PROJECT_DIR$/app/view/user.py" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_basic.html" />
         <option value="$PROJECT_DIR$/app/templates/report/reportShow.html" />
         <option value="$PROJECT_DIR$/app/static/css/main.css" />
@@ -224,10 +210,7 @@
         <option value="$PROJECT_DIR$/app/static/css/report.css" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_machine.html" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorShow.html" />
-        <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/models/report.py" />
-        <option value="$PROJECT_DIR$/app/view/report.py" />
-        <option value="$PROJECT_DIR$/app/templates/report/reportManage.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" />
         <option value="$PROJECT_DIR$/app/templates/base.html" />
@@ -239,6 +222,14 @@
         <option value="$PROJECT_DIR$/app/templates/employee/employeeInput.html" />
         <option value="$PROJECT_DIR$/app/view/employee.py" />
         <option value="$PROJECT_DIR$/app/templates/employee/employeeManage.html" />
+        <option value="$PROJECT_DIR$/app/forms/employee.py" />
+        <option value="$PROJECT_DIR$/app/secure.py" />
+        <option value="$PROJECT_DIR$/app/__init__.py" />
+        <option value="$PROJECT_DIR$/app/templates/report/reportManage.html" />
+        <option value="$PROJECT_DIR$/app/setting.py" />
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/app/view/user.py" />
+        <option value="$PROJECT_DIR$/app/view/report.py" />
       </list>
     </option>
   </component>
@@ -303,7 +294,7 @@
               <item name="emms" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="reportpdf" type="462c0819:PsiDirectoryNode" />
+              <item name="reportdocx" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="emms" type="b2602c69:ProjectViewProjectNode" />
@@ -397,19 +388,19 @@
     <option name="mySupportQtDebugging" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/app/forms" />
+      <recent name="$PROJECT_DIR$/app/templates/elevator" />
+      <recent name="$PROJECT_DIR$/reportdocx/docxtemplates" />
+      <recent name="$PROJECT_DIR$/text" />
+      <recent name="$PROJECT_DIR$/app/static/css" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app/templates" />
       <recent name="$PROJECT_DIR$/reportdocx/docxtemplates" />
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/app/static" />
       <recent name="$PROJECT_DIR$/app/templates/report" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/app/templates/elevator" />
-      <recent name="$PROJECT_DIR$/reportdocx/docxtemplates" />
-      <recent name="$PROJECT_DIR$/text" />
-      <recent name="$PROJECT_DIR$/app/static/css" />
-      <recent name="$PROJECT_DIR$/app/static/js" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -504,7 +495,8 @@
       <workItem from="1555078527281" duration="4436000" />
       <workItem from="1555249486656" duration="3351000" />
       <workItem from="1555252859204" duration="109000" />
-      <workItem from="1555336625718" duration="3878000" />
+      <workItem from="1555336625718" duration="4138000" />
+      <workItem from="1555422602247" duration="5009000" />
     </task>
     <task id="LOCAL-00001" summary="完善login.html&#10;修改base.html、index.html">
       <created>1528877404934</created>
@@ -758,11 +750,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555252886321</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="完善人员录入、管理功能">
+      <created>1555340748261</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1555340748261</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106727000" />
+    <option name="totallyTimeSpent" value="111996000" />
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -777,7 +776,31 @@
     <frame x="0" y="25" width="1920" height="991" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.14721628" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.14882226" />
+      <window_info id="Structure" order="1" sideWeight="0.5008696" side_tool="true" type="FLOATING" weight="0.16767372" />
+      <window_info id="Favorites" order="2" sideWeight="0.50259066" side_tool="true" weight="0.16465257" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32467532" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.31261426" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49732333" visible="true" weight="0.26918536" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286219" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" weight="0.3286219" />
+      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49785867" weight="0.3149883" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49840087" weight="0.3286219" />
+      <window_info anchor="bottom" id="Python Console" order="11" weight="0.32790697" />
+      <window_info anchor="bottom" id="Database Console" order="12" weight="0.32840723" />
+      <window_info anchor="bottom" id="Event Log" order="13" sideWeight="0.50267667" side_tool="true" weight="0.22668241" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.32876712" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.13650964" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.14882226" />
       <window_info id="Structure" order="1" sideWeight="0.5008696" side_tool="true" type="FLOATING" weight="0.16767372" />
       <window_info id="Favorites" order="2" sideWeight="0.50259066" side_tool="true" weight="0.16465257" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -798,31 +821,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32876712" />
-      <window_info active="true" anchor="right" id="Database" order="4" visible="true" weight="0.13650964" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.2124431" />
-      <window_info id="Structure" order="1" sideWeight="0.5008696" side_tool="true" type="FLOATING" weight="0.16767372" />
-      <window_info id="Favorites" order="2" sideWeight="0.50259066" side_tool="true" weight="0.16465257" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32685512" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.3137255" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49773413" weight="0.3886926" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3286219" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="8" weight="0.3286219" />
-      <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49853587" weight="0.31978798" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5022659" side_tool="true" weight="0.3939394" />
-      <window_info anchor="bottom" id="Version Control" order="11" sideWeight="0.49840087" weight="0.3286219" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.3286219" />
-      <window_info anchor="bottom" id="Database Console" order="13" weight="0.32840723" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" weight="0.32930514" />
-      <window_info active="true" anchor="right" id="Database" order="4" visible="true" weight="0.14719272" />
+      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.13650964" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -869,7 +868,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="建立了主要html，完善了系统框架" />
     <MESSAGE value="完善了页面布局" />
     <MESSAGE value="修改elevator数据库模型" />
     <MESSAGE value="完善电梯数据录入界面" />
@@ -894,7 +892,8 @@
     <MESSAGE value="完善电梯信息查看、更新、删除功能" />
     <MESSAGE value="修正报告生成bug" />
     <MESSAGE value="完善报告管理功能，电梯管理功能" />
-    <option name="LAST_COMMIT_MESSAGE" value="完善报告管理功能，电梯管理功能" />
+    <MESSAGE value="完善人员录入、管理功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善人员录入、管理功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -910,7 +909,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/emms$.coverage" NAME=" Coverage Results" MODIFIED="1555252784572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/emms$emms.coverage" NAME="emms Coverage Results" MODIFIED="1555338982733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/emms$emms.coverage" NAME="emms Coverage Results" MODIFIED="1555424073047" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/emms$report.coverage" NAME="report Coverage Results" MODIFIED="1555080585191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/view" />
   </component>
   <component name="debuggerHistoryManager">
@@ -963,53 +962,10 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="das://a3574365-a5eb-44d7-b205-f4772aa85f14/schema/emms/table/elevator_room" />
-    <entry file="file://$PROJECT_DIR$/app/templates/report/reportShow-pdf.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="7" lean-forward="true" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/report/reporttest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2105">
-          <caret line="640" column="37" lean-forward="true" selection-start-line="640" selection-start-column="37" selection-end-line="640" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/forms/register.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="98" selection-start-line="24" selection-start-column="88" selection-end-line="24" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="18" column="52" lean-forward="true" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
-          <folding>
-            <element signature="e#20#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/login.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
           <caret line="17" column="77" lean-forward="true" selection-start-line="17" selection-start-column="77" selection-end-line="17" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -1069,34 +1025,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/user">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true">
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="34" selection-end-line="23" selection-end-column="42" />
-          <folding>
-            <element signature="e#20#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/company">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true">
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/company.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1108,13 +1036,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="31" column="47" selection-start-line="31" selection-start-column="40" selection-end-line="31" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="30" column="31" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1132,12 +1053,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/setting.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/secure.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file:///usr/lib/python3.6/subprocess.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
@@ -1154,24 +1069,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/report_elevator_room">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true">
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/elevator_room">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true">
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="397">
@@ -1179,24 +1076,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/report.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/base.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/emms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
@@ -1228,20 +1111,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/forms/elevator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="110" selection-start-line="10" selection-start-column="110" selection-end-line="10" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorInput_init.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1005">
-          <caret line="97" column="50" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorShow.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -1270,44 +1139,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/elevator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="126" lean-forward="true" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="126" />
-          <folding>
-            <element signature="e#20#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/employee.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="15" column="11" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/employee/employeeInput.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-343">
           <caret line="18" column="39" lean-forward="true" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/employee.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="89" selection-start-line="28" selection-start-column="89" selection-end-line="28" selection-end-column="89" />
-          <folding>
-            <element signature="e#20#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="86" column="55" lean-forward="true" selection-start-line="86" selection-start-column="36" selection-end-line="86" selection-end-column="55" />
         </state>
       </provider>
     </entry>
@@ -1320,10 +1155,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/report.py">
+    <entry file="file://$PROJECT_DIR$/app/forms/elevator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="71" column="72" selection-start-line="71" selection-start-column="63" selection-end-line="71" selection-end-column="72" />
+        <state relative-caret-position="150">
+          <caret line="10" column="110" selection-start-line="10" selection-start-column="110" selection-end-line="10" selection-end-column="110" />
+          <folding>
+            <element signature="e#20#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/forms/report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#20#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorInput_init.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1455">
+          <caret line="97" column="50" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/employee.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="15" column="11" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/employee.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+          <folding>
+            <element signature="e#20#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/elevator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="14" column="126" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="126" />
           <folding>
             <element signature="e#20#38#0" expanded="true" />
           </folding>
@@ -1332,8 +1211,144 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/employee/employeeManage.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="157" column="68" selection-start-line="157" selection-start-column="68" selection-end-line="157" selection-end-column="68" />
+        <state relative-caret-position="1890">
+          <caret line="126" column="66" selection-start-line="126" selection-start-column="66" selection-end-line="126" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/forms/employee.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" selection-start-line="23" selection-end-line="23" />
+          <folding>
+            <element signature="e#20#57#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/jquery.dataTables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42403">
+          <caret line="3271" column="4" selection-start-line="3271" selection-start-column="4" selection-end-line="3271" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/.local/share/virtualenvs/emms-lPfObYTr/lib/python3.6/site-packages/werkzeug/routing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="229" selection-start-line="229" selection-end-line="229" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="34" lean-forward="true" selection-start-line="4" selection-start-column="34" selection-end-line="4" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/secure.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+          <folding>
+            <element signature="e#15#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="41" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/emms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="70" lean-forward="true" selection-start-line="9" selection-start-column="70" selection-end-line="9" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="437">
+          <caret line="91" column="58" selection-start-line="91" selection-start-column="50" selection-end-line="91" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="46" column="76" lean-forward="true" selection-start-line="45" selection-start-column="8" selection-end-line="46" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/report_elevator_room">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/setting.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="34" column="97" selection-start-line="34" selection-start-column="97" selection-end-line="34" selection-end-column="97" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/elevator_room">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/company">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="27" column="152" selection-start-line="27" selection-start-column="152" selection-end-line="27" selection-end-column="152" />
+          <folding>
+            <element signature="e#20#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

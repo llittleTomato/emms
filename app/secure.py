@@ -21,3 +21,4 @@ SECRET_KEY = os.urandom(24)
 
 # 记住我的cookie保持时间配置，保持1天
 REMEMBER_COOKIE_DURATION = timedelta(days=1)
+

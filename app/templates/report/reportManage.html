@@ -96,9 +96,11 @@
                                     <td>
                                         <a href="{{ url_for('view.report_show', report_idCode=report.idCode) }}" target="_blank">查看</a>
                                         &nbsp&nbsp&nbsp&nbsp
-{#                                        <a href="{{ url_for('view.report_show', report_idCode=report.idCode) }}" target="_blank">重新出具</a>#}
-{#                                        &nbsp&nbsp&nbsp&nbsp#}
                                         <a href="{{ url_for('view.report_del', report_idCode=report.idCode) }}" target="_blank">删除</a>
+                                        &nbsp&nbsp&nbsp&nbsp
+                                        <a href="{{ url_for('view.report_download', report_idCode=report.idCode) }}" target="_blank">下载</a>
+                                        &nbsp&nbsp&nbsp&nbsp
+                                        <a href="{{ url_for('view.report_del', report_idCode=report.idCode) }}" target="_blank">打印</a>
                                     </td>
                                 </tr>
                             {% endfor %}

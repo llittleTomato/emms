@@ -1,3 +1,5 @@
+import os
+
 __author__ = 'sky'
 
 from flask_script import Manager
@@ -6,6 +8,7 @@ from emms import app
 from app.models import *
 from app.models.user import User
 from app.models.company import Company
+from flask import current_app
 
 
 manager = Manager(app)
@@ -40,6 +43,8 @@ def add_admin_user():
         db.session.add(admin_user)
         db.session.add(admin_company)
         db.session.commit()
+        # 创建报告保存文件夹
+        os.makedirs(os.path.join(current_app.config['DOCXFILE_DIR'], '001'))
     except:
         print('注册超级管理员账户失败！')
     else:
