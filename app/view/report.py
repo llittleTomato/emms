@@ -7,14 +7,12 @@ from app.models import db
 from app.models.elevator import ElevatorRoom
 from app.models.report import ReportElevatorRoom, reportdatadealroom
 from app.models.company import Company
-from app.models.user import User
 from sqlalchemy import and_
 from docxtpl import DocxTemplate
-import subprocess
 import time
 import os
 
-
+# 报告生成
 @view.route('/report_generation/', methods=['GET', 'POST'])
 @login_required
 def report_generation():
@@ -52,10 +50,6 @@ def report_generation():
                     doc.render(reportdata)
 
                     doc.save(os.path.join(file_dir, report_data['reportID']+'.docx'))
-                    # 生产pdf文件
-                    # subprocess.check_output(
-                    #     ['libreoffice', '--convert-to', 'pdf', 'app/static/reportdocx/test.docx', '--outdir',
-                    #      'app/static/reportdocx/'])
 
                     # 录入数据库，必须放在最后，不然程序出错，docx渲染不正确
                     report.set_attrs(report_data)
@@ -66,14 +60,14 @@ def report_generation():
     else:
         return render_template('report/reportGeneration.html')
 
-
+# 报告管理
 @view.route('/report_manage/', methods=['GET', 'POST'])
 @login_required
 def report_manage():
     reports = ReportElevatorRoom.query.filter_by(maintenanceCompany=current_user.company)
     return render_template('report/reportManage.html', reports=enumerate(reports))
 
-
+# 报告查看
 @view.route('/report_show/<report_idCode>', methods=['GET'])
 @login_required
 def report_show(report_idCode):
@@ -83,7 +77,7 @@ def report_show(report_idCode):
     report = reportdatadealroom(report)
     return render_template('report/report_ele_room.html', report=report)
 
-
+# 报告删除
 @view.route('/report_del/<report_idCode>', methods=['GET', 'POST'])
 @login_required
 def report_del(report_idCode):
@@ -93,11 +87,18 @@ def report_del(report_idCode):
     db.session.commit()
     return redirect(url_for('view.report_manage'))
 
-
+# 报告下载
 @view.route('/report_download/<report_id>', methods=['GET', 'POST'])
 @login_required
 def report_download(report_id):
     companynumber = Company.query.filter_by(company=current_user.company).first()
     file_dir = os.path.join(current_app.config['DOCXFILE_DIR'], companynumber.company_number)
     return send_from_directory(file_dir, report_id+'.docx', as_attachment=True)
+
+# 报告打印
+@view.route('/report_print/<report_id>', methods=['GET', 'POST'])
+@login_required
+def report_print(report_id):
+    # TODO: 增加报告打印功能
+    pass
 

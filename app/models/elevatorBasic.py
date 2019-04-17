@@ -40,6 +40,7 @@ class ElevatorBasic(Base):
     maintenancePersonB = Column(String(10), nullable=False, default='/')  # 维保人员 B
     maintenanceLevel = Column(String(10), nullable=False, default='A')  # 维保等级 A，B...
     maintenanceRemark = Column(String(300), nullable=False, default='/')  # 维保备注
+    perinspectionDate = Column(String(10), nullable=False, default='/')  # 定期检验时间
 
 
 class ElevatorRoomMachine(Base):
