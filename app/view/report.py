@@ -1,7 +1,7 @@
 __author__ = 'sky'
 
 from . import view
-from flask import render_template, request, url_for, redirect, current_app
+from flask import render_template, request, url_for, redirect, current_app, send_from_directory
 from flask_login import login_required, current_user
 from app.models import db
 from app.models.elevator import ElevatorRoom
@@ -51,7 +51,7 @@ def report_generation():
                     reportdata = reportdatadealroom(report_data)
                     doc.render(reportdata)
 
-                    doc.save(file_dir+report_data['reportID']+'.docx')
+                    doc.save(os.path.join(file_dir, report_data['reportID']+'.docx'))
                     # 生产pdf文件
                     # subprocess.check_output(
                     #     ['libreoffice', '--convert-to', 'pdf', 'app/static/reportdocx/test.docx', '--outdir',
@@ -94,10 +94,10 @@ def report_del(report_idCode):
     return redirect(url_for('view.report_manage'))
 
 
-@view.route('/report_download/<report_idCode>', methods=['GET', 'POST'])
+@view.route('/report_download/<report_id>', methods=['GET', 'POST'])
 @login_required
-def report_download(report_idCode):
-    file_dir = os.path.join(current_app.config['BASE_DIR'], 'static/reportdocx')
-    print(file_dir)
-    return 'aa'
+def report_download(report_id):
+    companynumber = Company.query.filter_by(company=current_user.company).first()
+    file_dir = os.path.join(current_app.config['DOCXFILE_DIR'], companynumber.company_number)
+    return send_from_directory(file_dir, report_id+'.docx', as_attachment=True)
 
