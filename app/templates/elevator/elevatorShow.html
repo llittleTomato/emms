@@ -14,13 +14,18 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.1.4.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             {% for key in elevator_data %}
                 $('#{{ key }}').val("{{ elevator_data[key] }}");
             {% endfor %}
+            <!--当为查看时-->
             {% if action == '0' %}
+                <!--隐藏提交按钮-->
                 $('#submit_button').attr('hidden', 'True');
+                <!--设备只读属性-->
+                $(':input').attr('disabled', 'True');
             {% endif %}
         });
     </script>

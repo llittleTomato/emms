@@ -91,30 +91,30 @@
                                         <td>{{ elevator.userEntityName }}</td>
                                         <td>{{ elevator.deviceName }}</td>
                                         <td>
-                                            <input id="reportID" class="" type="text" style="width: 110px;text-align: center; border-width: 0px"
+                                            <input id="reportID" class="" type="text" style="width: 110px;text-align: center; border-width: 0px;"
                                                    name="reportID{{ elevator.idCode }}"
                                                    placeholder="报告编号"
                                                    value="{{ elevator.idCode }}{{ company_number }}{{ reporttime }}">
                                         </td>
                                         <td>
                                             <input id="governorCheckDate" class="datepicker" type="text"
-                                                   style="width: 100px;text-align: center;"
+                                                   style="width: 100px;text-align: center;border-width: 0px;"
                                                    name="governorCheckDate{{ elevator.idCode }}" placeholder="校验日期"
                                                    value="{{ elevator.governorCheckDate }}" >
                                         </td>
                                         <td>
-                                            <input id="governorSpeed" class="" type="text" style="width: 100px;text-align: center;"
+                                            <input id="governorSpeed" class="" type="text" style="width: 100px;text-align: center;border-width: 0px;"
                                                    name="governorSpeed{{ elevator.idCode }}"
                                                    placeholder="校验速度(m/s)" value="{{ elevator.governorSpeed }}">
                                         </td>
                                         <td>
                                             <input id="cwOvDis" class="" type="text"
-                                                   style="width: 100px;text-align: center;"
+                                                   style="width: 100px;text-align: center;border-width: 0px;"
                                                    name="cwOvDis{{ elevator.idCode }}"
                                                    placeholder="对重缓冲距(mm)" value="{{ elevator.cwOvDis }}">
                                         </td>
                                         <td>
-                                            <input id="brakeTest" class="" type="text" style="width: 100px;text-align: center;"
+                                            <input id="brakeTest" class="" type="text" style="width: 100px;text-align: center;border-width: 0px;"
                                                    name="brakeTest{{ elevator.idCode }}" placeholder="制动试验">
                                         </td>
                                     </tr>
