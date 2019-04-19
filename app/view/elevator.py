@@ -27,7 +27,7 @@ def elevator_manage():
                      ElevatorRoom.deviceName.like('%' + request.form['deviceName']) + '%',
                      ElevatorRoom.model.like('%' + request.form['model']) + '%',
                      ElevatorRoom.maintenanceCompany == current_user.company), ElevatorRoom.status == 1)
-            print(request.form['model'])
+            session['requestdata'] = request.form
             return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
     else:
         elevators = ElevatorRoom.query.filter(and_(ElevatorRoom.status == 1, ElevatorRoom.maintenanceCompany == current_user.company))
@@ -37,7 +37,8 @@ def elevator_manage():
 @view.route('/ele_show/<ele_info>/<action>', methods=['GET'])
 @login_required
 def ele_info_show(ele_info, action):
-    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==ele_info, ElevatorRoom.maintenanceCompany==current_user.company)).first()
+    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode == ele_info, ElevatorRoom.maintenanceCompany == current_user.company,
+                                              ElevatorRoom.status == 1)).first()
     return render_template('elevator/elevatorRoom_Show.html', elevator_data=elevator.__dict__, action=action)
 
 # 电梯信息更新
@@ -46,15 +47,11 @@ def ele_info_show(ele_info, action):
 def ele_update():
     elevator_db = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode == request.form['idCode'], ElevatorRoom.maintenanceCompany == current_user.company,
                                                  ElevatorRoom.status == 1)).first()
-    # elevator_changed = lift_class_choose(request.form['deviceName'])
-    elevator_changed = elevator_db
-    elevator_changed.set_attrs(request.form)
-    # elevator_changed['updatetime'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))  # 修改数据更新时间
-    db.session.delete(elevator_db)
-    db.session.add(elevator_changed)
+    elevator_db.set_attrs(request.form)
+    elevator_db.updatetime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))  # 修改数据更新时间
     db.session.commit()
-    # TODO: 未刷新电梯管理页面
-    return redirect(url_for('view.ele_info_show', ele_info=request.form['idCode'], action='0'))
+    return redirect(url_for('view.elevator_manage'))
+    # return redirect(url_for('view.ele_info_show', ele_info=request.form['idCode'], action='0'))
 
 # 电梯数据删除
 @view.route('/ele_del/<ele_info>', methods=['GET', 'POST'])
@@ -106,7 +103,7 @@ def elevator_machine_data_input():
 
         # 设置电梯维保单位
         form_basic['maintenanceCompany'] = current_user.company
-        # form_basic['updatetime'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))
+        form_basic['updatetime'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))
 
         # 根据表单内容完善电梯信息
         if form_machine['controlMode'] == '信号':

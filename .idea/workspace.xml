@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24e4a2d1-600f-47df-b1d1-f2ca12e17f13" name="Default" comment="增加定期检验日期">
+    <list default="true" id="24e4a2d1-600f-47df-b1d1-f2ca12e17f13" name="Default" comment="完善电梯、报告管理功能">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/static/js/bootstrap-datepicker.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/static/js/bootstrap-datepicker.min.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/elevator/elevatorShow.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/elevator/elevatorShow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/report/reportGeneration.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/report/reportGeneration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/templates/report/reportManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/report/reportManage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/view/elevator.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/elevator.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,8 +54,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/view/elevator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="29" column="70" lean-forward="true" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="70" />
+            <state relative-caret-position="105">
+              <caret line="52" selection-start-line="52" selection-end-line="52" />
+              <folding>
+                <element signature="e#20#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/elevatorBasic.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-90">
+              <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/report.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1011">
+              <caret line="104" column="48" lean-forward="true" selection-start-line="104" selection-start-column="48" selection-end-line="104" selection-end-column="48" />
               <folding>
                 <element signature="e#20#38#0" expanded="true" />
               </folding>
@@ -67,35 +87,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorManage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-478">
-              <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorShow.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="29" column="11" selection-start-line="29" selection-start-column="11" selection-end-line="29" selection-end-column="11" />
+            <state relative-caret-position="171">
+              <caret line="107" column="135" selection-start-line="107" selection-start-column="135" selection-end-line="107" selection-end-column="135" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_basic.html">
+        <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="202" column="94" selection-start-line="202" selection-start-column="84" selection-end-line="202" selection-end-column="94" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="169" column="154" selection-start-line="169" selection-start-column="154" selection-end-line="169" selection-end-column="154" />
+            <state relative-caret-position="351">
+              <caret line="149" column="11" selection-start-line="149" selection-start-column="11" selection-end-line="149" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -114,7 +116,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>container</find>
       <find>form-signin-heading</find>
       <find>body</find>
       <find>navbar</find>
@@ -144,6 +145,7 @@
       <find>text-cen</find>
       <find>card</find>
       <find>selec</find>
+      <find>No data available in table</find>
     </findStrings>
     <dirStrings>
       <dir>F:\emms</dir>
@@ -162,11 +164,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/view/index.py" />
-        <option value="$PROJECT_DIR$/app/static/js/elevator_data.js" />
         <option value="$PROJECT_DIR$/app/static/js/alert.js" />
         <option value="$PROJECT_DIR$/app/models/__init__.py" />
-        <option value="$PROJECT_DIR$/app/models/elevator.py" />
         <option value="$PROJECT_DIR$/app/static/css/reportgeneration.css" />
         <option value="$PROJECT_DIR$/app/static/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/app/static/css/jquery.dataTables.min.css" />
@@ -178,7 +177,6 @@
         <option value="$PROJECT_DIR$/text/python-migrate.md" />
         <option value="$PROJECT_DIR$/app/models/user.py" />
         <option value="$PROJECT_DIR$/app/templates/user/userRegister.html" />
-        <option value="$PROJECT_DIR$/app/view/login.py" />
         <option value="$PROJECT_DIR$/app/templates/report/reporttest.html" />
         <option value="$PROJECT_DIR$/app/models/company.py" />
         <option value="$PROJECT_DIR$/app/forms/register.py" />
@@ -187,10 +185,6 @@
         <option value="$PROJECT_DIR$/app/static/css/report.css" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_machine.html" />
         <option value="$PROJECT_DIR$/app/models/report.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" />
-        <option value="$PROJECT_DIR$/app/templates/base.html" />
-        <option value="$PROJECT_DIR$/app/view/elevator.py" />
         <option value="$PROJECT_DIR$/app/models/employee.py" />
         <option value="$PROJECT_DIR$/app/templates/employee/employeeInput.html" />
         <option value="$PROJECT_DIR$/app/view/employee.py" />
@@ -198,21 +192,29 @@
         <option value="$PROJECT_DIR$/app/forms/employee.py" />
         <option value="$PROJECT_DIR$/app/secure.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
-        <option value="$PROJECT_DIR$/app/templates/report/reportManage.html" />
         <option value="$PROJECT_DIR$/app/setting.py" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/view/user.py" />
-        <option value="$PROJECT_DIR$/app/models/elevatorBasic.py" />
-        <option value="$PROJECT_DIR$/app/templates/index.html" />
         <option value="$PROJECT_DIR$/app/forms/elevator.py" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_basic.html" />
-        <option value="$PROJECT_DIR$/app/view/report.py" />
         <option value="$PROJECT_DIR$/app/static/css/main.css" />
         <option value="$PROJECT_DIR$/app/static/js/jquery-3.3.1.js" />
-        <option value="$PROJECT_DIR$/app/templates/report/reportGeneration.html" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorShow.html" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html" />
         <option value="$PROJECT_DIR$/app/static/js/bootstrap-datepicker.min.js" />
+        <option value="$PROJECT_DIR$/app/models/elevator.py" />
+        <option value="$PROJECT_DIR$/app/models/elevatorBasic.py" />
+        <option value="$PROJECT_DIR$/app/templates/base.html" />
+        <option value="$PROJECT_DIR$/app/view/login.py" />
+        <option value="$PROJECT_DIR$/app/templates/index.html" />
+        <option value="$PROJECT_DIR$/app/view/index.py" />
+        <option value="$PROJECT_DIR$/app/view/report.py" />
+        <option value="$PROJECT_DIR$/app/static/js/jquery.dataTables.min.js" />
+        <option value="$PROJECT_DIR$/app/templates/report/reportGeneration.html" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
+        <option value="$PROJECT_DIR$/app/view/elevator.py" />
+        <option value="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" />
+        <option value="$PROJECT_DIR$/app/templates/report/reportManage.html" />
       </list>
     </option>
   </component>
@@ -242,6 +244,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,13 +280,6 @@
               <item name="emms" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="emms" type="b2602c69:ProjectViewProjectNode" />
-              <item name="emms" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="reportdocx" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -292,7 +288,7 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
               <item name="reportdocx" type="462c0819:PsiDirectoryNode" />
-              <item name="001" type="462c0819:PsiDirectoryNode" />
+              <item name="003" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="emms" type="b2602c69:ProjectViewProjectNode" />
@@ -358,7 +354,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -421,7 +416,7 @@
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="$USER_HOME$/.local/share/virtualenvs/emms-lPfObYTr/bin/python" />
+      <option name="SDK_HOME" value="$USER_HOME$/.local/share/virtualenvs/emms-5z99BCun/bin/python" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -458,6 +453,10 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Python.emms" />
+      <item itemvalue="Python.report" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.emms" />
@@ -497,6 +496,8 @@
       <workItem from="1555422602247" duration="5275000" />
       <workItem from="1555509680862" duration="2771000" />
       <workItem from="1555576635551" duration="3950000" />
+      <workItem from="1555638887578" duration="18670000" />
+      <workItem from="1555683584268" duration="3881000" />
     </task>
     <task id="LOCAL-00001" summary="完善login.html&#10;修改base.html、index.html">
       <created>1528877404934</created>
@@ -771,11 +772,18 @@
       <option name="project" value="LOCAL" />
       <updated>1555512435451</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="完善电梯、报告管理功能">
+      <created>1555663297603</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1555663297603</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118983000" />
+    <option name="totallyTimeSpent" value="141534000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -787,19 +795,19 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="25" width="1920" height="991" extended-state="6" />
+    <frame x="0" y="27" width="1366" height="698" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.15203427" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.12480974" />
       <window_info id="Structure" order="1" sideWeight="0.5008696" side_tool="true" type="FLOATING" weight="0.16767372" />
       <window_info id="Favorites" order="2" sideWeight="0.50259066" side_tool="true" weight="0.16465257" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32467532" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.31261426" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.496788" visible="true" weight="0.26918536" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.496788" weight="0.26873857" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32821724" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32723948" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" weight="0.3286219" />
       <window_info anchor="bottom" id="Terminal" order="9" sideWeight="0.49785867" weight="0.3140496" />
@@ -811,7 +819,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" weight="0.32876712" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.13650964" />
+      <window_info anchor="right" id="Database" order="4" weight="0.13622527" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4974093" visible="true" weight="0.14882226" />
@@ -882,7 +890,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="完善电梯数据录入界面" />
     <MESSAGE value="完成电梯数据录入界面，修改了相关的视图函数" />
     <MESSAGE value="完善数据录入功能" />
     <MESSAGE value="完善数据录入功能 on ubuntu" />
@@ -907,7 +914,8 @@
     <MESSAGE value="完善人员录入、管理功能" />
     <MESSAGE value="完善报告存放功能" />
     <MESSAGE value="增加定期检验日期" />
-    <option name="LAST_COMMIT_MESSAGE" value="增加定期检验日期" />
+    <MESSAGE value="完善电梯、报告管理功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善电梯、报告管理功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -923,7 +931,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/emms$.coverage" NAME=" Coverage Results" MODIFIED="1555252784572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/emms$emms.coverage" NAME="emms Coverage Results" MODIFIED="1555576698311" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/emms$emms.coverage" NAME="emms Coverage Results" MODIFIED="1555683901887" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/emms$report.coverage" NAME="report Coverage Results" MODIFIED="1555080585191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/view" />
   </component>
   <component name="debuggerHistoryManager">
@@ -976,41 +984,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/templates/report/reportShow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="26" lean-forward="true" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/css/report.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="74" column="28" lean-forward="true" selection-start-line="74" selection-start-column="28" selection-end-line="74" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/report/report_ele_room.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="55" lean-forward="true" selection-start-line="12" selection-start-column="55" selection-end-line="12" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/elevator_data.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_machine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5220">
-          <caret line="348" column="30" lean-forward="true" selection-start-line="339" selection-start-column="24" selection-end-line="348" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/company.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1025,13 +998,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/share/virtualenvs/emms-lPfObYTr/lib/python3.6/site-packages/flask/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="1804" lean-forward="true" selection-start-line="1804" selection-end-line="1804" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.local/share/virtualenvs/emms-lPfObYTr/lib/python3.6/site-packages/flask/app.py" />
     <entry file="file://$PROJECT_DIR$/app/models/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1043,22 +1010,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="1403" selection-start-line="1403" selection-end-line="1403" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="25" lean-forward="true" selection-start-line="15" selection-start-column="25" selection-end-line="15" selection-end-column="25" />
         </state>
       </provider>
     </entry>
@@ -1106,13 +1057,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorInput_init.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1455">
-          <caret line="97" column="50" selection-start-line="97" selection-start-column="48" selection-end-line="97" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/employee.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -1130,13 +1074,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.local/share/virtualenvs/emms-lPfObYTr/lib/python3.6/site-packages/werkzeug/routing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="229" selection-start-line="229" selection-end-line="229" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.local/share/virtualenvs/emms-lPfObYTr/lib/python3.6/site-packages/werkzeug/routing.py" />
     <entry file="file://$PROJECT_DIR$/app/view/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1207,13 +1145,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="97" selection-start-line="34" selection-start-column="97" selection-end-line="34" selection-end-column="97" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/setting.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -1231,25 +1162,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/elevator_room">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true">
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/elevator.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/forms/elevator.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
@@ -1257,13 +1169,6 @@
           <folding>
             <element signature="e#20#57#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/elevatorBasic.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="42" column="21" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1281,67 +1186,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/report_elevator_room">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true">
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/jquery.dataTables.min.js">
+    <entry file="file://$PROJECT_DIR$/app/static/js/bootstrap-datepicker.min.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24435">
-          <caret line="1632" column="62" lean-forward="true" selection-start-line="1632" selection-start-column="62" selection-end-line="1632" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/report/reportGeneration.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="167" column="38" lean-forward="true" selection-start-line="167" selection-start-column="38" selection-end-line="167" selection-end-column="38" />
-          <folding>
-            <element signature="e#4971#5030#0#HTML" expanded="true" />
-            <element signature="e#5553#5611#0#HTML" expanded="true" />
-            <element signature="e#6005#6063#0#HTML" expanded="true" />
-            <element signature="e#6497#6555#0#HTML" expanded="true" />
-            <element signature="e#6928#6986#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/report.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
-          <folding>
-            <element signature="e#20#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="99" column="60" selection-start-line="99" selection-start-column="60" selection-end-line="99" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/elevator.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="29" column="70" lean-forward="true" selection-start-line="29" selection-start-column="70" selection-end-line="29" selection-end-column="70" />
-          <folding>
-            <element signature="e#20#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorManage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-478">
-          <caret line="57" column="30" lean-forward="true" selection-start-line="57" selection-start-column="30" selection-end-line="57" selection-end-column="30" />
+        <state relative-caret-position="374">
+          <caret line="698" column="23" selection-start-line="698" selection-start-column="23" selection-end-line="698" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1352,24 +1200,172 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="169" column="154" selection-start-line="169" selection-start-column="154" selection-end-line="169" selection-end-column="154" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/static/js/bootstrap-datepicker.min.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="698" column="23" selection-start-line="698" selection-start-column="23" selection-end-line="698" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_basic.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="202" column="94" selection-start-line="202" selection-start-column="84" selection-end-line="202" selection-end-column="94" />
+        <state relative-caret-position="722">
+          <caret line="187" column="101" selection-start-line="187" selection-start-column="101" selection-end-line="187" selection-end-column="101" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorInput_init.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-354">
+          <caret line="62" column="67" lean-forward="true" selection-start-line="62" selection-start-column="67" selection-end-line="62" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-144" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="17" column="93" selection-start-line="17" selection-start-column="93" selection-end-line="17" selection-end-column="93" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="19" column="51" selection-start-line="19" selection-start-column="51" selection-end-line="19" selection-end-column="51" />
+          <folding>
+            <element signature="e#20#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="29" column="68" selection-start-line="29" selection-start-column="54" selection-end-line="29" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="82" selection-start-line="10" selection-start-column="82" selection-end-line="10" selection-end-column="82" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/report_elevator_room">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/dataTables.bootstrap.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-30">
+          <caret line="12" column="23" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/js/jquery.dataTables.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="2585" column="46" lean-forward="true" selection-start-line="2585" selection-start-column="46" selection-end-line="2585" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/css/report.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-585" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/report/reportGeneration.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2520">
+          <caret line="168" column="35" selection-start-line="168" selection-start-column="35" selection-end-line="168" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/elevatorBasic.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-90">
+          <caret line="31" column="48" selection-start-line="31" selection-start-column="48" selection-end-line="31" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/elevator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/report.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1011">
+          <caret line="104" column="48" lean-forward="true" selection-start-line="104" selection-start-column="48" selection-end-line="104" selection-end-column="48" />
+          <folding>
+            <element signature="e#20#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://ccdc9f24-2308-4722-bca9-be2a18b174ad/schema/emms/table/elevator_room">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/elevator.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="52" selection-start-line="52" selection-end-line="52" />
+          <folding>
+            <element signature="e#20#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/phrase.rnc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="67" column="14" selection-start-line="67" selection-start-column="14" selection-end-line="67" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="107" column="135" selection-start-line="107" selection-start-column="135" selection-end-line="107" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-45">
+          <caret line="18" column="70" selection-start-line="18" selection-start-column="70" selection-end-line="18" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="149" column="11" selection-start-line="149" selection-start-column="11" selection-end-line="149" selection-end-column="11" />
         </state>
       </provider>
     </entry>

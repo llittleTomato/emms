@@ -103,9 +103,9 @@
                                     <td>{{ elevator.contactPerson }}</td>
                                     <td>{{ elevator.contactNumber }}</td>
                                     <td>
-                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=0) }}" target="_blank">查看</a>
+                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=0) }}" target="_self">查看</a>
                                         &nbsp&nbsp&nbsp&nbsp
-                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=1) }}" target="_blank">更新</a>
+                                        <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=1) }}" target="_self">更新</a>
                                         &nbsp&nbsp&nbsp&nbsp
                                         <a href="" data-toggle="modal" data-target="#myModal">删除</a>
                                         <!-- 弹出页面 -->
@@ -169,8 +169,5 @@
                 $('#form_query').submit();
             }
         });
-        $(window).resize(function () {
-            $('#sampleTable').DataTable('');
-        })
     </script>
 {% endblock %}
