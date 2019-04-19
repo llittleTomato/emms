@@ -42,6 +42,8 @@ class ElevatorBasic(Base):
     maintenanceRemark = Column(String(300), nullable=False, default='/')  # 维保备注
     perinspectionDate = Column(String(10), nullable=False, default='/')  # 定期检验时间
 
+    updatetime = Column(String(20), nullable=False, default='/')  # 数据更新时间
+
 
 class ElevatorRoomMachine(Base):
     __abstract__ = True

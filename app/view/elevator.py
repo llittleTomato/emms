@@ -7,13 +7,31 @@ from flask_login import login_required, current_user
 from app.models.elevator import lift_class_choose, lift_html_choose, ElevatorRoom
 from app.forms.elevator import ElevatorInitForm
 from sqlalchemy import and_
+import time
 
 # 电梯信息管理页面
-@view.route('/elevator_manage/')
+@view.route('/elevator_manage/', methods=['GET', 'POST'])
 @login_required
 def elevator_manage():
-    elevators = ElevatorRoom.query.filter(and_(ElevatorRoom.status==1, ElevatorRoom.maintenanceCompany==current_user.company))
-    return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
+    if request.method == 'POST':
+        if request.form.get('maintenanceContractNumber') or request.form.get('idCode') or request.form.get('userEntityName') or \
+                request.form.get('regCode') or request.form.get('factoryNumber') or request.form.get('manufactureCompany') or \
+                request.form.get('deviceName') or request.form.get('model'):      # 判断是查询
+            elevators = ElevatorRoom.query.filter(
+                and_(ElevatorRoom.maintenanceContractNumber.like('%' + request.form['maintenanceContractNumber'] + '%'),
+                     ElevatorRoom.idCode.like('%' + request.form['idCode'] + '%'),
+                     ElevatorRoom.regCode.like('%' + request.form['regCode']) + '%',
+                     ElevatorRoom.factoryNumber.like('%' + request.form['factoryNumber']) + '%',
+                     ElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%',
+                     ElevatorRoom.manufactureCompany.like('%' + request.form['manufactureCompany']) + '%',
+                     ElevatorRoom.deviceName.like('%' + request.form['deviceName']) + '%',
+                     ElevatorRoom.model.like('%' + request.form['model']) + '%',
+                     ElevatorRoom.maintenanceCompany == current_user.company), ElevatorRoom.status == 1)
+            print(request.form['model'])
+            return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
+    else:
+        elevators = ElevatorRoom.query.filter(and_(ElevatorRoom.status == 1, ElevatorRoom.maintenanceCompany == current_user.company))
+        return render_template('elevator/elevatorManage.html', elevators=enumerate(elevators))
 
 # 电梯信息查看页面
 @view.route('/ele_show/<ele_info>/<action>', methods=['GET'])
@@ -26,20 +44,23 @@ def ele_info_show(ele_info, action):
 @view.route('/ele_update', methods=['POST'])
 @login_required
 def ele_update():
-    elevator_db = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==request.form['idCode'], ElevatorRoom.maintenanceCompany==current_user.company)).first()
+    elevator_db = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode == request.form['idCode'], ElevatorRoom.maintenanceCompany == current_user.company,
+                                                 ElevatorRoom.status == 1)).first()
     # elevator_changed = lift_class_choose(request.form['deviceName'])
     elevator_changed = elevator_db
     elevator_changed.set_attrs(request.form)
+    # elevator_changed['updatetime'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))  # 修改数据更新时间
     db.session.delete(elevator_db)
     db.session.add(elevator_changed)
     db.session.commit()
+    # TODO: 未刷新电梯管理页面
     return redirect(url_for('view.ele_info_show', ele_info=request.form['idCode'], action='0'))
 
 # 电梯数据删除
 @view.route('/ele_del/<ele_info>', methods=['GET', 'POST'])
 @login_required
 def ele_del(ele_info):
-    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode==ele_info, ElevatorRoom.maintenanceCompany==current_user.company)).first()
+    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode == ele_info, ElevatorRoom.maintenanceCompany == current_user.company)).first()
     elevator.status = 0
     db.session.commit()
     return redirect(url_for('view.elevator_manage'))
@@ -85,6 +106,7 @@ def elevator_machine_data_input():
 
         # 设置电梯维保单位
         form_basic['maintenanceCompany'] = current_user.company
+        # form_basic['updatetime'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))
 
         # 根据表单内容完善电梯信息
         if form_machine['controlMode'] == '信号':

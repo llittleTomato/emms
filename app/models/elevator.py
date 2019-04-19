@@ -7,7 +7,7 @@ from app.models.elevatorBasic import ElevatorBasic, ElevatorRoomMachine
 
 class ElevatorRoom(ElevatorBasic, ElevatorRoomMachine):
     __tablename__ = 'elevator_room'
-    id = Column(Integer, primary_key=True, autoincrement=True)  # 数据编号
+    id = Column(Integer, primary_key=True, autoincrement=True)    # 数据编号
 
 
 class ElevatorNoRoom(ElevatorBasic):

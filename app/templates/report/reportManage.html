@@ -1,4 +1,9 @@
 {% extends "index.html" %}
+{% block linkcss %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='css/datatables.css') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='css/jquery.dataTables.min.css') }}"></script>
+{% endblock %}
 {% block title %}
     报告管理
 {% endblock %}
@@ -13,43 +18,29 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <form class="form-horizontal">
+                    <form class="form-horizontal" method="POST"
+                          action="{{ url_for('view.report_manage') }}" id="form_query" name="form_query">
                         <div class="form-group">
-                            <label class="control-label col-md-1" for="maintenanceContractNumber">合同编号</label>
+                            <label class="control-label col-md-1 col-md-offset-1" for="maintenanceContractNumber">合同编号</label>
                             <div class="col-md-2">
                                 <input id="maintenanceContractNumber" class="form-control" type="text" name="maintenanceContractNumber" placeholder="合同编号">
                             </div>
-                            <label class="control-label col-md-1" for="ein">识别码</label>
+                            <label class="control-label col-md-1" for="idCode">识别码</label>
                             <div class="col-md-2">
-                                <input id="ein" class="form-control" type="text" name="ein" placeholder="识别码">
+                                <input id="idCode" class="form-control" type="text" name="idCode" placeholder="识别码">
                             </div>
-                            <label class="control-label col-md-1" for="registration_code">注册代码</label>
-                            <div class="col-md-2">
-                                <input id="registration_code" class="form-control" type="text" name="registration_code" placeholder="注册代码">
-                            </div>
-                            <label class="control-label col-md-1" for="ein">出厂编号</label>
-                            <div class="col-md-2">
-                                <input id="manufacturing_code" class="form-control" type="text" name="manufacturing_code" placeholder="出厂编号">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1" for="use_unit">使用单位</label>
-                            <div class="col-md-2">
-                                <input id="use_unit" class="form-control" type="text" name="use_unit" placeholder="使用单位">
-                            </div>
-                            <label class="control-label col-md-1" for="manufacturing_unit">制造单位</label>
-                            <div class="col-md-2">
-                                <input id="manufacturing_unit" class="form-control" type="text" name="manufacturing_unit" placeholder="制造单位">
-                            </div>
-                            <label class="control-label col-md-1" for="construction_unit">施工单位</label>
-                            <div class="col-md-2">
-                                <input id="construction_unit" class="form-control" type="text" name="construction_unit" placeholder="施工单位">
+                            <label class="control-label col-md-1" for="userEntityName">使用单位</label>
+                            <div class="col-md-3">
+                                <input id="userEntityName" class="form-control" type="text" name="userEntityName"
+                                       placeholder="使用单位">
                             </div>
                         </div>
                         <div class="card-footer">
                             <div class="row">
-                                <div class="col-md-2 col-md-offset-4" >
-                                    <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>查询</button>
+                                <div class="col-md-2 col-md-offset-4">
+                                    <button class="btn btn-primary icon-btn" type="button" id="bt_query">
+                                        <i class="fa fa-fw fa-lg fa-check-circle"></i>查询
+                                    </button>
                                 </div>
                                 <div class="col-md-2 col-md-offset-1">
                                     <button class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
@@ -96,11 +87,38 @@
                                     <td>
                                         <a href="{{ url_for('view.report_show', report_idCode=report.idCode) }}" target="_blank">查看</a>
                                         &nbsp&nbsp&nbsp&nbsp
-                                        <a href="{{ url_for('view.report_del', report_idCode=report.idCode) }}" target="_blank">删除</a>
+                                        <a href="{{ url_for('view.report_download', report_id=report.reportID) }}">下载</a>
                                         &nbsp&nbsp&nbsp&nbsp
-                                        <a href="{{ url_for('view.report_download', report_id=report.reportID) }}" target="_blank">下载</a>
-                                        &nbsp&nbsp&nbsp&nbsp
-                                        <a href="{{ url_for('view.report_del', report_idCode=report.idCode) }}" target="_blank">打印</a>
+                                        <a href="" data-toggle="modal" data-target="#myModal">删除</a>
+                                        <!-- 弹出页面 -->
+                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                             aria-labelledby="myModalLabel">
+                                            <div class="modal-dialog modal-sm" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header alert alert-danger">
+                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                        <h4 class="modal-title" id="myModalLabel">提示</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h4>确认删除？</h4>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <div class="col-md-3 col-md-offset-2">
+                                                            <a class="btn btn-danger" href="{{ url_for('view.report_del', report_idCode=report.idCode) }}">确定</a>
+                                                        </div>
+                                                        <div class="col-md-2 col-md-offset-2">
+                                                            <a class="btn btn-default" data-dismiss="modal">取消</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                             {% endfor %}
@@ -115,10 +133,23 @@
 {% block script %}
 	{{ super() }}
     {#    表格加载用js，以下4个js必须同时使用    #}
-    {#    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>    已经在base.html文件中加载，无需再次加载#}
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
     <script type="text/javascript">
-        $('#sampleTable').DataTable();
+        $(document).ready(function () {
+            $('#sampleTable').DataTable();
+        });
+        $("#bt_query").click(function () {
+            if (($('#maintenanceContractNumber').val() == "") && ($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
+                ShowFailure('请输入查询条件');
+            }
+            else {
+                $('#form_query').submit();
+            }
+        });
+        $(window).resize(function () {
+            $('#sampleTable').DataTable('');
+        })
     </script>
 {% endblock %}

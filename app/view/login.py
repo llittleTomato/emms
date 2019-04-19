@@ -3,7 +3,7 @@ __author__ = 'sky'
 from app.models.user import User
 from app.models.company import Company
 from . import view
-from flask import render_template, request, redirect, session
+from flask import render_template, request, redirect, session, url_for
 from app.forms.login import LoginForm
 from flask_login import login_user, login_required, logout_user
 
@@ -17,7 +17,7 @@ def login():
             login_user(user, remember=form.remember_me.data)
             next = request.args.get('next')
             if not next or not next.startswith('/'):
-                return render_template('index.html')
+                return redirect(url_for('view.index'))
             return redirect(next)
         else:
             return render_template('login.html', messages={'message': ['登录用户错误或密码错误！']})

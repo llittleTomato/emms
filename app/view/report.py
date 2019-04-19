@@ -12,6 +12,7 @@ from docxtpl import DocxTemplate
 import time
 import os
 
+
 # 报告生成
 @view.route('/report_generation/', methods=['GET', 'POST'])
 @login_required
@@ -20,10 +21,11 @@ def report_generation():
     file_dir = os.path.join(current_app.config['DOCXFILE_DIR'], companynumber.company_number)
     if request.method == 'POST':
         if request.form.get('maintenanceContractNumber') or request.form.get('idCode') or request.form.get('userEntityName'):      # 判断是查询
-            elevators = db.session.query(ElevatorRoom).filter(
+            elevators = ElevatorRoom.query.filter(
                 and_(ElevatorRoom.maintenanceContractNumber.like('%' + request.form['maintenanceContractNumber'] + '%'),
                      ElevatorRoom.idCode.like('%' + request.form['idCode'] + '%'),
-                     ElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%', ElevatorRoom.maintenanceCompany==current_user.company)).all()
+                     ElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%', ElevatorRoom.maintenanceCompany==current_user.company,
+                     ElevatorRoom.status==1)).all()
             reporttime = time.strftime('%y%m', time.localtime((time.time())))
             return render_template('report/reportGeneration.html', elevators=enumerate(elevators), company_number=companynumber.company_number, reporttime=reporttime)
         else:     # 判断是报告数据提交
@@ -33,7 +35,7 @@ def report_generation():
                     idcode = data[key].replace('idCode', '')
                     report = ReportElevatorRoom()
                     elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.maintenanceCompany == current_user.company,
-                                ElevatorRoom.idCode == idcode)).first()
+                                ElevatorRoom.idCode == idcode, ElevatorRoom.status==1)).first()
                     report_data = elevator.__dict__
                     del report_data['_sa_instance_state']
 
@@ -64,14 +66,23 @@ def report_generation():
 @view.route('/report_manage/', methods=['GET', 'POST'])
 @login_required
 def report_manage():
-    reports = ReportElevatorRoom.query.filter_by(maintenanceCompany=current_user.company)
-    return render_template('report/reportManage.html', reports=enumerate(reports))
+    if request.method == 'POST':
+        if request.form.get('maintenanceContractNumber') or request.form.get('idCode') or request.form.get('userEntityName'):      # 判断是查询
+            reports = ReportElevatorRoom.query.filter(
+                and_(ReportElevatorRoom.maintenanceContractNumber.like('%' + request.form['maintenanceContractNumber'] + '%'),
+                     ReportElevatorRoom.idCode.like('%' + request.form['idCode'] + '%'),
+                     ReportElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%', ReportElevatorRoom.maintenanceCompany == current_user.company)).all()
+            return render_template('report/reportManage.html', reports=enumerate(reports))
+    else:
+        reports = ReportElevatorRoom.query.filter(ReportElevatorRoom.maintenanceCompany == current_user.company)
+        return render_template('report/reportManage.html', reports=enumerate(reports))
 
 # 报告查看
 @view.route('/report_show/<report_idCode>', methods=['GET'])
 @login_required
 def report_show(report_idCode):
-    report_data = ReportElevatorRoom.query.filter(and_(ReportElevatorRoom.maintenanceCompany==current_user.company, ReportElevatorRoom.idCode==report_idCode)).first()
+    report_data = ReportElevatorRoom.query.filter(and_(ReportElevatorRoom.maintenanceCompany == current_user.company,
+                                                       ReportElevatorRoom.idCode == report_idCode)).first()
     report = report_data.__dict__
     del report['_sa_instance_state']
     report = reportdatadealroom(report)
