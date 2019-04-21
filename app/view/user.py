@@ -1,4 +1,7 @@
 import os
+import time
+
+from sqlalchemy import and_
 
 __author__ = 'sky'
 
@@ -6,9 +9,9 @@ from app.models import db
 from app.models.user import User
 from app.models.company import Company
 from . import view
-from flask import render_template, request, current_app
+from flask import render_template, request, current_app, redirect, url_for
 from app.forms.register import RegisterForm
-from flask_login import login_required
+from flask_login import login_required, current_user
 
 
 @view.route('/user_register/', methods=['GET', 'POST'])
@@ -18,6 +21,8 @@ def user_register():
     if request.method == 'POST' and form.validate():
         user = User()
         user.set_attrs(form.data)
+        user.updatetime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))  # 修改数据更新时间
+
         # 判断是否已经存在该公司，如不存在，则创建该公司的公司管理员账户，并创建相应数据表
         # 如果存在，则只能创建公司普通人员账户，不创建数据表
         if user.authority == 'com_person':
@@ -38,8 +43,20 @@ def user_register():
         return render_template('user/userRegister.html', messages=form.errors)
 
 
-@view.route('/user_manage/')
+@view.route('/user_manage/', methods=['GET', 'POST'])
 @login_required
 def user_manage():
-    users = User.query.all()
-    return render_template('user/userManage.html', users=users)
+    users = User.query.filter(User.status == 1)
+    return render_template('user/userManage.html', users=enumerate(users))
+
+# 用户信息更新
+# TODO: 用户信息更新只能更新超级第一个用户信息，其它账户更新时点击确定无效，需修正
+@view.route('/user_update/', methods=['POST'])
+@login_required
+def user_update():
+    user = User.query.filter(and_(User.email == request.form['email'], User.status == 1)).first()
+    print(request.form['email'])
+    user.set_attrs(request.form)
+    user.updatetime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))  # 修改数据更新时间
+    db.session.commit()
+    return redirect(url_for('view.user_manage'))

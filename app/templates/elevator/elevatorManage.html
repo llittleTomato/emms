@@ -107,9 +107,9 @@
                                         &nbsp&nbsp&nbsp&nbsp
                                         <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=1) }}" target="_self">更新</a>
                                         &nbsp&nbsp&nbsp&nbsp
-                                        <a href="" data-toggle="modal" data-target="#myModal">删除</a>
+                                        <a href="" data-toggle="modal" data-target="#myModal{{ id+1 }}">删除</a>
                                         <!-- 弹出页面 -->
-                                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+                                        <div class="modal fade" id="myModal{{ id+1 }}" tabindex="-1" role="dialog"
                                              aria-labelledby="myModalLabel">
                                             <div class="modal-dialog modal-sm" role="document">
                                                 <div class="modal-content">
@@ -122,7 +122,7 @@
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col-md-12">
-                                                                <h4>确认删除？</h4>
+                                                                <h5>确认删除识别码为{{ elevator.idCode }}的电梯数据？</h5>
                                                             </div>
                                                         </div>
                                                     </div>

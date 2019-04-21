@@ -1,4 +1,5 @@
 import os
+import time
 
 __author__ = 'sky'
 
@@ -28,6 +29,7 @@ def add_admin_user():
     admin_user.linkman = 'sky'
     admin_user.phone_number = '12345678901'
     admin_user.authority = 'super_admin'
+    admin_user.updatetime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))  # 修改数据更新时间
     admin_user.status = 1   # =0，该用户失效
 
     # 加入到公司库内

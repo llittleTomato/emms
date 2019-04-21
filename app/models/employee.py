@@ -14,4 +14,6 @@ class Employee(Base):
     certificateNumber = Column(String(20), nullable=True)                                  # 证件号码
     jobType = Column(String(20), nullable=True)                                            # 工作职责（维保，急修，检验，审核）
     company = Column(String(64), nullable=False)                                           # 人员所属公司
+    updatetime = Column(String(20), nullable=False, default='/')  # 数据更新时间
+
 

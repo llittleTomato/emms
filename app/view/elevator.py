@@ -60,6 +60,7 @@ def ele_del(ele_info):
     elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode == ele_info, ElevatorRoom.maintenanceCompany == current_user.company)).first()
     elevator.status = 0
     db.session.commit()
+    # TODO:未添加同时删除相应报告的功能
     return redirect(url_for('view.elevator_manage'))
 
 

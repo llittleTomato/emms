@@ -17,6 +17,8 @@ class User(UserMixin, Base):
     linkman = Column(String(10), nullable=False)
     phone_number = Column(String(15), nullable=False)
     authority = Column(String(15), nullable=False)
+    updatetime = Column(String(20), nullable=False, default='/')  # 数据更新时间
+
 
     @property
     def password(self):
