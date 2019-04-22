@@ -8,7 +8,7 @@
 {# 显示登录用户#}
 {% block current_username %}
     {% if current_user.is_authenticated %}
-        {{ current_user.company }}
+        {{ current_user.email }}
     {% endif %}
 {% endblock %}
 {% block content %}

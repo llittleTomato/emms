@@ -50,13 +50,28 @@ def user_manage():
     return render_template('user/userManage.html', users=enumerate(users))
 
 # 用户信息更新
-# TODO: 用户信息更新只能更新超级第一个用户信息，其它账户更新时点击确定无效，需修正
 @view.route('/user_update/', methods=['POST'])
 @login_required
 def user_update():
     user = User.query.filter(and_(User.email == request.form['email'], User.status == 1)).first()
-    print(request.form['email'])
     user.set_attrs(request.form)
     user.updatetime = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime((time.time())))  # 修改数据更新时间
     db.session.commit()
     return redirect(url_for('view.user_manage'))
+
+# 用户密码修改
+@view.route('/user_pwd_change', methods=['POST', 'GET'])
+@login_required
+def user_pwd_change():
+    if request.method == 'POST':
+        user = User.query.filter(and_(User.email == current_user.email, User.status == 1)).first()
+        if user.check_password(request.form['old_password']):
+            user.password = request.form['new_password_1']
+            db.session.commit()
+            return render_template('user/userPwdChange.html')
+        else:
+            return render_template('user/userPwdChange.html', messages={'message': ['旧密码错误！']})
+
+    else:
+        return render_template('user/userPwdChange.html')
+

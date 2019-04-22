@@ -1,3 +1,5 @@
+from sqlalchemy import and_
+
 __author__ = 'sky'
 
 from app.models.user import User
@@ -12,7 +14,7 @@ from flask_login import login_user, login_required, logout_user
 def login():
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = User.query.filter_by(email=form.email.data).first()
+        user = User.query.filter(and_(User.email == request.form['email'], User.status == 1)).first()
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             next = request.args.get('next')
