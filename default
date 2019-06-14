@@ -1,0 +1,13 @@
+# ¸²¸ÇÎÄ¼þ/etc/nginx/sites-available/default
+# Default server configuration
+#
+server {
+	listen 80;
+	
+	server_name 18.222.144.22; 
+	location / {
+		
+		include uwsgi_params;
+		uwsgi_pass 0.0.0.0:5000;
+	}
+}
