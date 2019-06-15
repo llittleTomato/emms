@@ -71,7 +71,6 @@ def user_pwd_change():
             return render_template('user/userPwdChange.html')
         else:
             return render_template('user/userPwdChange.html', messages={'message': ['旧密码错误！']})
-
     else:
         return render_template('user/userPwdChange.html')
 

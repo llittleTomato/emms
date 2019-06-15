@@ -120,7 +120,8 @@
                             </div>
                             <label class="control-label col-md-1" for="contactNumber">联系号码</label>
                             <div class="col-md-3">
-                                <input id="contactNumber" class="form-control" type="text" name="contactNumber" placeholder="联系号码" required pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
+{#                                pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码" 限制为手机号码格式，目前不限制#}
+                                <input id="contactNumber" class="form-control" type="text" name="contactNumber" placeholder="联系号码" required onkeyup="value=value.replace(/[^\d]/g,'')">
                             </div>
                             <label class="control-label col-md-1" for="liA">电梯司机</label>
                             <div class="col-md-3">
@@ -134,11 +135,11 @@
                             </div>
                             <label class="control-label col-md-1" for="safetyManagerCertificate">安全管理人员证号</label>
                             <div class="col-md-3">
-                                <input id="safetyManagerCertificate" class="form-control" type="text" name="safetyManagerCertificate" placeholder="安全管理人员证号" required>
+                                <input id="safetyManagerCertificate" class="form-control" type="text" name="safetyManagerCertificate" placeholder="安全管理人员证号">
                             </div>
                             <label class="control-label col-md-1" for="liftAttendantCertificate">电梯司机证号</label>
                             <div class="col-md-3">
-                                <input id="liftAttendantCertificate" class="form-control" type="text" name="liftAttendantCertificate" placeholder="电梯司机证号" required>
+                                <input id="liftAttendantCertificate" class="form-control" type="text" name="liftAttendantCertificate" placeholder="电梯司机证号">
                             </div>
                         </div>
                         <!--分隔符-->
@@ -155,11 +156,11 @@
                             </div>
                             <label class="control-label col-md-1" for="maintenancePersonA">维保人员A</label>
                             <div class="col-md-3">
-                                <input id="maintenancePersonA" class="form-control" type="text" name="maintenancePersonA" placeholder="维保人员A" required>
+                                <input id="maintenancePersonA" class="form-control" type="text" name="maintenancePersonA" placeholder="维保人员A">
                             </div>
                             <label class="control-label col-md-1" for="maintenancePersonB">维保人员B</label>
                             <div class="col-md-3">
-                                <input id="maintenancePersonB" class="form-control" type="text" name="maintenancePersonB" placeholder="维保人员B" required>
+                                <input id="maintenancePersonB" class="form-control" type="text" name="maintenancePersonB" placeholder="维保人员B">
                             </div>
                         </div>
                         <div class="form-group">
@@ -179,7 +180,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-1" for="maintenanceRemark">维保备注</label>
                             <div class="col-md-11">
-                                <textarea class="form-control" id="maintenanceRemark" rows="3" required></textarea>
+                                <textarea class="form-control" id="maintenanceRemark" rows="3"></textarea>
                             </div>
                         </div>
                         <div class="card-footer">
