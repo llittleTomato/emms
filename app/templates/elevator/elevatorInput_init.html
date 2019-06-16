@@ -140,10 +140,10 @@
                 ShowFailure('请输入复制的电梯识别码！');
             }
             else if ($('#idCode_cp').val().length < 6) {
-                ShowFailure('请输入正确的识别码')
+                ShowFailure('请输入正确的识别码');
             }
-            else if (($('#idCode').val() == "") || ($('#model').val() == "")) {
-                ShowFailure('请先输入录入电梯的识别码和型号，并选择设备名称')
+            else if (($('#idCode').val() == "") || ($('#maintenanceContractNumber').val() == "")) {
+                ShowFailure('请先输入录入电梯的合同编号和识别码，并选择设备名称');
             }
             else {
                 $('form').submit();
