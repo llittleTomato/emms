@@ -73,113 +73,115 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-body">
-                    <table class="table table-hover table-bordered" id="sampleTable">
-                        <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>姓名</th>
-                            <th>Email</th>
-                            <th>手机号码</th>
-                            <th>证件类型</th>
-                            <th>证件号码</th>
-                            <th>工作职责</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {% for id, employee in employees %}
-                                <tr>
-                                    <td>{{ id+1 }}</td>
-                                    <td>{{ employee.name }}</td>
-                                    <td>{{ employee.email }}</td>
-                                    <td>{{ employee.phoneNumber }}</td>
-                                    <td>{{ employee.certificateType }}</td>
-                                    <td>{{ employee.certificateNumber }}</td>
-                                    <td>{{ employee.jobType }}</td>
-                                    <td>
-                                        <a href="" target="_blank"
-                                        data-toggle="modal" data-target="#myModal{{ id+1 }}">更新</a>
-                                        &nbsp&nbsp&nbsp&nbsp
-                                        <a href="" target="_blank">删除</a>
-                                        <!-- 弹出页面 -->
-                                        <div class="modal fade" id="myModal{{ id+1 }}" tabindex="-1" role="dialog"
-                                             aria-labelledby="myModalLabel">
-                                            <div class="modal-dialog modal-lg" role="document">
-                                                <div class="modal-content">
-                                                    <form class="form-horizontal" method="POST"
-                                                              action="{{ url_for('view.employee_update') }}" id="form_update">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-label="Close"><span aria-hidden="true">&times;</span>
-                                                            </button>
-                                                            <h4 class="modal-title" id="myModalLabel">员工信息更新</h4>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <table class="table">
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>
-                                                                        <label class="control-label" for="name">姓名</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input id="name" class="form-control" type="text" name="name" placeholder="姓名" required value="{{ employee.name }}">
-                                                                    </td>
-                                                                    <td>
-                                                                        <label class="control-label" for="email">Email</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input id="email" class="form-control" type="email" name="email" placeholder="Email" required value="{{ employee.email }}">
-                                                                    </td>
-                                                                    <td>
-                                                                        <label class="control-label" for="phoneNumber">手机号码</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="手机号码" required
-                                                                               pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码" value="{{ employee.phoneNumber }}">
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>
-                                                                        <label class="control-label" for="certificateType">证书类型</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input id="certificateType" class="form-control" type="text" name="certificateType" placeholder="证书类型" required value="{{ employee.certificateType }}">
-                                                                    </td>
-                                                                    <td>
-                                                                        <label for="certificateNumber">证书号码</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input id="certificateNumber" class="form-control" type="text" name="certificateNumber" placeholder="证书号码" required value="{{ employee.certificateNumber }}">
-                                                                    </td>
-                                                                    <td>
-                                                                        <label class="control-label" for="jobType">工作职责</label>
-                                                                    </td>
-                                                                    <td>
-                                                                        <input id="jobType" class="form-control" type="text" name="jobType" placeholder="工作职责" required value="{{ employee.jobType }}">
-                                                                    </td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <div class="col-md-2 col-md-offset-3">
-                                                                <button class="btn btn-primary icon-btn" type="submit" id="bt_update"><i
-                                                                        class="fa fa-fw fa-lg fa-check-circle"></i>确定
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered" id="sampleTable">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>姓名</th>
+                                <th>Email</th>
+                                <th>手机号码</th>
+                                <th>证件类型</th>
+                                <th>证件号码</th>
+                                <th>工作职责</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for id, employee in employees %}
+                                    <tr>
+                                        <td>{{ id+1 }}</td>
+                                        <td>{{ employee.name }}</td>
+                                        <td>{{ employee.email }}</td>
+                                        <td>{{ employee.phoneNumber }}</td>
+                                        <td>{{ employee.certificateType }}</td>
+                                        <td>{{ employee.certificateNumber }}</td>
+                                        <td>{{ employee.jobType }}</td>
+                                        <td>
+                                            <a href="" target="_blank"
+                                            data-toggle="modal" data-target="#myModal{{ id+1 }}">更新</a>
+                                            &nbsp&nbsp&nbsp&nbsp
+                                            <a href="" target="_blank">删除</a>
+                                            <!-- 弹出页面 -->
+                                            <div class="modal fade" id="myModal{{ id+1 }}" tabindex="-1" role="dialog"
+                                                 aria-labelledby="myModalLabel">
+                                                <div class="modal-dialog modal-lg" role="document">
+                                                    <div class="modal-content">
+                                                        <form class="form-horizontal" method="POST"
+                                                                  action="{{ url_for('view.employee_update') }}" id="form_update">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-label="Close"><span aria-hidden="true">&times;</span>
                                                                 </button>
+                                                                <h4 class="modal-title" id="myModalLabel">员工信息更新</h4>
                                                             </div>
-                                                            <div class="col-md-2 col-md-offset-1">
-                                                                <a class="btn btn-default" data-dismiss="modal">取消</a>
+                                                            <div class="modal-body">
+                                                                <table class="table">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label class="control-label" for="name">姓名</label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input id="name" class="form-control" type="text" name="name" placeholder="姓名" required value="{{ employee.name }}">
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="control-label" for="email">Email</label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input id="email" class="form-control" type="email" name="email" placeholder="Email" required value="{{ employee.email }}">
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="control-label" for="phoneNumber">手机号码</label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="手机号码" required
+                                                                                   pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码" value="{{ employee.phoneNumber }}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <label class="control-label" for="certificateType">证书类型</label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input id="certificateType" class="form-control" type="text" name="certificateType" placeholder="证书类型" required value="{{ employee.certificateType }}">
+                                                                        </td>
+                                                                        <td>
+                                                                            <label for="certificateNumber">证书号码</label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input id="certificateNumber" class="form-control" type="text" name="certificateNumber" placeholder="证书号码" required value="{{ employee.certificateNumber }}">
+                                                                        </td>
+                                                                        <td>
+                                                                            <label class="control-label" for="jobType">工作职责</label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <input id="jobType" class="form-control" type="text" name="jobType" placeholder="工作职责" required value="{{ employee.jobType }}">
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
                                                             </div>
-                                                        </div>
-                                                    </form>
+                                                            <div class="modal-footer">
+                                                                <div class="col-md-2 col-md-offset-3">
+                                                                    <button class="btn btn-primary icon-btn" type="submit" id="bt_update"><i
+                                                                            class="fa fa-fw fa-lg fa-check-circle"></i>确定
+                                                                    </button>
+                                                                </div>
+                                                                <div class="col-md-2 col-md-offset-1">
+                                                                    <a class="btn btn-default" data-dismiss="modal">取消</a>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

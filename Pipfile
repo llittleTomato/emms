@@ -1,25 +1,24 @@
 [[source]]
-url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
-verify_ssl = true
 name = "pypi"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+verify_ssl = true
 
 [dev-packages]
 
 [packages]
 flask = "*"
-flask-wtf = "*"
-wtforms = "*"
-werkzeug = "*"
-flask-sqlalchemy = "*"
+flask-login = "*"
 sqlalchemy = "*"
 mysql-connector-python = "*"
 flask-migrate = "*"
+flask-script = "*"
 uwsgi = "*"
-"psycopg2" = "*"
 docxtpl = "*"
 pypandoc = "*"
-Flask-Login = "*"
-Flask-Script = "*"
+Flask-SQLAlchemy = "*"
+Flask-WTF = "*"
+WTForms = "*"
+Werkzeug = "*"
 
 [requires]
 python_version = "3.6"
