@@ -5,6 +5,7 @@ from app.models import db
 from flask import render_template, request, session, redirect, url_for
 from flask_login import login_required, current_user
 from app.models.elevator import lift_class_choose, lift_html_choose, ElevatorRoom
+from app.models.employee import Employee
 from app.forms.elevator import ElevatorInitForm
 from sqlalchemy import and_
 import time
@@ -72,12 +73,17 @@ def elevator_data_input_init():
         session['idCode_cp'] = request.form['idCode_cp']
         session['html'] = lift_html_choose(request.form['deviceName'])
         if request.form['idCode_cp'] == '':
-            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form.to_dict(), elevator_cp_data='')
+            maintenancepeople = Employee.query.filter(
+                and_(Employee.status == 1, Employee.company == current_user.company))
+            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form.to_dict(), elevator_cp_data='', maintenancepeople=maintenancepeople)
         else:
             elevator = ElevatorRoom.query.filter(
                 and_(ElevatorRoom.idCode == request.form['idCode_cp'], ElevatorRoom.maintenanceCompany == current_user.company)).first()
-            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form, elevator_cp_data=elevator.__dict__)
+            maintenancepeople = Employee.query.filter(
+                and_(Employee.status == 1, Employee.company == current_user.company))
+            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form, elevator_cp_data=elevator.__dict__, maintenancepeople=maintenancepeople)
     else:
+
         return render_template('elevator/elevatorInput_init.html', messages=form.errors)
 
 
