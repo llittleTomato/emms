@@ -39,7 +39,12 @@
                         <div class="form-group">
                             <label class="control-label col-md-1" for="userEntityName">使用单位</label>
                             <div class="col-md-7">
-                                <input id="userEntityName" class="form-control" type="text" name="userEntityName" placeholder="使用单位" required onfocus="fonfocus(this, 'sydwmc')" onblur="fblur(this, 'sydwmc')">
+                                <input id="userEntityName" type="text" class="form-control" list="list_userunit" name="userEntityName" placeholder="使用单位">
+                                    <datalist id="list_userunit">
+                                        {% for userunit in userunits %}
+                                            <option>{{ userunit.userEntityName }}</option>
+                                        {% endfor %}
+                                    </datalist>
                             </div>
                             <label class="control-label col-md-1" for="userEntityCode">使用单位代码</label>
                             <div class="col-md-3">
@@ -156,7 +161,7 @@
                             </div>
                             <label class="control-label col-md-1" for="maintenancePersonA">维保人员A</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" list="itemlistA" name="maintenancePersonA" placeholder="维保人员A">
+                                <input id="maintenancePersonA" type="text" class="form-control" list="itemlistA" name="maintenancePersonA" placeholder="维保人员A">
                                     <datalist id="itemlistA">
                                         {% for maintenancePerson in maintenancepeople %}
                                             <option>{{ maintenancePerson.name }}</option>
@@ -165,7 +170,7 @@
                             </div>
                             <label class="control-label col-md-1" for="maintenancePersonB">维保人员B</label>
                             <div class="col-md-3">
-                                <input type="text" class="form-control" list="itemlistB" name="maintenancePersonB" placeholder="维保人员B">
+                                <input id="maintenancePersonB" type="text" class="form-control" list="itemlistB" name="maintenancePersonB" placeholder="维保人员B">
                                     <datalist id="itemlistB">
                                         {% for maintenancePerson in maintenancepeople %}
                                             <option>{{ maintenancePerson.name }}</option>
@@ -203,6 +208,15 @@
                                 </div>
                             </div>
                         </div>
+                        {% if messages %}
+                            <div class="alert alert-warning">
+                                {% for message in messages %}
+                                    {% for key in messages[message] %}
+                                        <p><strong class="text-center">{{ key }}</strong></p>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
                     </form>
                 </div>
             </div>
@@ -234,28 +248,38 @@
 
         <!--输入数据逻辑判断，出错则输出错误信息-->
         function warning(){
+            var failtext = [];
+
+            {#安装日期与制造日期比较#}
             if ($('#installDate').val() < $('#manufactureDate').val()) {
-                ShowTipAlwaysInTheMiddle('录入的安装日期错误，不可早于制造日期', 'danger');
-                return false;
-            }
-            else{
-                return true;
+                failtext.push('录入的安装日期错误，不可早于制造日期');
             }
 
+            {#维保开始时间与结束时间比较#}
             if ($('#mEDate').val() < $('#mSDate').val()) {
-                ShowTipAlwaysInTheMiddle('录入的维保结束日期错误，不可早于维保开始日期', 'danger');
-                return false;
+                failtext.push('录入的维保结束日期错误，不可早于维保开始日期');
             }
-            else{
-                return true;
+
+            {#维保开始时间与结束时间比较#}
+            if ($('#maintenancePersonA').val() == $('#maintenancePersonB').val()) {
+                failtext.push('维保人员为同一个人');
             }
+            return failtext;
         }
+
         $('#next').click(function () {
-            if (warning()){
-                $('form').submit();
+            var message = warning();
+            if (message.length > 0){
+                ShowTipAlwaysInTheMiddle(message[0], 'danger');
+            }
+            else {
+                $('#form').submit();
             }
 
         });
 
+        $('#btn_reset').click(function () {
+            location.reload();
+        });
     </script>
 {% endblock %}

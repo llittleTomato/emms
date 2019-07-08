@@ -6,6 +6,7 @@ from flask import render_template, request, session, redirect, url_for
 from flask_login import login_required, current_user
 from app.models.elevator import lift_class_choose, lift_html_choose, ElevatorRoom
 from app.models.employee import Employee
+from app.models.userUnit import UserUnit
 from app.forms.elevator import ElevatorInitForm
 from sqlalchemy import and_
 import time
@@ -75,13 +76,20 @@ def elevator_data_input_init():
         if request.form['idCode_cp'] == '':
             maintenancepeople = Employee.query.filter(
                 and_(Employee.status == 1, Employee.company == current_user.company))
-            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form.to_dict(), elevator_cp_data='', maintenancepeople=maintenancepeople)
+            userunits = UserUnit.query.filter(and_(UserUnit.status == 1))
+            return render_template('elevator/' + session['html'][0],
+                                   keys=list(request.form), form_init=request.form.to_dict(),
+                                   elevator_cp_data='', maintenancepeople=maintenancepeople,
+                                   userunits=userunits)
         else:
             elevator = ElevatorRoom.query.filter(
                 and_(ElevatorRoom.idCode == request.form['idCode_cp'], ElevatorRoom.maintenanceCompany == current_user.company)).first()
             maintenancepeople = Employee.query.filter(
                 and_(Employee.status == 1, Employee.company == current_user.company))
-            return render_template('elevator/' + session['html'][0], keys=list(request.form), form_init=request.form, elevator_cp_data=elevator.__dict__, maintenancepeople=maintenancepeople)
+            userunits = UserUnit.query.filter(and_(UserUnit.status == 1))
+            return render_template('elevator/' + session['html'][0], keys=list(request.form),
+                                   form_init=request.form, elevator_cp_data=elevator.__dict__,
+                                   maintenancepeople=maintenancepeople, userunits=userunits)
     else:
 
         return render_template('elevator/elevatorInput_init.html', messages=form.errors)
@@ -134,6 +142,13 @@ def elevator_machine_data_input():
         # 保存本次录入数据电梯的识别码，用于下次复制
         session['pre_idCode'] = form_basic['idCode']
         session.pop('form_basic', None)
+
+        # 将使用单位数据写入数据库
+        userunit = UserUnit()
+        if not userunit.check_userEntityName(form_basic['userEntityName']):
+            userunit.set_attrs(form_basic)
+            db.session.add(userunit)
+            db.session.commit()
 
         return render_template('elevator/elevatorInput_init.html')
     else:

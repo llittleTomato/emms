@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <form class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
+                    <form id="form" class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
                         <div class="form-group">
                             <label class="control-label col-md-1" for="rSpeed">额定速度</label>
                             <div class="col-md-2">
@@ -340,10 +340,10 @@
                         <div class="card-footer">
                             <div class="row">
                                 <div class="col-md-2 col-md-offset-4" >
-                                    <button class="btn btn-primary icon-btn" type="submit"><i class="fa fa-fw fa-lg fa-check-circle"></i>提交</button>
+                                    <button id="btn_submit" class="btn btn-primary icon-btn" type="button"><i class="fa fa-fw fa-lg fa-check-circle"></i>提交</button>
                                 </div>
                                 <div class="col-md-2">
-                                    <button class="btn btn-primary icon-btn" type="reset"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
+                                    <button id="btn_reset" class="btn btn-primary icon-btn" type="reset"><i class="fa fa-fw fa-lg fa-refresh"></i>重置</button>
                                 </div>
                             </div>
                         </div>
@@ -357,18 +357,52 @@
     {{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var key;
-            {% if elevator_cp_data == '' %}
-                for (key in dics){
-                    $('#'+key).val(dics[key]);
-                }
-            {% else %}
+            {% if elevator_cp_data != '' %}
+                {#for (key in dics){#}
+                {#    $('#'+key).val(dics[key]);#}
+{#            {% else %}#}
                 {% for key in elevator_cp_data %}
                     $('#{{ key }}').val("{{ elevator_cp_data[key] }}");
                 {% endfor %}
             {% endif %}
+        });
+
+        <!--输入数据逻辑判断，出错则输出错误信息-->
+        function warning(){
+            var failtext = [];
+            var velocity = parseFloat($('#rSpeed').val());
+            var governorSpeed = parseFloat($('#governorSpeed').val());
+
+            {#安装日期与制造日期比较#}
+            if ($('#governorCheckDate').val() < $('#governorManufactureDate').val()) {
+                failtext.push('限速器校验日期不可早于出厂日期');
+            }
+
+            {#验证限速器动作速度是否符合要求#}
+            if (governorSpeed < velocity*1.15 || governorSpeed > velocity*1.25+0.25/velocity){
+                failtext.push('限速器动作速度不符合要求');
+            }
+
+            return failtext;
+        }
+        $('#btn_submit').click(function () {
+            var message = warning();
+            if (message.length > 0){
+                ShowTipAlwaysInTheMiddle(message[0], 'danger');
+            }
+            else {
+                ShowTipAlwaysInTheMiddle('录入成功', 'danger');
+                setTimeout(function (){$('#form').submit()}, 1000);
+            }
+
+        });
+
+        $('#btn_reset').click(function () {
+            location.reload();
         });
     </script>
 {% endblock %}

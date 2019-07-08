@@ -11,3 +11,4 @@ from . import employee
 from . import user, userUnit
 from . import company
 from . import report
+from . import contact
