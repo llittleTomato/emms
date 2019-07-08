@@ -16,6 +16,15 @@
                     <div style="margin-bottom: 30px; border-bottom: #2b333e; border-bottom-style: solid; padding-bottom: 15px">
                         <h3>电梯设备信息录入</h3>
                     </div>
+                    {% if messages %}
+                        <div class="alert alert-warning">
+                            {% for message in messages %}
+                                {% for key in messages[message] %}
+                                    <p><strong class="text-center">{{ key }}</strong></p>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
                 </div>
                 <div class="card-body">
                     <form id="form" class="form-horizontal" method="post" action="{{ url_for('view.elevator_machine_data_input') }}">
@@ -395,8 +404,7 @@
                 ShowTipAlwaysInTheMiddle(message[0], 'danger');
             }
             else {
-                ShowTipAlwaysInTheMiddle('录入成功', 'danger');
-                setTimeout(function (){$('#form').submit()}, 1000);
+                $('#form').submit()
             }
 
         });

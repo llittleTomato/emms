@@ -7,7 +7,7 @@ from flask_login import login_required, current_user
 from app.models.elevator import lift_class_choose, lift_html_choose, ElevatorRoom
 from app.models.employee import Employee
 from app.models.userUnit import UserUnit
-from app.forms.elevator import ElevatorInitForm
+from app.forms.elevator import ElevatorInitForm, ElevatorBasicForm, ElevatorMachineForm
 from sqlalchemy import and_
 import time
 
@@ -83,7 +83,8 @@ def elevator_data_input_init():
                                    userunits=userunits)
         else:
             elevator = ElevatorRoom.query.filter(
-                and_(ElevatorRoom.idCode == request.form['idCode_cp'], ElevatorRoom.maintenanceCompany == current_user.company)).first()
+                and_(ElevatorRoom.idCode == request.form['idCode_cp'],
+                     ElevatorRoom.maintenanceCompany == current_user.company, ElevatorRoom.status == 1)).first()
             maintenancepeople = Employee.query.filter(
                 and_(Employee.status == 1, Employee.company == current_user.company))
             userunits = UserUnit.query.filter(and_(UserUnit.status == 1))
@@ -91,28 +92,30 @@ def elevator_data_input_init():
                                    form_init=request.form, elevator_cp_data=elevator.__dict__,
                                    maintenancepeople=maintenancepeople, userunits=userunits)
     else:
-
         return render_template('elevator/elevatorInput_init.html', messages=form.errors)
 
 
 @view.route('/elevator_basic_data_input/', methods=['GET', 'POST'])
 @login_required
 def elevator_basic_data_input():
-    if request.method == 'POST':
+    form = ElevatorBasicForm(request.form)
+    if request.method == 'POST' and form.validate():
         session['form_basic'] = request.form
         if session['idCode_cp'] == '':
             return render_template('elevator/' + session['html'][1], elevato_cp_data='')
         else:
-            elevator = ElevatorRoom.query.filter_by(idCode=session['idCode_cp']).first()
+            elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.idCode == session['idCode_cp'],
+                                                      ElevatorRoom.status == 1, ElevatorRoom.maintenanceCompany == current_user.company)).first()
             return render_template('elevator/' + session['html'][1], elevator_cp_data=elevator.__dict__)
     else:
-        return render_template('elevator/' + session['html'][0])
+        return render_template('elevator/' + session['html'][0], elevator_cp_data=request.form, messages=form.errors)
 
 
 @view.route('/elevator_machine_data_input/', methods=['GET', 'POST'])
 @login_required
 def elevator_machine_data_input():
-    if request.method == 'POST':
+    form = ElevatorMachineForm(request.form)
+    if request.method == 'POST' and form.validate():
         form_basic = session['form_basic']
         form_machine = request.form.to_dict()
 
@@ -152,4 +155,4 @@ def elevator_machine_data_input():
 
         return render_template('elevator/elevatorInput_init.html')
     else:
-        return render_template('elevator/' + session['html'][1])
+        return render_template('elevator/' + session['html'][1],  elevator_cp_data=request.form, messages=form.errors)

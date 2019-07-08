@@ -27,9 +27,35 @@ class ElevatorInitForm(Form):
 
 class ElevatorBasicForm(Form):
     # 对输入的电梯基础信息进行验证
-    pass
+    regCode = StringField('regCode', validators=[Length(max=18)])
+    factoryNumber = StringField('regCode', validators=[DataRequired('请输入出厂编号')])
+
+    def validate_regCode(self, field):
+        if ElevatorRoom.query.filter(
+            and_(ElevatorRoom.regCode == field.data, ElevatorRoom.maintenanceCompany == current_user.company,
+                 ElevatorRoom.status == 1)).first():
+            raise ValidationError('注册代码已存在，请重新输入')
+
+    def validate_factoryNumber(self, field):
+        if ElevatorRoom.query.filter(
+            and_(ElevatorRoom.factoryNumber == field.data, ElevatorRoom.maintenanceCompany == current_user.company,
+                 ElevatorRoom.status == 1)).first():
+            raise ValidationError('出厂编号已存在，请重新输入')
 
 
 class ElevatorMachineForm(Form):
     # 对输入的电梯信息进行验证
-    pass
+    machineNumber = StringField('regCode', validators=[DataRequired('请输入曳引机编号')])
+    controlCabinetNumber = StringField('regCode', validators=[DataRequired('请输入控制柜编号')])
+
+    def validate_machineNumber(self, field):
+        if ElevatorRoom.query.filter(
+                and_(ElevatorRoom.machineNumber == field.data, ElevatorRoom.maintenanceCompany == current_user.company,
+                     ElevatorRoom.status == 1)).first():
+            raise ValidationError('注曳引机编号已存在，请重新输入')
+
+    def validate_controlCabinetNumber(self, field):
+        if ElevatorRoom.query.filter(
+                and_(ElevatorRoom.controlCabinetNumber == field.data, ElevatorRoom.maintenanceCompany == current_user.company,
+                     ElevatorRoom.status == 1)).first():
+            raise ValidationError('控制柜编号已存在，请重新输入')

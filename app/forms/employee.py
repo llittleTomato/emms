@@ -7,6 +7,7 @@ from app.models.elevator import ElevatorRoom
 
 class EmployeeForm(Form):
     # 对人员录入信息和更新信息信息进行验证
+    # TODO: 以下内容需修改为对员工录入信息的验证
     idCode = StringField('idCode', validators=[DataRequired('请输入电梯识别码'), Length(max=6)])
     maintenanceContractNumber = StringField('maintenanceContractNumber', validators=[DataRequired('请输入电梯维保合同编号')])
     idCode_cp = StringField('idCode_cp', validators=[Length(max=6)])

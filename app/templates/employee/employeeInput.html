@@ -51,7 +51,11 @@
                             </div>
                             <label class="control-label col-md-1" for="jobType">工作职责</label>
                             <div class="col-md-3">
-                                <input id="jobType" class="form-control" type="text" name="jobType" placeholder="工作职责" required>
+                                <select id="jobType" name="jobType" class="form-control">
+                                    <option value="维保">维保</option>
+                                    <option value="检验">检验</option>
+                                    <option value="审核">审核</option>
+                                </select>
                             </div>
                         </div>
                         <div class="card-footer">
@@ -62,7 +66,7 @@
                                     </button>
                                 </div>
                                 <div class="col-md-2 col-md-offset-1">
-                                    <button class="btn btn-primary icon-btn" type="reset"><i
+                                    <button id="btn_reset" class="btn btn-primary icon-btn" type="reset"><i
                                             class="fa fa-fw fa-lg fa-refresh"></i>重置
                                     </button>
                                 </div>
@@ -85,4 +89,9 @@
 {% endblock %}
 {% block script %}
     {{ super() }}
+    <script type="text/javascript">
+        $('#btn_reset').click(function () {
+            location.reload();
+        });
+    </script>
 {% endblock %}
