@@ -59,6 +59,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
+                <div class="card-title">
+                    {% if messages %}
+                        <div class="alert alert-warning">
+                            <p>报告编号为{{ messages }}的报告已存在,请删除后重新生成</p>
+                        </div>
+                    {% endif %}
+                </div>
                 <div class="card-body" id="table">
                     <form class="" method="POST"
                           action="{{ url_for('view.report_generation') }}" id="form_table" name="form_table">
@@ -156,6 +163,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sampleTable').DataTable();
+{#            {% if messages %}#}
+{#                ShowFailure('报告编号为{{ messages }}的报告已存在,请删除后重新生成');#}
+{#            {% endif %}#}
         });
         $("#bt_query").click(function () {
             if (($('#maintenanceContractNumber').val() == "") && ($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
@@ -173,5 +183,6 @@
         $(window).resize(function () {
             $('#sampleTable').DataTable('');
         })
+
     </script>
 {% endblock %}

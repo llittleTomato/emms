@@ -1,7 +1,7 @@
 __author__ = 'sky'
 
 from . import view
-from flask import render_template, request, url_for, redirect, current_app, send_from_directory
+from flask import render_template, request, url_for, redirect, current_app, send_from_directory, flash
 from flask_login import login_required, current_user
 from app.models import db
 from app.models.elevator import ElevatorRoom
@@ -30,35 +30,39 @@ def report_generation():
             return render_template('report/reportGeneration.html', elevators=enumerate(elevators), company_number=companynumber.company_number, reporttime=reporttime)
         else:     # 判断是报告数据提交
             data = request.form.to_dict()
+            ErrorMessage = {}
             for key in data:
                 if 'idCode' in key:
                     idcode = data[key].replace('idCode', '')
-                    report = ReportElevatorRoom()
-                    elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.maintenanceCompany == current_user.company,
-                                ElevatorRoom.idCode == idcode, ElevatorRoom.status==1)).first()
-                    report_data = elevator.__dict__
-                    del report_data['_sa_instance_state']
+                    # 判断是否已存在报告文件,若存在则报告错误,若不存在,则生成报告
+                    if not os.path.exists(os.path.join(file_dir, data.get('reportID'+idcode) + '.docx')):
+                        report = ReportElevatorRoom()
+                        elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.maintenanceCompany == current_user.company,
+                                    ElevatorRoom.idCode == idcode, ElevatorRoom.status==1)).first()
+                        report_data = elevator.__dict__
+                        del report_data['_sa_instance_state']
 
-                    report_data['reportID'] = data.get('reportID'+idcode)
-                    report_data['governorCheckDate'] = data.get('governorCheckDate'+idcode)
-                    report_data['governorSpeed'] = data.get('governorSpeed'+idcode)
-                    report_data['cwOvDis'] = data.get('cwOvDis'+idcode)
-                    report_data['brakeTest'] = data.get('brakeTest'+idcode)
-                    report_data['reportYear'] = time.strftime('%Y', time.localtime(time.time()))
+                        report_data['reportID'] = data.get('reportID'+idcode)
+                        report_data['governorCheckDate'] = data.get('governorCheckDate'+idcode)
+                        report_data['governorSpeed'] = data.get('governorSpeed'+idcode)
+                        report_data['cwOvDis'] = data.get('cwOvDis'+idcode)
+                        report_data['brakeTest'] = data.get('brakeTest'+idcode)
+                        report_data['reportYear'] = time.strftime('%Y', time.localtime(time.time()))
 
-                    # 生成docx文件
-                    doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
-                    reportdata = reportdatadealroom(report_data)
-                    doc.render(reportdata)
+                        # 生成docx文件
+                        doc = DocxTemplate('reportdocx/docxtemplates/elevator_room.docx')
+                        reportdata = reportdatadealroom(report_data)           # 讲电梯数据转化为报告数据
+                        doc.render(reportdata)
 
-                    doc.save(os.path.join(file_dir, report_data['reportID']+'.docx'))
+                        doc.save(os.path.join(file_dir, report_data['reportID']+'.docx'))
 
-                    # 录入数据库，必须放在最后，不然程序出错，docx渲染不正确
-                    report.set_attrs(report_data)
-                    db.session.add(report)
-                    db.session.commit()
-
-            return render_template('report/reportGeneration.html')
+                        # 录入数据库，必须放在最后，不然程序出错，docx渲染不正确
+                        report.set_attrs(report_data)
+                        db.session.add(report)
+                        db.session.commit()
+                    else:
+                        ErrorMessage[data.get('reportID'+idcode)] = data.get('reportID'+idcode)
+            return render_template('report/reportGeneration.html', messages=','.join(ErrorMessage))
     else:
         return render_template('report/reportGeneration.html')
 
