@@ -2,6 +2,10 @@
 {% block title %}
     员工管理
 {% endblock %}
+{% block linkcss %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='css/jquery.dataTables.min.css') }}"></script>
+{% endblock %}
 {% block page_nav %}
     <li>员工</li>
     <li>员工管理</li>
@@ -59,6 +63,11 @@
                                 <div class="col-md-2 col-md-offset-1">
                                     <button class="btn btn-primary icon-btn" type="reset"><i
                                             class="fa fa-fw fa-lg fa-refresh"></i>重置
+                                    </button>
+                                </div>
+                                <div class="col-md-2 col-md-offset-1">
+                                    <button id="test" class="btn btn-primary icon-btn" type="button"><i
+                                            class="fa fa-fw fa-lg fa-refresh"></i>test
                                     </button>
                                 </div>
                             </div>
@@ -120,7 +129,7 @@
                                                                     <tbody>
                                                                     <tr>
                                                                         <td>
-                                                                            <label class="control-label" for="name">姓名</label>
+                                                                            <label class="control-label selected" for="name">姓名</label>
                                                                         </td>
                                                                         <td>
                                                                             <input id="name" class="form-control" type="text" name="name" placeholder="姓名" required value="{{ employee.name }}">
@@ -192,10 +201,16 @@
 {% block script %}
 	{{ super() }}
     {#    表格加载用js，以下4个js必须同时使用    #}
-    {#    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>    已经在base.html文件中加载，无需再次加载#}
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript">
-        $('#sampleTable').DataTable();
+        {#$('#sampleTable').DataTable();#}
+        $(document).ready(function() {
+            var table = $('#sampleTable').DataTable();
+
+            $('#sampleTable tbody').on( 'click', 'tr', function () {
+                $(this).remove();
+            } );
+        } );
     </script>
 {% endblock %}

@@ -38,7 +38,7 @@ def report_generation():
                     if not os.path.exists(os.path.join(file_dir, data.get('reportID'+idcode) + '.docx')):
                         report = ReportElevatorRoom()
                         elevator = ElevatorRoom.query.filter(and_(ElevatorRoom.maintenanceCompany == current_user.company,
-                                    ElevatorRoom.idCode == idcode, ElevatorRoom.status==1)).first()
+                                    ElevatorRoom.idCode == idcode, ElevatorRoom.status == 1)).first()
                         report_data = elevator.__dict__
                         del report_data['_sa_instance_state']
 
@@ -80,6 +80,7 @@ def report_manage():
     else:
         reports = ReportElevatorRoom.query.filter(ReportElevatorRoom.maintenanceCompany == current_user.company)
         return render_template('report/reportManage.html', reports=enumerate(reports))
+
 
 # 报告查看
 @view.route('/report_show/<report_idCode>', methods=['GET'])
