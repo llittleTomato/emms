@@ -1,7 +1,7 @@
 {% extends "index.html" %}
 {% block linkcss %}
     {{ super() }}
-    <script type="text/javascript" src="{{ url_for('static', filename='css/report.css') }}"></script>
+{#    <script type="text/javascript" src="{{ url_for('static', filename='css/report.css') }}"></script>#}
     <script type="text/javascript" src="{{ url_for('static', filename='css/datatables.css') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='css/jquery.dataTables.min.css') }}"></script>
 {% endblock %}
@@ -162,11 +162,16 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#sampleTable').DataTable();
-{#            {% if messages %}#}
-{#                ShowFailure('报告编号为{{ messages }}的报告已存在,请删除后重新生成');#}
-{#            {% endif %}#}
+            var table = $('#sampleTable').DataTable({
+                paging: false,
+                buttons: [ 'csv', 'excel', 'pdf', 'print' ]
+            });
+
+            $('#sampleTable tbody').on( 'click', 'tr', function () {
+                $(this).remove();
+            } );
         });
+
         $("#bt_query").click(function () {
             if (($('#maintenanceContractNumber').val() == "") && ($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
                 ShowFailure('请输入查询条件');
