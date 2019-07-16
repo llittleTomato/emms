@@ -205,7 +205,11 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            var table = $('#sampleTable').DataTable();
+            var table = $('#sampleTable').DataTable({
+                "language": {
+                    "url": "{{ url_for('static', filename='js/dataTables/Chinese.json') }}"
+                },
+            });
 
             $('#sampleTable tbody').on( 'click', 'tr', function () {
                 $(this).remove();

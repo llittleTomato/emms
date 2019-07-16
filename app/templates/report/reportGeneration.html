@@ -163,8 +163,10 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var table = $('#sampleTable').DataTable({
-                paging: false,
-                buttons: [ 'csv', 'excel', 'pdf', 'print' ]
+                paging: false,      // 分页不显示
+                'info': false,      // 左下角信息不显示
+                'bFilter': false,   // 搜索框不显示
+                "bSort": false,     // 禁止排序
             });
 
             $('#sampleTable tbody').on( 'click', 'tr', function () {

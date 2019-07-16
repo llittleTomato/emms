@@ -1,4 +1,10 @@
 {% extends "index.html" %}
+{% block linkcss %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('static', filename='css/jquery.dataTables.min.css') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='css/buttons.dataTables.min.css') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='css/buttons.bootstrap.min.css') }}"></script>
+{% endblock %}
 {% block title %}
     电梯管理
 {% endblock %}
@@ -155,13 +161,28 @@
 <!-- Javascripts-->
 {% block script %}
 	{{ super() }}
-    {#    表格加载用js，以下4个js必须同时使用    #}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/dataTables.buttons.min.js') }}"></script>
+{#    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/buttons.flash.min.js') }}"></script>#}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/jszip.min.js') }}"></script>   // excel export
+{#    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/pdfmake.min.js') }}"></script>#}
+{#    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/vfs_fonts.js') }}"></script>#}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/buttons.html5.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/buttons.colVis.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#sampleTable').DataTable();
+            $('#sampleTable').DataTable({
+                "language": {
+                    "url": "{{ url_for('static', filename='js/dataTables/Chinese.json') }}"
+                },
+                {#dom: 'lBfrtip',#}
+                {#buttons: [#}
+                {#    'copy', 'excel', 'csv'#}
+                {#]#}
+            });
         });
         $("#bt_query").click(function () {
             if (($('#maintenanceContractNumber').val() == "") && ($('#idCode').val() == "") && ($('#regCode').val() == "") &&
