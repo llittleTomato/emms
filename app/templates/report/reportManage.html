@@ -135,12 +135,16 @@
 {% block script %}
 	{{ super() }}
     {#    表格加载用js，以下4个js必须同时使用    #}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#sampleTable').DataTable();
+            $('#sampleTable').DataTable({
+                "language": {
+                    "url": "{{ url_for('static', filename='js/dataTables/Chinese.json') }}"
+                },
+            });
         });
         $("#bt_query").click(function () {
             if (($('#maintenanceContractNumber').val() == "") && ($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
