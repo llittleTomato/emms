@@ -1,3 +1,4 @@
+import os
 from sqlalchemy import and_
 
 __author__ = 'sky'
@@ -5,9 +6,9 @@ __author__ = 'sky'
 from app.models.user import User
 from app.models.company import Company
 from . import view
-from flask import render_template, request, redirect, session, url_for
+from flask import render_template, request, redirect, session, url_for, current_app
 from app.forms.login import LoginForm
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 
 
 @view.route('/', methods=['GET', 'POST'])
@@ -19,6 +20,10 @@ def login():
             login_user(user, remember=form.remember_me.data)
             next = request.args.get('next')
             if not next or not next.startswith('/'):
+                # 将报告等资料的存储位置放入session中,系统退出将删除
+                companynumber = Company.query.filter_by(company=current_user.company).first()
+                file_dir = os.path.join(current_app.config['DOCXFILE_DIR'], companynumber.company_number)
+                session['file_dir'] = file_dir
                 return redirect(url_for('view.index'))
             return redirect(next)
         else:
@@ -31,4 +36,5 @@ def login():
 @login_required
 def logout():
     logout_user()
+    session.pop('file_dir', None)
     return render_template('login.html')

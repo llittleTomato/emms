@@ -1,7 +1,7 @@
 __author__ = 'sky'
 
 from . import view
-from flask import render_template, request, url_for, redirect, current_app, send_from_directory, flash
+from flask import render_template, request, url_for, redirect, current_app, send_from_directory, session
 from flask_login import login_required, current_user
 from app.models import db
 from app.models.elevator import ElevatorRoom
@@ -17,8 +17,9 @@ import os
 @view.route('/report_generation/', methods=['GET', 'POST'])
 @login_required
 def report_generation():
-    companynumber = Company.query.filter_by(company=current_user.company).first()
-    file_dir = os.path.join(current_app.config['DOCXFILE_DIR'], companynumber.company_number)
+    # companynumber = Company.query.filter_by(company=current_user.company).first()
+    # file_dir = os.path.join(current_app.config['DOCXFILE_DIR'], companynumber.company_number)
+    file_dir = session['file_dir']  # 系统登录时,已经用户保存资料的位置放入session['file_dir']中
     if request.method == 'POST':
         if request.form.get('maintenanceContractNumber') or request.form.get('idCode') or request.form.get('userEntityName'):      # 判断是查询
             elevators = ElevatorRoom.query.filter(
@@ -94,13 +95,19 @@ def report_show(report_idCode):
     return render_template('report/report_ele_room.html', report=report)
 
 # 报告删除
-@view.route('/report_del/<report_idCode>', methods=['GET', 'POST'])
+@view.route('/report_del/<report_id>', methods=['GET', 'POST'])
 @login_required
-def report_del(report_idCode):
+def report_del(report_id):
     report = ReportElevatorRoom.query.filter(
-        and_(ReportElevatorRoom.idCode == report_idCode, ReportElevatorRoom.maintenanceCompany == current_user.company)).first()
+        and_(ReportElevatorRoom.reportID == report_id, ReportElevatorRoom.maintenanceCompany == current_user.company)).first()
+    # 删除report数据库中数据
     db.session.delete(report)
     db.session.commit()
+
+    # 删除对应的docx文档
+    file = os.path.join(session['file_dir'], report_id + '.docx')
+    if os.path.exists(file):
+        os.remove(file)
     return redirect(url_for('view.report_manage'))
 
 # 报告下载

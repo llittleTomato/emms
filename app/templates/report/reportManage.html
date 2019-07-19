@@ -105,13 +105,13 @@
                                                         <div class="modal-body">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <h5>确认删除识别码为{{ report.idCode }}的电梯报告？</h5>
+                                                                    <span>删除编号为{{ report.reportID }}的电梯报告？</span>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer">
                                                             <div class="col-md-3 col-md-offset-2">
-                                                                <a class="btn btn-danger" href="{{ url_for('view.report_del', report_idCode=report.idCode) }}">确定</a>
+                                                                <a class="btn btn-danger" href="{{ url_for('view.report_del', report_id=report.reportID) }}">确定</a>
                                                             </div>
                                                             <div class="col-md-2 col-md-offset-2">
                                                                 <a class="btn btn-default" data-dismiss="modal">取消</a>
@@ -134,7 +134,6 @@
 <!-- Javascripts-->
 {% block script %}
 	{{ super() }}
-    {#    表格加载用js，以下4个js必须同时使用    #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
