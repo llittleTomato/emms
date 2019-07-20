@@ -23,6 +23,7 @@ def login():
                 # 将报告等资料的存储位置放入session中,系统退出将删除
                 companynumber = Company.query.filter_by(company=current_user.company).first()
                 file_dir = os.path.join(current_app.config['DOCXFILE_DIR'], companynumber.company_number)
+                session['companynumber'] = companynumber.company_number
                 session['file_dir'] = file_dir
                 return redirect(url_for('view.index'))
             return redirect(next)
@@ -36,5 +37,6 @@ def login():
 @login_required
 def logout():
     logout_user()
+    session.pop('companynumber', None)
     session.pop('file_dir', None)
     return render_template('login.html')

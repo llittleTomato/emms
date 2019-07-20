@@ -20,6 +20,10 @@
                     <form class="form-horizontal" method="POST"
                           action="{{ url_for('view.employee_data_input') }}" id="form">
                         <div class="form-group">
+                            <label class="" for="employeeId" hidden>员工编号</label>
+                            <div class="" hidden>
+                                <input id="employeeId" class="form-control" type="text" name="employeeId" placeholder="员工编号" value="{{ employee_id }}">
+                            </div>
                             <label class="control-label col-md-1" for="name">姓名</label>
                             <div class="col-md-3">
                                 <input id="name" class="form-control" type="text" name="name" placeholder="姓名" required>

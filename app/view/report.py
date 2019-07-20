@@ -28,7 +28,7 @@ def report_generation():
                      ElevatorRoom.userEntityName.like('%' + request.form['userEntityName']) + '%', ElevatorRoom.maintenanceCompany==current_user.company,
                      ElevatorRoom.status==1)).all()
             reporttime = time.strftime('%y%m', time.localtime((time.time())))
-            return render_template('report/reportGeneration.html', elevators=enumerate(elevators), company_number=companynumber.company_number, reporttime=reporttime)
+            return render_template('report/reportGeneration.html', elevators=enumerate(elevators), company_number=session['companynumber'], reporttime=reporttime)
         else:     # 判断是报告数据提交
             data = request.form.to_dict()
             ErrorMessage = {}

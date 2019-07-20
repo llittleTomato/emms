@@ -21,15 +21,15 @@
                         <div class="form-group" style="margin-left: 15px">
                             <label class="control-label col-md-1" for="name">姓名</label>
                             <div class="col-md-2">
-                                <input id="name" class="form-control" type="text" name="name" placeholder="姓名" required>
+                                <input id="name" class="form-control" type="text" name="name" placeholder="姓名">
                             </div>
                             <label class="control-label col-md-1" for="email">Email</label>
                             <div class="col-md-3">
-                                <input id="email" class="form-control" type="email" name="email" placeholder="Email" required>
+                                <input id="email" class="form-control" type="email" name="email" placeholder="Email">
                             </div>
                             <label class="control-label col-md-1" for="phoneNumber">手机号码</label>
                             <div class="col-md-3">
-                                <input id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="手机号码" required
+                                <input id="phoneNumber" class="form-control" type="text" name="phoneNumber" placeholder="手机号码"
                                        pattern="^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$" title="11位手机号码">
                             </div>
                         </div>
@@ -46,11 +46,11 @@
                             </div>
                             <label class="control-label col-md-1" for="certificateNumber">证书号码</label>
                             <div class="col-md-3">
-                                <input id="certificateNumber" class="form-control" type="text" name="certificateNumber" placeholder="证书号码" required>
+                                <input id="certificateNumber" class="form-control" type="text" name="certificateNumber" placeholder="证书号码">
                             </div>
                             <label class="control-label col-md-1" for="jobType">工作职责</label>
                             <div class="col-md-3">
-                                <input id="jobType" class="form-control" type="text" name="jobType" placeholder="工作职责" required>
+                                <input id="jobType" class="form-control" type="text" name="jobType" placeholder="工作职责">
                             </div>
                         </div>
                         <div class="card-footer">
@@ -63,11 +63,6 @@
                                 <div class="col-md-2 col-md-offset-1">
                                     <button class="btn btn-primary icon-btn" type="reset"><i
                                             class="fa fa-fw fa-lg fa-refresh"></i>重置
-                                    </button>
-                                </div>
-                                <div class="col-md-2 col-md-offset-1">
-                                    <button id="test" class="btn btn-primary icon-btn" type="button"><i
-                                            class="fa fa-fw fa-lg fa-refresh"></i>test
                                     </button>
                                 </div>
                             </div>
@@ -87,6 +82,7 @@
                             <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>员工编号</th>
                                 <th>姓名</th>
                                 <th>Email</th>
                                 <th>手机号码</th>
@@ -100,6 +96,7 @@
                                 {% for id, employee in employees %}
                                     <tr>
                                         <td>{{ id+1 }}</td>
+                                        <td>{{ employee.employeeId }}</td>
                                         <td>{{ employee.name }}</td>
                                         <td>{{ employee.email }}</td>
                                         <td>{{ employee.phoneNumber }}</td>
@@ -108,11 +105,10 @@
                                         <td>{{ employee.jobType }}</td>
                                         <td>
                                             <a href="" target="_blank"
-                                            data-toggle="modal" data-target="#myModal{{ id+1 }}">更新</a>
+                                            data-toggle="modal" data-target="#myModal_update{{ id+1 }}">更新</a>
                                             &nbsp&nbsp&nbsp&nbsp
-                                            <a href="" target="_blank">删除</a>
-                                            <!-- 弹出页面 -->
-                                            <div class="modal fade" id="myModal{{ id+1 }}" tabindex="-1" role="dialog"
+                                            <!-- 更新弹出页面 -->
+                                            <div class="modal fade" id="myModal_update{{ id+1 }}" tabindex="-1" role="dialog"
                                                  aria-labelledby="myModalLabel">
                                                 <div class="modal-dialog modal-lg" role="document">
                                                     <div class="modal-content">
@@ -128,6 +124,12 @@
                                                                 <table class="table">
                                                                     <tbody>
                                                                     <tr>
+                                                                        <td hidden>
+                                                                            <label class="control-label selected" for="name">员工编号</label>
+                                                                        </td>
+                                                                        <td hidden>
+                                                                            <input id="employeeId" class="form-control" type="text" name="employeeId" placeholder="员工编号" required value="{{ employee.employeeId }}">
+                                                                        </td>
                                                                         <td>
                                                                             <label class="control-label selected" for="name">姓名</label>
                                                                         </td>
@@ -185,6 +187,36 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                            <a href="" data-toggle="modal" data-target="#myModal_del{{ id+1 }}">删除</a>
+                                            <!-- 删除弹出页面 -->
+                                            <div class="modal fade" id="myModal_del{{ id+1 }}" tabindex="-1" role="dialog"
+                                                 aria-labelledby="myModalLabel">
+                                                <div class="modal-dialog modal-sm" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header alert alert-danger">
+                                                            <button type="button" class="close" data-dismiss="modal"
+                                                                    aria-label="Close"><span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            <h4 class="modal-title" id="myModalLabel">提示</h4>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <span>删除编号为{{ employee.employeeId }}的员工信息？</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <div class="col-md-3 col-md-offset-2">
+                                                                <a class="btn btn-danger" href="{{ url_for('view.employee_del', employee_id=employee.employeeId) }}">确定</a>
+                                                            </div>
+                                                            <div class="col-md-2 col-md-offset-2">
+                                                                <a class="btn btn-default" data-dismiss="modal">取消</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 {% endfor %}
@@ -200,9 +232,8 @@
 <!-- Javascripts-->
 {% block script %}
 	{{ super() }}
-    {#    表格加载用js，以下4个js必须同时使用    #}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#sampleTable').DataTable({
@@ -210,10 +241,6 @@
                     "url": "{{ url_for('static', filename='js/dataTables/Chinese.json') }}"
                 },
             });
-
-            $('#sampleTable tbody').on( 'click', 'tr', function () {
-                $(this).remove();
-            } );
         } );
     </script>
 {% endblock %}

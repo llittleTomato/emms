@@ -112,7 +112,7 @@
                                         <td>{{ elevator.contactPerson }}</td>
                                         <td>{{ elevator.contactNumber }}</td>
                                         <td>
-                                            <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=0) }}" target="_self">查看</a>
+                                            <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=0) }}" target="_blank">查看</a>
                                             &nbsp&nbsp&nbsp&nbsp
                                             <a href="{{ url_for('view.ele_info_show', ele_info=elevator.idCode, action=1) }}" target="_self">更新</a>
                                             &nbsp&nbsp&nbsp&nbsp
@@ -163,8 +163,9 @@
 	{{ super() }}
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
+    <!-- button插件,使用导出为excel功能,暂时未在页面上使用-->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/dataTables.buttons.min.js') }}"></script>
 {#    <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/buttons.flash.min.js') }}"></script>#}
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons/jszip.min.js') }}"></script>   // excel export
@@ -178,10 +179,6 @@
                 "language": {
                     "url": "{{ url_for('static', filename='js/dataTables/Chinese.json') }}"
                 },
-                {#dom: 'lBfrtip',#}
-                {#buttons: [#}
-                {#    'copy', 'excel', 'csv'#}
-                {#]#}
             });
         });
         $("#bt_query").click(function () {
