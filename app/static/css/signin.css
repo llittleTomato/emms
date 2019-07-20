@@ -1,7 +1,8 @@
 .login-body {
   padding-top: 80px;
   padding-bottom: 40px;
-  background-color: #eee;
+  /*background-color: #eee;*/
+  overflow-x: hidden;
 }
 .submit_bn {
     margin-top: 20px;
