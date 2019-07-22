@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24e4a2d1-600f-47df-b1d1-f2ca12e17f13" name="Default" comment="完善报告生成功能,修正bootstrap modal页面抖动bug,将bootstrap.min.js中关于打开modal后在body中添加style的代码注释.">
+    <list default="true" id="24e4a2d1-600f-47df-b1d1-f2ca12e17f13" name="Default" comment="完善index页面的数量显示,修正login页面bug">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/employee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/employee/employeeInput.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/employee/employeeInput.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/employee/employeeManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/employee/employeeManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/templates/report/reportManage.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/templates/report/reportManage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/employee.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/employee.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/view/report.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/view/report.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -55,35 +48,7 @@
     <favorites_list name="emms" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorManage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="121" column="80" lean-forward="true" selection-start-line="121" selection-start-column="80" selection-end-line="121" selection-end-column="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/report/reportShow.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="298">
-              <caret line="87" column="131" selection-start-line="87" selection-start-column="125" selection-end-line="87" selection-end-column="131" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -146,8 +111,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/forms/register.py" />
-        <option value="$PROJECT_DIR$/app/templates/report/reportShow.html" />
         <option value="$PROJECT_DIR$/app/models/report.py" />
         <option value="$PROJECT_DIR$/app/secure.py" />
         <option value="$PROJECT_DIR$/app/__init__.py" />
@@ -157,17 +120,14 @@
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorRoom_Show.html" />
         <option value="$PROJECT_DIR$/app/models/elevator.py" />
         <option value="$PROJECT_DIR$/app/models/elevatorBasic.py" />
-        <option value="$PROJECT_DIR$/app/view/index.py" />
         <option value="$PROJECT_DIR$/app/static/js/jquery.dataTables.min.js" />
         <option value="$PROJECT_DIR$/app/templates/employee/employeeShow.html" />
         <option value="$PROJECT_DIR$/app/templates/report/report_ele_room.html" />
         <option value="$PROJECT_DIR$/manage.py" />
         <option value="$PROJECT_DIR$/app/templates/user/userManage.html" />
-        <option value="$PROJECT_DIR$/app/templates/index.html" />
         <option value="$PROJECT_DIR$/app/templates/user/userPwdChange.html" />
         <option value="$PROJECT_DIR$/app/view/user.py" />
         <option value="$PROJECT_DIR$/app/static/js/bootstrap-datepicker.min.js" />
-        <option value="$PROJECT_DIR$/app/templates/login.html" />
         <option value="$PROJECT_DIR$/app/models/user.py" />
         <option value="$PROJECT_DIR$/app/static/css/report.css" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorInput_init.html" />
@@ -197,6 +157,11 @@
         <option value="$PROJECT_DIR$/app/view/report.py" />
         <option value="$PROJECT_DIR$/app/view/login.py" />
         <option value="$PROJECT_DIR$/app/templates/elevator/elevatorManage.html" />
+        <option value="$PROJECT_DIR$/app/templates/login.html" />
+        <option value="$PROJECT_DIR$/app/static/css/signin.css" />
+        <option value="$PROJECT_DIR$/app/view/index.py" />
+        <option value="$PROJECT_DIR$/app/templates/index.html" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -212,6 +177,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -335,7 +301,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -350,7 +315,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -503,21 +468,8 @@
       <workItem from="1563281114158" duration="8407000" />
       <workItem from="1563451066688" duration="6051000" />
       <workItem from="1563535836282" duration="8526000" />
-      <workItem from="1563625649140" duration="6355000" />
-    </task>
-    <task id="LOCAL-00005" summary="添加register模块">
-      <created>1529232939709</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1529232939709</updated>
-    </task>
-    <task id="LOCAL-00006" summary="修改models.user,注册页面，添加权限项authority，修改index页面结构">
-      <created>1529421730379</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1529421730379</updated>
+      <workItem from="1563625649140" duration="7209000" />
+      <workItem from="1563803618712" duration="719000" />
     </task>
     <task id="LOCAL-00007" summary="添加系统退出功能，修改register.html，添加注册超级管理员command命令">
       <created>1529505361482</created>
@@ -848,11 +800,25 @@
       <option name="project" value="LOCAL" />
       <updated>1563544261760</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="完善员工录入和管理功能,修正部分bug">
+      <created>1563632053590</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1563632053591</updated>
+    </task>
+    <task id="LOCAL-00055" summary="完善index页面的数量显示,修正login页面bug">
+      <created>1563632844592</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1563632844592</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261232000" />
+    <option name="totallyTimeSpent" value="262805000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -865,9 +831,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="25" width="1366" height="698" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4951613" visible="true" weight="0.21765602" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4951613" visible="true" weight="0.19863014" />
       <window_info x="846" y="247" width="544" height="676" id="Structure" order="1" sideWeight="0.5048387" side_tool="true" weight="0.13276231" />
       <window_info id="Favorites" order="2" sideWeight="0.5048387" side_tool="true" weight="0.13276231" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -959,8 +924,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="完善表格 on ubuntu" />
-    <MESSAGE value="创建docx on ubuntu" />
     <MESSAGE value="convert docx to pdf" />
     <MESSAGE value="修改报告编号自动生成功能" />
     <MESSAGE value="完善网页显示报告功能；将company_number修改为3位，报告编号修改为识别码（6位）+公司代码（3位）+年份（后2位）+月份（2位）；将除公司个人张户外其它两种账户所属公司写入公司数据库" />
@@ -984,7 +947,9 @@
     <MESSAGE value="使用dataTables插件,完善插件配置" />
     <MESSAGE value="完善代码" />
     <MESSAGE value="完善报告生成功能,修正bootstrap modal页面抖动bug,将bootstrap.min.js中关于打开modal后在body中添加style的代码注释." />
-    <option name="LAST_COMMIT_MESSAGE" value="完善报告生成功能,修正bootstrap modal页面抖动bug,将bootstrap.min.js中关于打开modal后在body中添加style的代码注释." />
+    <MESSAGE value="完善员工录入和管理功能,修正部分bug" />
+    <MESSAGE value="完善index页面的数量显示,修正login页面bug" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善index页面的数量显示,修正login页面bug" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1000,7 +965,7 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/emms$.coverage" NAME=" Coverage Results" MODIFIED="1555252784572" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
-    <SUITE FILE_PATH="coverage/emms$emms.coverage" NAME="emms Coverage Results" MODIFIED="1563625878288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/emms$emms.coverage" NAME="emms Coverage Results" MODIFIED="1563632070941" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/emms$report.coverage" NAME="report Coverage Results" MODIFIED="1555080585191" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app/view" />
   </component>
   <component name="debuggerHistoryManager">
@@ -1053,47 +1018,9 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/forms/report.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#20#57#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorInput_init.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1587">
-          <caret line="112" column="35" lean-forward="true" selection-start-line="104" selection-start-column="24" selection-end-line="112" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_basic.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="22" column="49" selection-start-line="22" selection-start-column="49" selection-end-line="22" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorRoom_machine.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-300">
-          <caret line="22" column="48" lean-forward="true" selection-start-line="22" selection-start-column="48" selection-end-line="22" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/js/bootstrap-table.min.js" />
     <entry file="file://$PROJECT_DIR$/app/static/js/bootstrap-table-zh-CN.min.js" />
     <entry file="file://$PROJECT_DIR$/app/templates/report/reportManage2.html" />
-    <entry file="file://$PROJECT_DIR$/app/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="6" lean-forward="true" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/static/css/bootstrap-table.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -1227,13 +1154,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="19" selection-start-line="15" selection-start-column="19" selection-end-line="15" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1334,16 +1254,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/view/login.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="71" selection-start-line="25" selection-start-column="71" selection-end-line="25" selection-end-column="71" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/view/report.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -1375,10 +1285,65 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="119" selection-start-line="119" selection-end-line="120" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/static/css/signin.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="22" lean-forward="true" selection-start-line="14" selection-start-column="22" selection-end-line="14" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-93">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/elevator/elevatorManage.html">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="113" column="44" lean-forward="true" selection-start-line="113" selection-start-column="44" selection-end-line="113" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" column="13" lean-forward="true" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
-          <caret line="121" column="80" lean-forward="true" selection-start-line="121" selection-start-column="80" selection-end-line="121" selection-end-column="80" />
+          <caret line="13" column="9" selection-start-line="13" selection-start-column="9" selection-end-line="13" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="76" selection-start-line="15" selection-start-column="62" selection-end-line="15" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="55" column="30" selection-start-line="55" selection-start-column="30" selection-end-line="55" selection-end-column="30" />
         </state>
       </provider>
     </entry>

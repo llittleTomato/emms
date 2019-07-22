@@ -11,3 +11,4 @@ flask-script
 uwsgi
 docxtpl
 pypandoc
+pyecharts
