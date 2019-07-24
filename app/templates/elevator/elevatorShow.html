@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <title>电梯信息</title>
@@ -11,10 +11,12 @@
 </body>
 {% block script %}
     <!-- Javascripts-->
-    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-2.1.4.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+    {# 日期选择器插件bootstrap-datepicker #}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker/bootstrap-datepicker.zh-CN.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             {% for key in elevator_data %}
@@ -27,6 +29,13 @@
                 <!--设备只读属性-->
                 $(':input').attr('disabled', 'True');
             {% endif %}
+
+            // 日期选择器插件初始化
+            $(".datepicker").datepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                autoclose: true,
+            });
         });
     </script>
 {% endblock %}
