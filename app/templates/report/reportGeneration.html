@@ -1,7 +1,6 @@
 {% extends "index.html" %}
 {% block linkcss %}
     {{ super() }}
-    <script type="text/javascript" src="{{ url_for('static', filename='css/datatables.css') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='css/jquery.dataTables.min.css') }}"></script>
 {% endblock %}
 {% block title %}
@@ -23,7 +22,7 @@
                         <div class="form-group">
                             <label class="control-label col-md-1 col-md-offset-1" for="maintenanceContractNumber">合同编号</label>
                             <div class="col-md-2">
-                                <input id="maintenanceContractNumber" class="form-control" type="text" name="maintenanceContractNumber" placeholder="合同编号">
+                                <input id="maintenanceContractNumber" class="form-control flatpickr-input" type="text" name="maintenanceContractNumber" placeholder="合同编号">
                             </div>
                             <label class="control-label col-md-1" for="idCode">识别码</label>
                             <div class="col-md-2">
@@ -114,7 +113,7 @@
                                                        value="{{ elevator.idCode }}{{ company_number }}{{ reporttime }}">
                                             </td>
                                             <td>
-                                                <input id="governorCheckDate" class="datepicker" type="text"
+                                                <input id="governorCheckDate" type="text" class="datepicker"
                                                        style="width: 100px;text-align: center;border-width: 0px; background-color: #dddddd;"
                                                        name="governorCheckDate{{ elevator.idCode }}" placeholder="校验日期"
                                                        value="{{ elevator.governorCheckDate }}" >
@@ -166,13 +165,17 @@
 <!-- Javascripts-->
 {% block script %}
     {{ super() }}
-    {#    表格加载用js，以下4个js必须同时使用    #}
+    {#  表格插件 dataTables  #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
+    {# 提示插件 #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+    {# 日期选择器插件bootstrap-datepicker #}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker/bootstrap-datepicker.zh-CN.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            // 表格插件初始化
             var table = $('#sampleTable').DataTable({
                 paging: false,      // 分页不显示
                 'info': false,      // 左下角信息不显示
@@ -190,7 +193,16 @@
                 })
 
             } );
+
+            // 日期选择器插件初始化
+            $(".datepicker").datepicker({
+                format: 'yyyy-mm-dd',
+                language: 'zh-CN',
+                autoclose: true,
+            });
         });
+
+
 
         $("#bt_query").click(function () {
             if (($('#maintenanceContractNumber').val() == "") && ($('#idCode').val() == "") && ($('#userEntityName').val() == "")) {
@@ -243,9 +255,9 @@
 					event.stopPropagation();
 				});
 				/*点击每一行时也触发该行的选中操作*/
-				$tbr.click(function(){
-					$(this).find('input[type=\'checkbox\']').click();
-				});
+				{#$tbr.click(function(){#}
+				{#	$(this).find("input[type='checkbox']").click();#}
+				//});
 			}
 			initTableCheckbox();
 		});

@@ -133,11 +133,14 @@
 <!-- Javascripts-->
 {% block script %}
 	{{ super() }}
+    {#  表格插件 dataTables  #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
+    {# 提示插件 #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+            // 表格插件初始化
             $('#sampleTable').DataTable({
                 "language": {
                     "url": "{{ url_for('static', filename='js/dataTables/Chinese.json') }}"

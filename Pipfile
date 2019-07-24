@@ -19,6 +19,7 @@ Flask-SQLAlchemy = "*"
 Flask-WTF = "*"
 WTForms = "*"
 Werkzeug = "*"
+pyecharts = "*"
 
 [requires]
 python_version = "3.6"

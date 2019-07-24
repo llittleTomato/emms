@@ -159,6 +159,10 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript">
-        $('#sampleTable').DataTable();
+        // 表格插件初始化
+        $('#sampleTable').DataTable({
+            "language": {
+                    "url": "{{ url_for('static', filename='js/dataTables/Chinese.json') }}"
+        });
     </script>
 {% endblock %}

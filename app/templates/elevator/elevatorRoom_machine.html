@@ -364,8 +364,12 @@
 {% endblock %}
 {% block script %}
     {{ super() }}
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+    {# 日期选择器插件bootstrap-datepicker #}
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap-datepicker/bootstrap-datepicker.zh-CN.min.js') }}"></script>
+    {# 电梯初始数据加载 #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/elevator_data.js') }}"></script>
+    {# 提示插件 #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function () {

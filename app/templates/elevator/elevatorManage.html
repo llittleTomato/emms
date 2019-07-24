@@ -161,8 +161,10 @@
 <!-- Javascripts-->
 {% block script %}
 	{{ super() }}
+    {#  表格插件 dataTables  #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/jquery.dataTables.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/dataTables.bootstrap.min.js') }}"></script>
+    {# 提示插件 #}
     <script type="text/javascript" src="{{ url_for('static', filename='js/alert.js') }}"></script>
     <!-- button插件,使用导出为excel功能,暂时未在页面上使用-->
     <script type="text/javascript" src="{{ url_for('static', filename='js/dataTables/buttons.bootstrap.min.js') }}"></script>
